@@ -69,5 +69,4 @@ articleSchema.index(
 );
 
 const Article = model("Article", articleSchema);
-
 module.exports = Article;

@@ -46,5 +46,4 @@ const babySchema = new Schema({
 });
 
 const Baby = model("Baby", babySchema);
-
 module.exports = Baby;

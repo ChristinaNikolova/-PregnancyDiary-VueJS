@@ -4,7 +4,7 @@ require("../models/Article");
 require("../models/Baby");
 require("../models/Category");
 require("../models/Comment");
-// require("../models/TokenBlacklist");
+require("../models/TokenBlacklist");
 require("../models/Diary");
 require("../models/Moment");
 require("../models/User");
