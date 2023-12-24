@@ -1,0 +1,23 @@
+/* Buttons */
+
+.btn {
+    border: none;
+    letter-spacing: 1.8px;
+    padding: 18px 50px;
+}
+  
+.btn-primary {
+    color: var(--clr-white);
+    background-color: var(--clr-brown);
+}
+  
+.btn-secondary {
+    color: var(--clr-brown);
+    background-color: var(--clr-white);
+}
+  
+.btn:hover {
+    cursor: pointer;
+    transform: scale(1.04);
+    transition: all .5s;
+}

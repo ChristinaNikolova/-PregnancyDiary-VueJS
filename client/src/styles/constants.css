@@ -7,7 +7,8 @@
     --clr-light-brown: #946149;
     --clr-brown: #9B502E;
     --clr-grey: #ECEDEA;
-    --clr-black: #3D3C3C;
+    --clr-dark-grey: #3D3C3C;
+    --clr-black: #000;
   
     --font-family: 'Assistant', sans-serif;
   }
