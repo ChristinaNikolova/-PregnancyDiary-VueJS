@@ -1,10 +1,10 @@
-<script setup></script>
+<script setup>
+import Jumbo from './shared/Jumbo.vue';
+</script>
 
 <template>
   <section class="home">
-    <section class="home-jumbo">
-      <img src="https://www.wallpaperup.com/uploads/wallpapers/2012/10/23/20484/4422218f71cca0c9c4ab58b5d3a96a92-700.jpg" alt="">
-    </section>
+    <Jumbo image="/images/smiling-baby.jpg" text="smiling-baby" />
     <section class="home-content-wrapper">
       <h2 class="home-content-title">
         Memory Books. Made Online.
@@ -39,16 +39,6 @@
 .home {
   text-align: center;
 }
-.home-jumbo {
-  width: 100%;
-  margin-bottom: 80px;
-}
-
-.home-jumbo img {
-  width: 100%;
-  height: 42vh;
-  object-fit: cover;
-}
 
 .home-content-wrapper {
   margin-bottom: 80px;
@@ -67,7 +57,7 @@
 }
 .home-user {
   position: relative;
-  background-image: url(https://cdn.mos.cms.futurecdn.net/BwUXA33hRvNqbCLXUfHApV-1200-80.jpeg);
+  background-image: url('/images/pregnant-woman.jpeg');
   background-repeat:no-repeat;
   background-position: center center;
   background-size: cover;
