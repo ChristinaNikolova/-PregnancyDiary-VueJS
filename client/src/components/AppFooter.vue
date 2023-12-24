@@ -6,7 +6,9 @@
       <nav class="footer-left-nav">
         <ul class="footer-nav-ul">
           <li class="footer-nav-li">
-            Home
+            <router-link to="/">
+              Home
+            </router-link>
           </li>
           <li class="footer-nav-li">
             Create new diary
@@ -20,7 +22,9 @@
       <nav class="footer-right-nav">
         <ul class="footer-nav-ul">
           <li class="footer-nav-li">
-            Blog
+            <router-link to="/blog">
+              Blog
+            </router-link>
           </li>
           <li class="footer-nav-li">
             Favourites

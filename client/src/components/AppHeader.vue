@@ -1,4 +1,5 @@
-<script setup></script>
+<script setup>
+</script>
 
 <template>
   <header class="header">
@@ -10,7 +11,9 @@
     <nav class="header-nav">
       <ul class="header-nav-ul">
         <li class="header-nav-li">
-          Home
+          <router-link to="/">
+            Home
+          </router-link>
         </li>
         <li class="header-nav-li">
           Administration
@@ -22,7 +25,9 @@
           Diaries
         </li>
         <li class="header-nav-li">
-          Blog
+          <router-link to="/blog">
+            Blog
+          </router-link>
         </li>
         <li class="header-nav-li">
           Favourites
@@ -57,6 +62,10 @@
   display: flex;
   gap: 40px;
   font-size: 18px;
+}
+
+.header-nav-li a.router-link-active {
+  text-decoration: underline;
 }
 
 .header-nav-li:hover {
