@@ -25,7 +25,7 @@
           Diaries
         </li>
         <li class="header-nav-li">
-          <router-link to="/blog">
+          <router-link to="/blog?page=1&query=">
             Blog
           </router-link>
         </li>
