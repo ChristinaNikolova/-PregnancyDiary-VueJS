@@ -1,4 +1,24 @@
 <script setup>
+import { onMounted, onUnmounted, ref } from 'vue';
+
+const showMenu = ref(false);
+
+onMounted(() => {
+  window.addEventListener('click', toogleMenu);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('click', toogleMenu);
+});
+
+function toogleMenu(e) {
+  if (e.target.classList.contains('header-admin')) {
+    showMenu.value = !showMenu.value;
+  }
+  else {
+    showMenu.value = false;
+  }
+}
 </script>
 
 <template>
@@ -15,8 +35,19 @@
             Home
           </router-link>
         </li>
-        <li class="header-nav-li">
+        <li class="header-nav-li header-admin">
           Administration
+          <ul v-show="showMenu" class="header-nav-li-ul">
+            <li class="header-nav-li-li">
+              All Categories
+            </li>
+            <li class="header-nav-li-li">
+              Create Category
+            </li>
+            <li class="header-nav-li-li">
+              Create Article
+            </li>
+          </ul>
         </li>
         <li class="header-nav-li">
           Create new diary
@@ -64,12 +95,33 @@
   font-size: 18px;
 }
 
+.header-nav-li {
+ position: relative;
+}
+
 .header-nav-li a.router-link-active {
   text-decoration: underline;
 }
 
 .header-nav-li:hover {
   cursor: pointer;
+  text-decoration: underline;
+}
+
+.header-nav-li-ul {
+  position: absolute;
+  top: 57px;
+  width: 180%;
+  padding: 20px;
+  border-top: 1px solid var(--clr-grey);
+  background-color: var(--clr-cream-bg);
+}
+
+.header-nav-li-li {
+  margin-bottom: 10px;
+}
+
+.header-nav-li-li:hover{
   text-decoration: underline;
 }
 </style>
