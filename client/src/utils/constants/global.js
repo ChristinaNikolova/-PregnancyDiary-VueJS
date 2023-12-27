@@ -14,10 +14,10 @@ export const httpMethods = {
   DELETE: 'DELETE',
 };
 
-// export const formNames = {
-//   CREATE: 'create',
-//   UPDATE: 'update',
-// };
+export const formNames = {
+  CREATE: 'create',
+  UPDATE: 'update',
+};
 
 // export const classNames = {
 //   SHOW: 'show',
