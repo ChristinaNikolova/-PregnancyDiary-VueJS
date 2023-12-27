@@ -21,3 +21,7 @@
     transform: scale(1.04);
     transition: all .5s;
 }
+
+form .btn {
+    margin-top: 26px;
+}
