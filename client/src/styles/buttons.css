@@ -1,4 +1,9 @@
 /* Buttons */
+button {
+    -webkit-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
+}
 
 .btn {
     border: none;
@@ -20,6 +25,11 @@
     cursor: pointer;
     transform: scale(1.04);
     transition: all .5s;
+}
+
+.btn:disabled {
+    background-color: var(--clr-dark-grey);
+    cursor: not-allowed;
 }
 
 form .btn {
