@@ -69,6 +69,8 @@ function onBlur(e) {
   </div>
 </template>
 
+<!-- todo extract the CSS -->
+<!-- todo extract button -->
 <style scoped>
 .form-wrapper {
   position: relative;
