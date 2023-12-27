@@ -37,12 +37,16 @@ function toogleMenu(e) {
         </li>
         <li class="header-nav-li header-admin">
           Administration
+          <i v-if="!showMenu" class="fa-solid fa-arrow-down" />
+          <i v-else class="fa-solid fa-arrow-up" />
           <ul v-show="showMenu" class="header-nav-li-ul">
             <li class="header-nav-li-li">
               All Categories
             </li>
             <li class="header-nav-li-li">
-              Create Category
+              <router-link to="/administration/category/create">
+                Create Category
+              </router-link>
             </li>
             <li class="header-nav-li-li">
               Create Article
@@ -103,6 +107,10 @@ function toogleMenu(e) {
   text-decoration: underline;
 }
 
+.header-nav-li i {
+  margin-left: 4px;
+  font-size: 12px;
+}
 .header-nav-li:hover {
   cursor: pointer;
   text-decoration: underline;
@@ -118,7 +126,7 @@ function toogleMenu(e) {
 }
 
 .header-nav-li-li {
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 
 .header-nav-li-li:hover{
