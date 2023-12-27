@@ -1,4 +1,4 @@
-import { httpMethods } from '../utils/constants.js/global';
+import { httpMethods } from '../utils/constants/global';
 import { api } from './api';
 
 // import { requester } from './requester';
