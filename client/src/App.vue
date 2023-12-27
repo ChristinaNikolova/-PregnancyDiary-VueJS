@@ -8,7 +8,3 @@ import AppFooter from './components/AppFooter.vue';
   <router-view />
   <AppFooter />
 </template>
-
-<style scoped>
-
-</style>
