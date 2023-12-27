@@ -17,8 +17,10 @@ const props = defineProps({
 
 <style scoped>
 .client-error {
-    text-transform: none;
-    font-weight: 500;
-    color: var(--clr-brown);
+  position: absolute;
+  left: 10%;
+  text-transform: none;
+  font-weight: 500;
+  color: var(--clr-brown);
 }
 </style>
