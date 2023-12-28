@@ -17,7 +17,6 @@ function onSubmitHandler(name, picture) {
   categoriesService
     .create(name, picture)
     .then((res) => {
-      console.log('res', res);
       if (res.message) {
         serverError.value = res.message;
         return;
