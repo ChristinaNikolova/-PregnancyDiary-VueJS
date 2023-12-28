@@ -1,6 +1,8 @@
 @import "./reset.css";
 @import "./buttons.css";
 @import "./constants.css";
+@import "./headings.css";
+@import "./forms.css";
 @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap');
 
 html {
