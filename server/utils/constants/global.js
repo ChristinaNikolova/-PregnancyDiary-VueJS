@@ -23,13 +23,13 @@ const messages = {
 
 const errors = {
   REQUEST: "Request error",
-  //   INVALID_URL: "Invalid url",
+  INVALID_URL: "Invalid url",
   //   INVALID_EMAIL: "Invalid email",
   //   PASSWORD(min, max) {
   //     return `Password should be between ${min} and ${max} characters long`;
   //   },
   //   SELECT_CATEGORY: "Please select category",
-  //   NAME_TAKEN: "Name is already taken",
+  NAME_TAKEN: "Name is already taken",
   //   TITEL_TAKEN: "Title is already taken",
   //   EMAIL_TAKEN: "Email is already taken",
   //   LOGIN: "Incorrect email or password",

@@ -12,7 +12,7 @@ const articlesController = require("../controllers/articles");
 // const tasksController = require("../controllers/tasks");
 // const subtasksController = require("../controllers/subtasks");
 // const adminArticlesController = require("../controllers/admin/articles");
-// const adminCategoriesController = require("../controllers/admin/categories");
+const adminCategoriesController = require("../controllers/admin/categories");
 
 module.exports = (app) => {
   app.use(homeController);
@@ -29,5 +29,5 @@ module.exports = (app) => {
   //   app.use("/tasks", tasksController);
   //   app.use("/subtasks", subtasksController);
   //   app.use("/admin/articles", adminArticlesController);
-  //   app.use("/admin/categories", adminCategoriesController);
+  app.use("/admin/categories", adminCategoriesController);
 };
