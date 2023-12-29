@@ -15,11 +15,9 @@ router.post(
   async (req, res) => {
     try {
       const { errors } = validationResult(req);
-
       if (errors.length > 0) {
         throw mapErrors(errors);
       }
-
       const category = await create(req.body.name, req.body.picture);
       res.json(category);
     } catch (error) {

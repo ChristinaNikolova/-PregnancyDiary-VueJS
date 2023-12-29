@@ -7,6 +7,7 @@ import { global } from '../../../utils/constants/error';
 import { category } from '../../../utils/constants/model';
 import AppInput from '../../shared/inputs/AppInput.vue';
 import Jumbo from '../../shared/Jumbo.vue';
+import ServerError from '../../shared/errors/ServerError.vue';
 
 const props = defineProps({
   initialData: {
@@ -64,13 +65,13 @@ async function onSubmitFormHandler() {
 };
 </script>
 
- <!-- todo test server error -->
 <template>
   <section class="form-section">
     <Jumbo image="/images/martha-brook-blog-post-brilliant-gifts-for-pregnant-women-pregnant-woman-sitting-on-bed-banner-1500x550.webp" text="administration-image" />
     <h2 class="form-title">
       {{ props.formName }} Category
     </h2>
+    <ServerError v-if="props.serverError.length" :errors="props.serverError" />
     <form class="form" @submit.prevent="onSubmitFormHandler">
       <AppInput
         v-model.trim="v$.name.$model"
