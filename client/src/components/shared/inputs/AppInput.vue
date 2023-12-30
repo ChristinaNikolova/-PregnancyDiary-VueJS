@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { onUpdated, ref } from 'vue';
 
 const props = defineProps({
   modelValue: {
@@ -31,6 +31,12 @@ const props = defineProps({
 });
 const emit = defineEmits(['update:modelValue']);
 const small = ref(false);
+
+onUpdated(() => {
+  if (props.modelValue) {
+    small.value = true;
+  }
+});
 
 function onInput(e) {
   const { value } = e.target;

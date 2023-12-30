@@ -29,8 +29,15 @@ function deleteById(id) {
     .catch(err => console.error(err));
 };
 
+function getById(id) {
+  return requester(`${api.adminCategory}/${id}`, httpMethods.GET)
+    .then(res => res.json())
+    .catch(err => console.error(err));
+};
+
 export default {
   create,
   all,
   deleteById,
+  getById,
 };

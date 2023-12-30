@@ -45,7 +45,9 @@ function loadCategories() {
           </td>
           <td class="all-categories-table-body-row-button">
             <button type="button" class="btn btn-secondary">
-              Update
+              <router-link :to="`/administration/category/update/${c.id}`">
+                Update
+              </router-link>
             </button>
           </td>
           <td class="all-categories-table-body-row-button">
