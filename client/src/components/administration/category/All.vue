@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import categoriesService from '../../../services/categories';
+import Empty from '../../shared/Empty.vue';
 
 const categories = ref([]);
 
@@ -29,7 +30,7 @@ function loadCategories() {
     <h2 class="section-title all-categories-title">
       All Categories
     </h2>
-    <table class="all-categories-table">
+    <table v-if="categories.length" class="all-categories-table">
       <thead class="all-categories-table-head">
         <tr class="all-categories-table-head-row">
           <th>Name</th>
@@ -55,6 +56,7 @@ function loadCategories() {
         </tr>
       </tbody>
     </table>
+    <Empty v-else element="categories" />
   </section>
 </template>
 

@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import articlesService from '../../services/articles';
+import Empty from '../shared/Empty.vue';
 
 const articles = ref([]);
 
@@ -21,20 +22,10 @@ onMounted(() => {
     <div v-if="articles.length" class="blog-wrapper">
       <h2>A</h2>
     </div>
-    <div v-else class="blog-wrapper-empty">
-      <h2 class="empty-title">
-        No articles yet
-      </h2>
-    </div>
+    <Empty v-else element="articles" />
     <Jumbo
       image="/images/web3-woman-pregnant-light-spiritual-shutterstock_1466000780.webp"
       text="pregnant-woman"
     />
   </section>
 </template>
-
-<style scoped>
-.blog-wrapper-empty {
-  margin-bottom: 180px;
-}
-</style>
