@@ -1,7 +1,7 @@
 <script setup>
 import { computed, reactive, ref, watch } from 'vue';
 import { useVuelidate } from '@vuelidate/core';
-import { helpers, maxLength, minLength, required } from '@vuelidate/validators';
+import { helpers, maxLength, minLength, required, url } from '@vuelidate/validators';
 import { formNames } from '../../../utils/constants/global';
 import { global } from '../../../utils/constants/error';
 import { category } from '../../../utils/constants/model';
@@ -38,6 +38,7 @@ const rules = computed(() => ({
   },
   picture: {
     required: helpers.withMessage(global.REQUIRED, required),
+    url: helpers.withMessage(global.URL, url),
   },
 }));
 

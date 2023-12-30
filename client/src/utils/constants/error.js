@@ -12,6 +12,7 @@ export const global = {
     return `Content should be between ${min} and ${max} characters long`;
   },
   REQUIRED: 'Field is required',
+  URL: 'Invalid URL',
   DEFAULT: 'Error',
 };
 
