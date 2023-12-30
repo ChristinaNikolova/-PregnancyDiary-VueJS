@@ -47,7 +47,6 @@ onMounted(() => {
   </section>
 </template>
 
-<!-- todo extract title css -->
 <style scoped>
 .all-categories {
   position: relative;
