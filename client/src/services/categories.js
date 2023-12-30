@@ -19,7 +19,18 @@ function all() {
     .catch(err => console.error(err));
 };
 
+function deleteById(id) {
+  return requester(`${api.adminCategory}/${id}`, httpMethods.DELETE)
+    .then((res) => {
+      if (res.status !== 204) {
+        return res.json();
+      }
+    })
+    .catch(err => console.error(err));
+};
+
 export default {
   create,
   all,
+  deleteById,
 };

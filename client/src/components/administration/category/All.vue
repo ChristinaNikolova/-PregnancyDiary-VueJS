@@ -5,11 +5,22 @@ import categoriesService from '../../../services/categories';
 const categories = ref([]);
 
 onMounted(() => {
+  loadCategories();
+});
+
+function onDeleteHandler(id) {
+  categoriesService
+    .deleteById(id)
+    .then(() => loadCategories())
+    .catch(err => console.error(err));
+}
+
+function loadCategories() {
   categoriesService
     .all()
     .then(res => categories.value = res)
     .catch(err => console.error(err));
-});
+}
 </script>
 
 <template>
@@ -37,7 +48,7 @@ onMounted(() => {
             </button>
           </td>
           <td class="all-categories-table-body-row-button">
-            <button type="button" class="btn btn-primary">
+            <button type="button" class="btn btn-primary" @click="onDeleteHandler(c.id)">
               Delete
             </button>
           </td>

@@ -11,7 +11,6 @@ async function create(name, picture) {
     name,
     picture,
   });
-
   await category.save();
   return category;
 }
@@ -27,7 +26,12 @@ async function all() {
   return (await Category.find({}).sort({ name: 1 })).map(categoryListViewModel);
 }
 
+async function deleteById(id) {
+  return Category.findByIdAndDelete(id);
+}
+
 module.exports = {
   create,
   all,
+  deleteById,
 };
