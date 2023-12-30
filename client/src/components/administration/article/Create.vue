@@ -2,7 +2,6 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import articlesService from '../../../services/articles';
-import FormButton from '../../shared/buttons/Form.vue';
 import Form from './Form.vue';
 
 const router = useRouter();

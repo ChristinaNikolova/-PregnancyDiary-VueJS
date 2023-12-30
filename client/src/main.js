@@ -6,6 +6,7 @@ import AppSelect from './components/shared/inputs/AppSelect.vue';
 import AppTextarea from './components/shared/inputs/AppTextarea.vue';
 import ClientError from './components/shared/errors/ClientError.vue';
 import ServerError from './components/shared/errors/ServerError.vue';
+import FormButton from './components/shared/buttons/Form.vue';
 import App from './App.vue';
 import router from './routes/index';
 
@@ -16,7 +17,7 @@ app.component('Jumbo', Jumbo);
 app.component('AppInput', AppInput);
 app.component('AppSelect', AppSelect);
 app.component('AppTextarea', AppTextarea);
-// app.component('FormButton', FormButton);
+app.component('FormButton', FormButton);
 app.component('ClientError', ClientError);
 app.component('ServerError', ServerError);
 // app.component('Loading', Loading);
