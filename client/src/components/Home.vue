@@ -2,7 +2,7 @@
   <section class="home">
     <Jumbo image="/images/smiling-baby.jpg" text="smiling-baby" />
     <section class="home-content-wrapper">
-      <h2 class="home-content-title">
+      <h2 class="section-title home-content-title">
         Memory Books. Made Online.
       </h2>
       <p class="home-content-text">
@@ -14,7 +14,7 @@
     </section>
     <section class="home-user">
       <div class="home-user-wrapper">
-        <h2 class="home-user-title">
+        <h2 class="white-section-title home-user-title">
           Capture moments before they become blurry.
         </h2>
         <p class="home-user-content">
@@ -40,13 +40,6 @@
   margin-bottom: 80px;
 }
 
-.home-content-title {
-  font-size: 42px;
-  font-weight: 400;
-  color: var(--clr-black);
-  margin-bottom: 26px;
-}
-
 .home-content-text {
   letter-spacing: 1.4px;
   margin-bottom: 40px;
@@ -70,14 +63,6 @@
   width: 760px;
   background-color: var(--clr-brown);
   padding: 30px 50px;
-}
-
-.home-user-title {
-  font-weight: 400;
-  font-size: 42px;
-  letter-spacing: 1.2px;
-  color: var(--clr-white);
-  margin-bottom: 30px;
 }
 
 .home-user-content {

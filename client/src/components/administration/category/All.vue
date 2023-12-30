@@ -15,7 +15,7 @@ onMounted(() => {
 <template>
   <section class="all-categories">
     <Jumbo image="/images/martha-brook-blog-post-brilliant-gifts-for-pregnant-women-pregnant-woman-sitting-on-bed-banner-1500x550.webp" text="administration-image" />
-    <h2 class="all-categories-title">
+    <h2 class="section-title all-categories-title">
       All Categories
     </h2>
     <table class="all-categories-table">
@@ -64,12 +64,6 @@ onMounted(() => {
   border-bottom: 1.5px solid var(--clr-grey);
 }
 
-.all-categories-title {
-  font-size: 42px;
-  font-weight: 400;
-  color: var(--clr-black);
-  margin-bottom: 26px;
-}
 .all-categories-table {
   margin: 0 auto;
   width: 70%;

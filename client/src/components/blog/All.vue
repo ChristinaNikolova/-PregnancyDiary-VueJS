@@ -22,7 +22,7 @@ onMounted(() => {
       <h2>A</h2>
     </div>
     <div v-else class="blog-wrapper-empty">
-      <h2 class="blog-title">
+      <h2 class="empty-title">
         No articles yet
       </h2>
     </div>
@@ -36,20 +36,5 @@ onMounted(() => {
 <style scoped>
 .blog-wrapper-empty {
   margin-bottom: 180px;
-}
-.blog-title {
-  position: relative;
-  font-size: 60px;
-  font-weight: 500;
-  text-align: center;
-}
-
-.blog-title::after {
-  position: absolute;
-  content: '';
-  width: 150px;
-  left: 46%;
-  top: 98px;
-  border-bottom: 1.2px solid  var(--clr-brown);
 }
 </style>
