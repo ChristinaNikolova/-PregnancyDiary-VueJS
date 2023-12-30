@@ -44,7 +44,6 @@ onMounted(() => {
     .catch(err => console.error(err));
 });
 
-// content, category
 const rules = computed(() => ({
   title: {
     required: helpers.withMessage(global.REQUIRED, required),

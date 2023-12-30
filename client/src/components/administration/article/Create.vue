@@ -5,7 +5,6 @@ import articlesService from '../../../services/articles';
 import FormButton from '../../shared/buttons/Form.vue';
 import Form from './Form.vue';
 
-// todo test error messages
 const router = useRouter();
 const data = ref({
   title: '',
