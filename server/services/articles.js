@@ -17,7 +17,6 @@ async function all(take, skip, searchedQuery) {
 }
 
 async function getTotalCount(searchedQuery) {
-  console.log(searchedQuery);
   return (
     await Article.find(
       searchedQuery ? { title: { $regex: searchedQuery, $options: "i" } } : {}
@@ -25,14 +24,31 @@ async function getTotalCount(searchedQuery) {
   ).length;
 }
 
-// async function getByTitle(title) {
-//   return await Article.findOne({ title }).collation({
-//     locale: "en",
-//     strength: 2,
-//   });
-// }
+async function create(title, content, picture, category) {
+  let article = await getByTitle(title);
+  if (article) {
+    throw new Error(errors.TITEL_TAKEN);
+  }
+  article = new Article({
+    title,
+    content,
+    picture,
+    category,
+  });
+
+  await article.save();
+  return article;
+}
+
+async function getByTitle(title) {
+  return await Article.findOne({ title }).collation({
+    locale: "en",
+    strength: 2,
+  });
+}
 
 module.exports = {
   all,
   getTotalCount,
+  create,
 };

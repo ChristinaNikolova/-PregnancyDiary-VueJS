@@ -1,21 +1,24 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import categoriesService from '../../../services/categories';
+import articlesService from '../../../services/articles';
 import FormButton from '../../shared/buttons/Form.vue';
 import Form from './Form.vue';
 
+// todo test error messages
 const router = useRouter();
 const data = ref({
-  name: '',
+  title: '',
+  content: '',
   picture: '',
+  category: '',
 });
 const serverError = ref([]);
 const isDisabled = ref(true);
 
-function onSubmitHandler(name, picture) {
-  categoriesService
-    .create(name, picture)
+function onSubmitHandler(title, content, picture, category) {
+  articlesService
+    .create(title, content, picture, category)
     .then((res) => {
       if (res.message) {
         serverError.value = res.message;
@@ -28,7 +31,7 @@ function onSubmitHandler(name, picture) {
 };
 
 function onCancelFormHandler() {
-  router.push({ path: '/administration/category' });
+  router.push({ path: '/blog' });
 };
 
 function checkIsDisabled(disable) {
@@ -49,3 +52,7 @@ function checkIsDisabled(disable) {
     </template>
   </Form>
 </template>
+
+<style scoped>
+
+</style>
