@@ -41,7 +41,9 @@ function toogleMenu(e) {
           <i v-else class="fa-solid fa-arrow-up" />
           <ul v-show="showMenu" class="header-nav-li-ul">
             <li class="header-nav-li-li">
-              All Categories
+              <router-link to="/administration/category">
+                All Categories
+              </router-link>
             </li>
             <li class="header-nav-li-li">
               <router-link to="/administration/category/create">

@@ -6,6 +6,7 @@ import { formNames } from '../../../utils/constants/global';
 import { global } from '../../../utils/constants/error';
 import { category } from '../../../utils/constants/model';
 
+// todo remove picture
 const props = defineProps({
   initialData: {
     type: Object,
