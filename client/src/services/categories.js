@@ -8,6 +8,18 @@ function create(name, picture) {
     .catch(err => console.error(err));
 };
 
+function all() {
+  return fetch(api.categories, {
+    method: httpMethods.GET,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(res => res.json())
+    .catch(err => console.error(err));
+};
+
 export default {
   create,
+  all,
 };

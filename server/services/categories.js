@@ -1,5 +1,6 @@
 const Category = require("../models/Category");
 const { errors } = require("../utils/constants/global");
+const { categoryListViewModel } = require("../utils/mapper/category");
 
 async function create(name, picture) {
   let category = await getByName(name);
@@ -22,6 +23,11 @@ async function getByName(name) {
   });
 }
 
+async function all() {
+  return (await Category.find({}).sort({ name: 1 })).map(categoryListViewModel);
+}
+
 module.exports = {
   create,
+  all,
 };
