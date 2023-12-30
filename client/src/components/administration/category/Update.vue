@@ -26,19 +26,19 @@ onMounted(() => {
     .catch(err => console.err(err));
 });
 
-// function onSubmitHandler(name, picture) {
-//   categoriesService
-//     .create(name, picture)
-//     .then((res) => {
-//       if (res.message) {
-//         serverError.value = res.message;
-//         return;
-//       }
-//       serverError.value = [];
-//       onCancelFormHandler();
-//     })
-//     .catch(err => console.error(err));
-// };
+function onSubmitHandler(name, picture) {
+  categoriesService
+    .update(categoryId, name, picture)
+    .then((res) => {
+      if (res.message) {
+        serverError.value = res.message;
+        return;
+      }
+      serverError.value = [];
+      onCancelFormHandler();
+    })
+    .catch(err => console.error(err));
+};
 
 function onCancelFormHandler() {
   router.push({ path: '/administration/category' });

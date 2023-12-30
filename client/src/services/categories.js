@@ -35,9 +35,16 @@ function getById(id) {
     .catch(err => console.error(err));
 };
 
+function update(id, name, picture) {
+  return requester(`${api.adminCategory}/${id}`, httpMethods.PUT, { name, picture })
+    .then(res => res.json())
+    .catch(err => console.error(err));
+};
+
 export default {
   create,
   all,
   deleteById,
   getById,
+  update,
 };
