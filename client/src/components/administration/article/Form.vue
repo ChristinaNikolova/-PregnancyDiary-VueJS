@@ -6,11 +6,6 @@ import categoriesService from '../../../services/categories';
 import { formNames } from '../../../utils/constants/global';
 import { global } from '../../../utils/constants/error';
 import { article } from '../../../utils/constants/model';
-import AppInput from '../../shared/inputs/AppInput.vue';
-import Jumbo from '../../shared/Jumbo.vue';
-import ServerError from '../../shared/errors/ServerError.vue';
-import AppTextarea from '../../shared/inputs/AppTextarea.vue';
-import AppSelect from '../../shared/inputs/AppSelect.vue';
 
 const props = defineProps({
   initialData: {

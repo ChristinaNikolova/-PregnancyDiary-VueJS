@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from 'vue';
-import ClientError from '../errors/ClientError.vue';
 
 const props = defineProps({
   modelValue: {

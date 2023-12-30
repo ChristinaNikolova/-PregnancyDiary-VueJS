@@ -5,9 +5,6 @@ import { helpers, maxLength, minLength, required } from '@vuelidate/validators';
 import { formNames } from '../../../utils/constants/global';
 import { global } from '../../../utils/constants/error';
 import { category } from '../../../utils/constants/model';
-import AppInput from '../../shared/inputs/AppInput.vue';
-import Jumbo from '../../shared/Jumbo.vue';
-import ServerError from '../../shared/errors/ServerError.vue';
 
 const props = defineProps({
   initialData: {

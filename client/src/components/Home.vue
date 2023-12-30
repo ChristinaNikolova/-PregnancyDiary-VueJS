@@ -1,7 +1,3 @@
-<script setup>
-import Jumbo from './shared/Jumbo.vue';
-</script>
-
 <template>
   <section class="home">
     <Jumbo image="/images/smiling-baby.jpg" text="smiling-baby" />
