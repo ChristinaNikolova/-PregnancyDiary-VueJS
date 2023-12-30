@@ -12,11 +12,12 @@ const props = defineProps({
     required: true,
     default: '',
   },
-  type: {
-    type: String,
-    default: 'text',
-  },
   label: {
+    type: String,
+    required: true,
+    default: '',
+  },
+  rows: {
     type: String,
     required: true,
     default: '',
@@ -24,10 +25,6 @@ const props = defineProps({
   errors: {
     type: Array,
     default: () => [],
-  },
-  isReadonly: {
-    Type: Boolean,
-    default: false,
   },
 });
 const emit = defineEmits(['update:modelValue']);
@@ -53,17 +50,16 @@ function onBlur(e) {
   <div class="form-wrapper">
     <label :class="small ? 'label label-small' : 'label'" :for="props.name">{{ props.label }}</label>
     <div class="form-input-wrapper">
-      <input
+      <textarea
         :id="props.name"
-        :class="small ? 'input input-small' : 'input'"
+        :class="small ? 'input textarea input-small' : 'input textarea'"
         :name="props.name"
-        :type="props.type"
-        :readonly="props.isReadonly"
+        :rows="props.rows"
         :value="props.modelValue"
         @input="onInput"
         @focus="onFocus"
         @blur="onBlur"
-      >
+      />
       <ClientError v-for="error of props.errors" :key="error.$uid" :error="error.$message" />
     </div>
   </div>

@@ -8,7 +8,6 @@ router.get("/:page/:query?", async (req, res) => {
   try {
     const currentPage = req.params.page;
     const searchedQuery = req.params.query || "";
-
     const skip = (currentPage - 1) * pagination.ARTICLES_PER_PAGE;
     const totalArticles = await getTotalCount(searchedQuery);
     const pagesCount = Math.ceil(totalArticles / pagination.ARTICLES_PER_PAGE);
