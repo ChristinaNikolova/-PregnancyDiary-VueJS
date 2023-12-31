@@ -27,7 +27,6 @@ async function allAdmin() {
   ).map(articleAdminViewModel);
 }
 
-
 async function getTotalCount(searchedQuery) {
   return (
     await Article.find(
@@ -59,9 +58,14 @@ async function getByTitle(title) {
   });
 }
 
+async function deleteById(id) {
+  return Article.findByIdAndDelete(id);
+}
+
 module.exports = {
   all,
   getTotalCount,
   create,
   allAdmin,
+  deleteById,
 };

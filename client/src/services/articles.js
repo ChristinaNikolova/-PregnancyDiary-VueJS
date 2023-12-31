@@ -30,8 +30,19 @@ function create(title, content, picture, category) {
     .catch(err => console.error(err));
 }
 
+function deleteById(id) {
+  return requester(`${api.adminArticle}/${id}`, httpMethods.DELETE)
+    .then((res) => {
+      if (res.status !== 204) {
+        return res.json();
+      }
+    })
+    .catch(err => console.error(err));
+};
+
 export default {
   all,
   allAdmin,
   create,
+  deleteById,
 };

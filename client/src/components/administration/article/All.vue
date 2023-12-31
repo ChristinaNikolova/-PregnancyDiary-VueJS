@@ -11,6 +11,10 @@ onMounted(() => {
 });
 
 function onDeleteHandler(e, id) {
+  articlesService
+    .deleteById(id)
+    .then(() => loadArticles())
+    .catch(err => console.error(err));
 }
 
 function loadArticles() {
