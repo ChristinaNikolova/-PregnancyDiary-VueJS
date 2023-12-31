@@ -1,7 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import articlesService from '../../services/articles';
-import Empty from '../shared/Empty.vue';
 
 const articles = ref([]);
 

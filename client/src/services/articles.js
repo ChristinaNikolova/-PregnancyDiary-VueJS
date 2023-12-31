@@ -13,6 +13,17 @@ function all(currentPage = 1, query = '') {
     .catch(err => console.error(err));
 }
 
+function allAdmin() {
+  return fetch(api.adminArticle, {
+    method: httpMethods.GET,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(res => res.json())
+    .catch(err => console.error(err));
+}
+
 function create(title, content, picture, category) {
   return requester(api.adminArticle, httpMethods.POST, { title, content, picture, category })
     .then(res => res.json())
@@ -21,5 +32,6 @@ function create(title, content, picture, category) {
 
 export default {
   all,
+  allAdmin,
   create,
 };

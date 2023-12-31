@@ -4,6 +4,8 @@ const { all, getTotalCount } = require("../services/articles");
 const { pagination } = require("../utils/constants/global");
 const { mapErrors } = require("../utils/parser");
 
+//todo get last three
+
 router.get("/:page/:query?", async (req, res) => {
   try {
     const currentPage = req.params.page;

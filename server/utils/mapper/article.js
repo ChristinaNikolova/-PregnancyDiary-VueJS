@@ -7,6 +7,17 @@ function articleListViewModel(article) {
   };
 }
 
+function articleAdminViewModel(article) {
+  return {
+    id: article._id,
+    title: article.title,
+    category: article.category.name,
+    likes: article.likes.length,
+    comments: article.comments.length,
+  };
+}
+
 module.exports = {
   articleListViewModel,
+  articleAdminViewModel,
 };

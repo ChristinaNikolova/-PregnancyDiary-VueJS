@@ -7,6 +7,7 @@ import AppTextarea from './components/shared/inputs/AppTextarea.vue';
 import ClientError from './components/shared/errors/ClientError.vue';
 import ServerError from './components/shared/errors/ServerError.vue';
 import FormButton from './components/shared/buttons/Form.vue';
+import Empty from './components/shared/Empty.vue';
 import App from './App.vue';
 import router from './routes/index';
 
@@ -20,5 +21,6 @@ app.component('AppTextarea', AppTextarea);
 app.component('FormButton', FormButton);
 app.component('ClientError', ClientError);
 app.component('ServerError', ServerError);
+app.component('Empty', Empty);
 // app.component('Loading', Loading);
 app.mount('#app');

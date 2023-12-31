@@ -51,6 +51,11 @@ function toogleMenu(e) {
               </router-link>
             </li>
             <li class="header-nav-li-li">
+              <router-link to="/administration/article">
+                All Articles
+              </router-link>
+            </li>
+            <li class="header-nav-li-li">
               <router-link to="/administration/article/create">
                 Create Article
               </router-link>

@@ -29,7 +29,7 @@ function onSubmitHandler(title, content, picture, category) {
 };
 
 function onCancelFormHandler() {
-  router.push({ path: '/blog' });
+  router.push({ path: '/administration/article' });
 };
 
 function checkIsDisabled(disable) {

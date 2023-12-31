@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { body, validationResult } = require("express-validator");
 const { isAdmin } = require("../../middlewares/guards");
-const { create } = require("../../services/articles");
+const { create, allAdmin } = require("../../services/articles");
 const { mapErrors } = require("../../utils/parser");
 const {
   category,
@@ -26,6 +26,20 @@ router.post(
         req.body.category
       );
       res.json(article);
+    } catch (error) {
+      const message = mapErrors(error);
+      res.status(400).json({ message });
+    }
+  }
+);
+
+router.get(
+  "/",
+  //   isAdmin(),
+  async (req, res) => {
+    try {
+      const articles = await allAdmin();
+      res.json(articles);
     } catch (error) {
       const message = mapErrors(error);
       res.status(400).json({ message });

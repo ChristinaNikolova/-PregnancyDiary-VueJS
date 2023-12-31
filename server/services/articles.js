@@ -1,5 +1,8 @@
 const Article = require("../models/Article");
-const { articleListViewModel } = require("../utils/mapper/article");
+const {
+  articleListViewModel,
+  articleAdminViewModel,
+} = require("../utils/mapper/article");
 const {
   Types: { ObjectId },
 } = require("mongoose");
@@ -15,6 +18,15 @@ async function all(take, skip, searchedQuery) {
       .limit(take)
   ).map(articleListViewModel);
 }
+
+async function allAdmin() {
+  return (
+    await Article.find({})
+      .populate("category", "name")
+      .sort({ createdAt: -1, title: 1 })
+  ).map(articleAdminViewModel);
+}
+
 
 async function getTotalCount(searchedQuery) {
   return (
@@ -51,4 +63,5 @@ module.exports = {
   all,
   getTotalCount,
   create,
+  allAdmin,
 };
