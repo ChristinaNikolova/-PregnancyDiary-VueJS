@@ -1,6 +1,8 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue';
+import { useAuthStore } from '../store/auth';
 
+const store = useAuthStore();
 const showMenu = ref(false);
 
 onMounted(() => {
@@ -35,7 +37,21 @@ function toogleMenu(e) {
             Home
           </router-link>
         </li>
-        <li class="header-nav-li header-admin">
+        <li class="header-nav-li">
+          Create new diary
+        </li>
+        <li v-if="store.user.isAuthenticated" class="header-nav-li">
+          Diaries
+        </li>
+        <li class="header-nav-li">
+          <router-link to="/blog?page=1&query=">
+            Blog
+          </router-link>
+        </li>
+        <li v-if="store.user.isAuthenticated" class="header-nav-li">
+          Favourites
+        </li>
+        <li v-if="store.user.isAdmin" class="header-nav-li header-admin">
           Administration
           <i v-if="!showMenu" class="fa-solid fa-arrow-down" />
           <i v-else class="fa-solid fa-arrow-up" />
@@ -62,22 +78,18 @@ function toogleMenu(e) {
             </li>
           </ul>
         </li>
-        <li class="header-nav-li">
-          Create new diary
+        <li v-if="store.user.isAuthenticated" class="header-nav-li">
+          Logout
         </li>
-        <li class="header-nav-li">
-          Diaries
-        </li>
-        <li class="header-nav-li">
-          <router-link to="/blog?page=1&query=">
-            Blog
+        <li v-if="!store.user.isAuthenticated" class="header-nav-li">
+          <router-link to="/login">
+            Login
           </router-link>
         </li>
-        <li class="header-nav-li">
-          Favourites
-        </li>
-        <li class="header-nav-li">
-          Logout
+        <li v-if="!store.user.isAuthenticated" class="header-nav-li">
+          <router-link to="/register">
+            Register
+          </router-link>
         </li>
       </ul>
     </nav>

@@ -1,4 +1,8 @@
-<script setup></script>
+<script setup>
+import { useAuthStore } from '../store/auth';
+
+const store = useAuthStore();
+</script>
 
 <template>
   <footer class="footer">
@@ -13,7 +17,7 @@
           <li class="footer-nav-li">
             Create new diary
           </li>
-          <li class="footer-nav-li">
+          <li v-if="store.user.isAuthenticated" class="footer-nav-li">
             Diaries
           </li>
           <li class="footer-nav-li" />
@@ -26,11 +30,21 @@
               Blog
             </router-link>
           </li>
-          <li class="footer-nav-li">
+          <li v-if="store.user.isAuthenticated" class="footer-nav-li">
             Favourites
           </li>
-          <li class="footer-nav-li">
+          <li v-if="store.user.isAuthenticated" class="footer-nav-li">
             Logout
+          </li>
+          <li v-if="!store.user.isAuthenticated" class="footer-nav-li">
+            <router-link to="/login">
+              Login
+            </router-link>
+          </li>
+          <li v-if="!store.user.isAuthenticated" class="footer-nav-li">
+            <router-link to="/register">
+              Register
+            </router-link>
           </li>
         </ul>
       </nav>

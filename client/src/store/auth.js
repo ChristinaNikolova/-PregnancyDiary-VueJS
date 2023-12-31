@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
-import { emails } from '../../utils/constants/global';
+import { emails } from '../utils/constants/global';
 import useSessionStorage from '../composables/useSessionStorage';
 
 export const useAuthStore = defineStore('auth', () => {

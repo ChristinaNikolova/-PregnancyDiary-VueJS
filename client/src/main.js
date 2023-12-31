@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
-import './styles/index.css';
+import { createPinia } from 'pinia';
+import router from './routes/index';
 import Jumbo from './components/shared/Jumbo.vue';
 import AppInput from './components/shared/inputs/AppInput.vue';
 import AppSelect from './components/shared/inputs/AppSelect.vue';
@@ -9,9 +10,11 @@ import ServerError from './components/shared/errors/ServerError.vue';
 import FormButton from './components/shared/buttons/Form.vue';
 import Empty from './components/shared/Empty.vue';
 import App from './App.vue';
-import router from './routes/index';
+import './styles/index.css';
 
 const app = createApp(App);
+const pinia = createPinia();
+app.use(pinia);
 app.use(router);
 
 app.component('Jumbo', Jumbo);
