@@ -40,9 +40,23 @@ function deleteById(id) {
     .catch(err => console.error(err));
 };
 
+function getById(id) {
+  return requester(`${api.adminArticle}/${id}`, httpMethods.GET)
+    .then(res => res.json())
+    .catch(err => console.error(err));
+};
+
+function update(id, title, content, picture, category) {
+  return requester(`${api.adminArticle}/${id}`, httpMethods.PUT, { title, content, picture, category })
+    .then(res => res.json())
+    .catch(err => console.error(err));
+};
+
 export default {
   all,
   allAdmin,
   create,
   deleteById,
+  getById,
+  update,
 };

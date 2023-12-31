@@ -51,15 +51,36 @@ async function create(title, content, picture, category) {
   return article;
 }
 
+async function deleteById(id) {
+  return Article.findByIdAndDelete(id);
+}
+
+async function getById(id) {
+  return Article.findById(id);
+}
+
+async function update(id, title, content, picture, category) {
+  const article = await getById(id);
+  if (article.title.toLowerCase() !== title.toLowerCase()) {
+    const result = await getByTitle(title);
+    if (result) {
+      throw new Error(errors.NAME_TAKEN);
+    }
+  }
+  article.title = title;
+  article.content = content;
+  article.picture = picture;
+  article.category = category;
+
+  await article.save();
+  return article;
+}
+
 async function getByTitle(title) {
   return await Article.findOne({ title }).collation({
     locale: "en",
     strength: 2,
   });
-}
-
-async function deleteById(id) {
-  return Article.findByIdAndDelete(id);
 }
 
 module.exports = {
@@ -68,4 +89,6 @@ module.exports = {
   create,
   allAdmin,
   deleteById,
+  getById,
+  update,
 };
