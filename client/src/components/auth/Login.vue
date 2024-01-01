@@ -61,7 +61,6 @@ function onCancelFormHandler() {
 };
 </script>
 
-<!-- todo link to register -->
 <template>
   <section class="form-section">
     <AppTitle

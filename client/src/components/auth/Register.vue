@@ -81,7 +81,6 @@ function onCancelFormHandler() {
 };
 </script>
 
-<!-- todo link to login -->
 <template>
   <section class="form-section">
     <AppTitle
