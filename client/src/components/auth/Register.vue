@@ -132,7 +132,7 @@ function onCancelFormHandler() {
         type="password"
         label="Repeat Password"
       />
-      <FormButton :is-disabled="isDisabled" @on-cancel-form-handler="onCancelFormHandler" />
+      <FormButton form-name="Register" :is-disabled="isDisabled" @on-cancel-form-handler="onCancelFormHandler" />
     </form>
   </section>
 </template>

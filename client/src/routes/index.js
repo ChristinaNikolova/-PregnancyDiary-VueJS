@@ -3,6 +3,7 @@ import Home from '../components/Home.vue';
 import Blog from '../components/blog/All.vue';
 import Login from '../components/auth/Login.vue';
 import Register from '../components/auth/Register.vue';
+import Logout from '../components/auth/Logout.vue';
 import AllCategories from '../components/administration/category/All.vue';
 import CreateCategory from '../components/administration/category/Create.vue';
 import UpdateCategory from '../components/administration/category/Update.vue';
@@ -15,6 +16,7 @@ const routes = [
   { path: '/blog', component: Blog },
   { path: '/login', component: Login },
   { path: '/register', component: Register },
+  { path: '/logout', component: Logout },
   { path: '/administration/category', component: AllCategories },
   { path: '/administration/category/create', component: CreateCategory },
   { path: '/administration/category/update/:id', component: UpdateCategory },

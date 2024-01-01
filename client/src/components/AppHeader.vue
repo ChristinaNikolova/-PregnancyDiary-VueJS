@@ -79,7 +79,9 @@ function toogleMenu(e) {
           </ul>
         </li>
         <li v-if="store.user.isAuthenticated" class="header-nav-li">
-          Logout
+          <router-link to="/logout">
+            Logout
+          </router-link>
         </li>
         <li v-if="!store.user.isAuthenticated" class="header-nav-li">
           <router-link to="/login">

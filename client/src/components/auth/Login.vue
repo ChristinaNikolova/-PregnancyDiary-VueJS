@@ -90,7 +90,7 @@ function onCancelFormHandler() {
         type="password"
         label="Password"
       />
-      <FormButton :is-disabled="isDisabled" @on-cancel-form-handler="onCancelFormHandler" />
+      <FormButton form-name="Login" :is-disabled="isDisabled" @on-cancel-form-handler="onCancelFormHandler" />
     </form>
   </section>
 </template>
