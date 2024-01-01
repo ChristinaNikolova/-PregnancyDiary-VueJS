@@ -10,12 +10,16 @@ const props = defineProps({
   text: {
     type: String,
   },
+  className: {
+    type: String,
+    default: 'section-title',
+  },
 });
 </script>
 
 <template>
   <Jumbo :image="props.image" :text="props.text" />
-  <h2 class="section-title">
+  <h2 :class="className">
     {{ props.title }}
   </h2>
 </template>

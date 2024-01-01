@@ -4,6 +4,7 @@ import articlesService from '../../../services/articles';
 import AppTable from '../../shared/table/AppTable.vue';
 import AppList from '../../shared/table/AppList.vue';
 
+const title = 'All articles';
 const articles = ref([]);
 
 onMounted(() => {
@@ -27,6 +28,13 @@ function loadArticles() {
 
 <template>
   <AppList element="articles" :is-element="!!articles.length">
+    <template #title>
+      <AppTitle
+        :title="title"
+        image="/images/martha-brook-blog-post-brilliant-gifts-for-pregnant-women-pregnant-woman-sitting-on-bed-banner-1500x550.webp"
+        text="administration-image"
+      />
+    </template>
     <template #table>
       <AppTable
         :collection="articles"

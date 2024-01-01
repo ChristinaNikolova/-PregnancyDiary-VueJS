@@ -28,6 +28,7 @@ const props = defineProps({
   },
 });
 const emit = defineEmits(['onSubmitHandler', 'checkIsDisabled']);
+const title = `${props.formName} Category`;
 const data = reactive(props.initialData);
 const isDisabled = ref(props.initialDisabled);
 
@@ -66,10 +67,12 @@ async function onSubmitFormHandler() {
 
 <template>
   <section class="form-section">
-    <Jumbo image="/images/martha-brook-blog-post-brilliant-gifts-for-pregnant-women-pregnant-woman-sitting-on-bed-banner-1500x550.webp" text="administration-image" />
-    <h2 class="form-title">
-      {{ props.formName }} Category
-    </h2>
+    <AppTitle
+      :title="title"
+      image="/images/martha-brook-blog-post-brilliant-gifts-for-pregnant-women-pregnant-woman-sitting-on-bed-banner-1500x550.webp"
+      text="administration-image"
+      class-name="form-title"
+    />
     <ServerError v-if="props.serverError.length" :errors="props.serverError" />
     <form class="form" @submit.prevent="onSubmitFormHandler">
       <AppInput
