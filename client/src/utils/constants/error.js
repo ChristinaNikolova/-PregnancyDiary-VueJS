@@ -16,10 +16,6 @@ export const global = {
   DEFAULT: 'Error',
 };
 
-export const article = {
-  CATEGORY: 'Please select category',
-};
-
 export const auth = {
   EMAIL: 'Invalid email',
   PASSWORD(min, max) {
