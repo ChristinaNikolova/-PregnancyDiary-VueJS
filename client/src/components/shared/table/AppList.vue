@@ -12,10 +12,7 @@ const props = defineProps({
 
 <template>
   <section class="all">
-    <Jumbo image="/images/martha-brook-blog-post-brilliant-gifts-for-pregnant-women-pregnant-woman-sitting-on-bed-banner-1500x550.webp" text="administration-image" />
-    <h2 class="section-title">
-      All {{ props.element }}
-    </h2>
+    <slot name="title" />
     <slot v-if="props.isElement" name="table" />
     <Empty v-else :element="props.element" />
   </section>
