@@ -63,9 +63,15 @@ function onCancelFormHandler() {
 
 <!-- todo link to register -->
 <template>
-  <section class="login">
-    <AppTitle title="login" />
-    <form @submit.prevent="onSubmitHandler">
+  <section class="form-section">
+    <AppTitle
+      title="login"
+      image="/images/baby-bump-bonding-3.webp"
+      text="login-image"
+      class-name="form-title"
+    />
+    <ServerError v-if="serverError.length" :errors="serverError" />
+    <form class="form" @submit.prevent="onSubmitHandler">
       <AppInput
         v-model.trim="v$.email.$model"
         :errors="v$?.email.$errors"

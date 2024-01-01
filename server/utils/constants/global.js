@@ -8,7 +8,7 @@ const pagination = {
 };
 
 const emails = {
-  ADMIN: "admin@pregnancydiary.com",
+  ADMIN: "admin@pregnancy-diary.com",
 };
 
 const messages = {
@@ -17,6 +17,7 @@ const messages = {
   DATABASE_CONNECTED: "Database connected",
 };
 
+// todo check this messages
 const errors = {
   REQUEST: "Request error",
   INVALID_URL: "Invalid url",

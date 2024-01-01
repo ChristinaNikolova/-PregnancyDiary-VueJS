@@ -1,5 +1,5 @@
 export const emails = {
-  ADMIN: 'admin@pregnancydiary.com',
+  ADMIN: 'admin@pregnancy-diary.com',
 };
 
 // export const directions = {
