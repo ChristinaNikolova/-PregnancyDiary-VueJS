@@ -90,6 +90,12 @@ function onCancelFormHandler() {
       text="register-image"
       class-name="form-title"
     />
+    <p class="form-content">
+      Please complete the register form to start planning you wedding day.
+      You already have an account? Go to  <router-link class="navigation-link" to="/login">
+        Login
+      </router-link>
+    </p>
     <ServerError v-if="serverError.length" :errors="serverError" />
     <form class="form" @submit.prevent="onSubmitHandler">
       <AppInput
@@ -131,7 +137,3 @@ function onCancelFormHandler() {
     </form>
   </section>
 </template>
-
-<style scoped>
-
-</style>

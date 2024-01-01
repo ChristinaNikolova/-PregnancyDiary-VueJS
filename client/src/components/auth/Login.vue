@@ -70,6 +70,12 @@ function onCancelFormHandler() {
       text="login-image"
       class-name="form-title"
     />
+    <p class="form-content">
+      Please complete the login. You don't have an account? Go to
+      <router-link class="navigation-link" to="/register">
+        Register
+      </router-link>
+    </p>
     <ServerError v-if="serverError.length" :errors="serverError" />
     <form class="form" @submit.prevent="onSubmitHandler">
       <AppInput
@@ -89,7 +95,3 @@ function onCancelFormHandler() {
     </form>
   </section>
 </template>
-
-<style scoped>
-
-</style>

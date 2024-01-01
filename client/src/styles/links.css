@@ -1,0 +1,12 @@
+/* Links */
+
+.navigation-link {
+    font-weight: 600;
+    font-size: 20px;
+    transition: all .2s ease-in-out;
+}
+  
+.navigation-link:hover {
+    font-size: 22px;
+    text-decoration: underline;
+}
