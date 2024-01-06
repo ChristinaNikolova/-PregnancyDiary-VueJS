@@ -51,7 +51,7 @@ function toogleMenu(e) {
         <li v-if="store.user.isAuthenticated" class="header-nav-li">
           Favourites
         </li>
-        <li class="header-nav-li header-admin">
+        <li v-if="store.user.isAdmin" class="header-nav-li header-admin">
           Administration
           <i v-if="!showMenu" class="fa-solid fa-arrow-down" />
           <i v-else class="fa-solid fa-arrow-up" />

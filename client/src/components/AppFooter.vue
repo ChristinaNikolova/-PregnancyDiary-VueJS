@@ -34,7 +34,9 @@ const store = useAuthStore();
             Favourites
           </li>
           <li v-if="store.user.isAuthenticated" class="footer-nav-li">
-            Logout
+            <router-link to="/logout">
+              Logout
+            </router-link>
           </li>
           <li v-if="!store.user.isAuthenticated" class="footer-nav-li">
             <router-link to="/login">

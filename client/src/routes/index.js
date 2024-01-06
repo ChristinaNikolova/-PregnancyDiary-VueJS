@@ -4,12 +4,7 @@ import Blog from '../components/blog/All.vue';
 import Login from '../components/auth/Login.vue';
 import Register from '../components/auth/Register.vue';
 import Logout from '../components/auth/Logout.vue';
-import AllCategories from '../components/administration/category/All.vue';
-import CreateCategory from '../components/administration/category/Create.vue';
-import UpdateCategory from '../components/administration/category/Update.vue';
-import AllArticles from '../components/administration/article/All.vue';
-import CreateArticle from '../components/administration/article/Create.vue';
-import UpdateArticle from '../components/administration/article/Update.vue';
+import { isAdmin } from '../guards/preGuards.js';
 
 const routes = [
   { path: '/', component: Home },
@@ -17,12 +12,12 @@ const routes = [
   { path: '/login', component: Login },
   { path: '/register', component: Register },
   { path: '/logout', component: Logout },
-  { path: '/administration/category', component: AllCategories },
-  { path: '/administration/category/create', component: CreateCategory },
-  { path: '/administration/category/update/:id', component: UpdateCategory },
-  { path: '/administration/article', component: AllArticles },
-  { path: '/administration/article/create', component: CreateArticle },
-  { path: '/administration/article/update/:id', component: UpdateArticle },
+  { path: '/administration/category', component: () => import('../components/administration/category/All.vue'), beforeEnter: isAdmin },
+  { path: '/administration/category/create', component: () => import('../components/administration/category/Create.vue'), beforeEnter: isAdmin },
+  { path: '/administration/category/update/:id', component: () => import('../components/administration/category/Update.vue'), beforeEnter: isAdmin },
+  { path: '/administration/article', component: () => import('../components/administration/article/All.vue'), beforeEnter: isAdmin },
+  { path: '/administration/article/create', component: () => import('../components/administration/article/Create.vue'), beforeEnter: isAdmin },
+  { path: '/administration/article/update/:id', component: () => import('../components/administration/article/Update.vue'), beforeEnter: isAdmin },
 ];
 
 const router = createRouter({
