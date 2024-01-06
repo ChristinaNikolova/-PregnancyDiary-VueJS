@@ -11,7 +11,7 @@ import { auth as models } from '../../utils/constants/model';
 const store = useAuthStore();
 const router = useRouter();
 const data = reactive({
-  name: '',
+  email: '',
   password: '',
 });
 const isDisabled = ref(true);
