@@ -56,7 +56,7 @@ watch(data, () => {
 }, { deep: true });
 
 watch(serverError, () => {
-  isDisabled.value = serverError.value.length;
+  isDisabled.value = !!serverError.value.length;
 });
 
 async function onSubmitHandler() {
