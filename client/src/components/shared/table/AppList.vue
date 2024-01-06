@@ -21,7 +21,6 @@ const props = defineProps({
 <style scoped>
 .all {
   position: relative;
-  text-align: center;
   margin-bottom: 30px;
 }
 

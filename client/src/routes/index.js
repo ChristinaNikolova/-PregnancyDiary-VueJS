@@ -5,6 +5,7 @@ import SingleArticle from '../components/blog/Single.vue';
 import Login from '../components/auth/Login.vue';
 import Register from '../components/auth/Register.vue';
 import Logout from '../components/auth/Logout.vue';
+import NotFound from '../components/NotFound.vue';
 import { isAdmin, isGuest, isUser } from '../guards/preGuards.js';
 
 const routes = [
@@ -20,6 +21,7 @@ const routes = [
   { path: '/administration/article', component: () => import('../components/administration/article/All.vue'), beforeEnter: isAdmin },
   { path: '/administration/article/create', component: () => import('../components/administration/article/Create.vue'), beforeEnter: isAdmin },
   { path: '/administration/article/update/:id', component: () => import('../components/administration/article/Update.vue'), beforeEnter: isAdmin },
+  { path: '/:pathMatch(.*)*', component: NotFound },
 ];
 
 const router = createRouter({

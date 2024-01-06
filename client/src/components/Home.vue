@@ -32,10 +32,6 @@
 </template>
 
 <style scoped>
-.home {
-  text-align: center;
-}
-
 .home-content-wrapper {
   margin-bottom: 80px;
 }

@@ -48,7 +48,6 @@ onMounted(() => {
 
 <style scoped>
 .blog-wrapper {
-  text-align: center;
   margin: 0 auto;
   width: 90%;
 }
