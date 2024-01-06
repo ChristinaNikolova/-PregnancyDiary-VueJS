@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
+import { useAuthStore } from './store/auth';
 import router from './routes/index';
 import Jumbo from './components/shared/Jumbo.vue';
 import AppInput from './components/shared/inputs/AppInput.vue';
@@ -17,6 +18,9 @@ const app = createApp(App);
 const pinia = createPinia();
 app.use(pinia);
 app.use(router);
+
+const store = useAuthStore();
+store.getPersistedProfile();
 
 app.component('Jumbo', Jumbo);
 app.component('AppInput', AppInput);
