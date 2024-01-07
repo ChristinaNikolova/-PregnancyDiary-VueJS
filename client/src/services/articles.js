@@ -14,12 +14,7 @@ function all(currentPage = 1, query = 'no search') {
 }
 
 function allAdmin() {
-  return fetch(api.adminArticle, {
-    method: httpMethods.GET,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
+  return requester(`${api.adminArticle}`, httpMethods.GET)
     .then(res => res.json())
     .catch(err => console.error(err));
 }

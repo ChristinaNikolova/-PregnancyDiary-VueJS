@@ -1,10 +1,10 @@
 const router = require("express").Router();
-// const { hasUser } = require("../middlewares/guards");
+const { hasUser } = require("../middlewares/guards");
 const { all, getTotalCount, getById } = require("../services/articles");
 const { pagination } = require("../utils/constants/global");
 const { mapErrors } = require("../utils/parser");
 
-//todo get last three
+// todo get last three
 
 router.get("/:page/:query", async (req, res) => {
   try {
@@ -27,19 +27,28 @@ router.get("/:page/:query", async (req, res) => {
   }
 });
 
-router.get(
-  "/:id",
-  //  isAdmin(),
-  async (req, res) => {
-    try {
-      const id = req.params.id;
-      const article = await getById(id);
-      res.json(article);
-    } catch (error) {
-      const message = mapErrors(error);
-      res.status(400).json({ message });
-    }
+router.get("/:id", hasUser(), async (req, res) => {
+  try {
+    const id = req.params.id;
+    const article = await getById(id);
+    res.json(article);
+  } catch (error) {
+    const message = mapErrors(error);
+    res.status(400).json({ message });
   }
-);
+});
+
+router.post("/:id", hasUser(), async (req, res) => {
+  try {
+    const id = req.params.id;
+    const userId = req.user._id;
+
+    const article = await like(id, userId);
+    res.json(article);
+  } catch (error) {
+    const message = mapErrors(error);
+    res.status(400).json({ message });
+  }
+});
 
 module.exports = router;
