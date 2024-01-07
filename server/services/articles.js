@@ -2,6 +2,7 @@ const Article = require("../models/Article");
 const {
   articleListViewModel,
   articleAdminViewModel,
+  articleDetailsViewModel,
 } = require("../utils/mapper/article");
 const {
   Types: { ObjectId },
@@ -56,11 +57,17 @@ async function deleteById(id) {
 }
 
 async function getById(id) {
-  return Article.findById(id);
+  const article = await Article.findById(id).populate("category", "name");
+  return articleDetailsViewModel(article);
+}
+
+async function getByIdAdmin(id) {
+  const article = await Article.findById(id);
+  return article;
 }
 
 async function update(id, title, content, picture, category) {
-  const article = await getById(id);
+  const article = await getByIdAdmin(id);
   if (article.title.toLowerCase() !== title.toLowerCase()) {
     const result = await getByTitle(title);
     if (result) {
@@ -90,5 +97,6 @@ module.exports = {
   allAdmin,
   deleteById,
   getById,
+  getByIdAdmin,
   update,
 };

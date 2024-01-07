@@ -2,7 +2,7 @@ import { httpMethods } from '../utils/constants/global';
 import { api } from './api';
 import { requester } from './requester';
 
-function all(currentPage = 1, query = '') {
+function all(currentPage = 1, query = 'no search') {
   return fetch(`${api.articles}/${currentPage}/${query}`, {
     method: httpMethods.GET,
     headers: {
@@ -41,6 +41,12 @@ function deleteById(id) {
 };
 
 function getById(id) {
+  return requester(`${api.articles}/${id}`, httpMethods.GET)
+    .then(res => res.json())
+    .catch(err => console.error(err));
+};
+
+function getByIdAdmin(id) {
   return requester(`${api.adminArticle}/${id}`, httpMethods.GET)
     .then(res => res.json())
     .catch(err => console.error(err));
@@ -58,5 +64,6 @@ export default {
   create,
   deleteById,
   getById,
+  getByIdAdmin,
   update,
 };

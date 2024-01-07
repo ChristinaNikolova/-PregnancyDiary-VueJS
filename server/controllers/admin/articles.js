@@ -6,7 +6,7 @@ const {
   allAdmin,
   deleteById,
   update,
-  getById,
+  getByIdAdmin,
 } = require("../../services/articles");
 const { mapErrors } = require("../../utils/parser");
 const {
@@ -74,7 +74,7 @@ router.get(
   async (req, res) => {
     try {
       const id = req.params.id;
-      const article = await getById(id);
+      const article = await getByIdAdmin(id, false);
       res.json(article);
     } catch (error) {
       const message = mapErrors(error);
