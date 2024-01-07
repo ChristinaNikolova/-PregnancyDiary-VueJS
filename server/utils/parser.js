@@ -14,13 +14,28 @@ function mapErrors(err) {
 
 function formatCreatedAt(createdAt) {
   return (
+    monthNames[createdAt.getMonth() + 1] +
+    " " +
     createdAt.getDate() +
-    "/" +
-    (createdAt.getMonth() + 1) +
-    "/" +
-    createdAt.getFullYear().toString().substr(-2)
+    ", " +
+    createdAt.getFullYear()
   );
 }
+
+const monthNames = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
 module.exports = {
   mapErrors,
