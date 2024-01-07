@@ -4,9 +4,6 @@ const {
   articleAdminViewModel,
   articleDetailsViewModel,
 } = require("../utils/mapper/article");
-const {
-  Types: { ObjectId },
-} = require("mongoose");
 
 async function all(take, skip, searchedQuery) {
   return (
@@ -28,12 +25,14 @@ async function allAdmin() {
   ).map(articleAdminViewModel);
 }
 
-async function getTotalCount(searchedQuery) {
-  return (
-    await Article.find(
-      searchedQuery ? { title: { $regex: searchedQuery, $options: "i" } } : {}
-    )
-  ).length;
+async function getById(id) {
+  const article = await Article.findById(id).populate("category", "name");
+  return articleDetailsViewModel(article);
+}
+
+async function getByIdAdmin(id) {
+  const article = await Article.findById(id);
+  return article;
 }
 
 async function create(title, content, picture, category) {
@@ -56,16 +55,6 @@ async function deleteById(id) {
   return Article.findByIdAndDelete(id);
 }
 
-async function getById(id) {
-  const article = await Article.findById(id).populate("category", "name");
-  return articleDetailsViewModel(article);
-}
-
-async function getByIdAdmin(id) {
-  const article = await Article.findById(id);
-  return article;
-}
-
 async function update(id, title, content, picture, category) {
   const article = await getByIdAdmin(id);
   if (article.title.toLowerCase() !== title.toLowerCase()) {
@@ -81,6 +70,27 @@ async function update(id, title, content, picture, category) {
 
   await article.save();
   return article;
+}
+
+async function getTotalCount(searchedQuery) {
+  return (
+    await Article.find(
+      searchedQuery ? { title: { $regex: searchedQuery, $options: "i" } } : {}
+    )
+  ).length;
+}
+
+async function like(id, userId) {
+  const article = await Article.findById(id);
+
+  if (article.likes.includes(userId)) {
+    const index = article.likes.indexOf(userId);
+    article.likes.splice(index, 1);
+  } else {
+    article.likes.push(userId);
+  }
+
+  return article.save();
 }
 
 async function getByTitle(title) {
@@ -99,4 +109,5 @@ module.exports = {
   getById,
   getByIdAdmin,
   update,
+  like,
 };

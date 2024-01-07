@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { hasUser } = require("../middlewares/guards");
-const { all, getTotalCount, getById } = require("../services/articles");
+const { all, getTotalCount, getById, like } = require("../services/articles");
 const { pagination } = require("../utils/constants/global");
 const { mapErrors } = require("../utils/parser");
 
@@ -42,7 +42,6 @@ router.post("/:id", hasUser(), async (req, res) => {
   try {
     const id = req.params.id;
     const userId = req.user._id;
-
     const article = await like(id, userId);
     res.json(article);
   } catch (error) {

@@ -1,19 +1,42 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
+import { useAuthStore } from '../../store/auth';
 import articlesService from '../../services/articles';
+import likes from '../../utils/helpers/likes';
 import AppTitle from '../shared/AppTitle.vue';
 
+const store = useAuthStore();
 const route = useRoute();
 const id = route.params.id;
 const article = ref({});
+const likeCount = ref(0);
+const isLiked = ref(false);
 
 onMounted(() => {
   articlesService
     .getById(id)
-    .then(res => article.value = res)
+    .then((res) => {
+      article.value = res;
+      likeCount.value = res.likes.length;
+      isLiked.value = getLikes(res.likes);
+    })
     .catch(err => console.error(err));
 });
+
+function like() {
+  articlesService
+    .like(id)
+    .then((res) => {
+      likeCount.value = res.likes.length;
+      isLiked.value = getLikes(res.likes);
+    })
+    .catch(err => console.error(err));
+}
+
+function getLikes(result) {
+  return likes.setIsLikedHelper(result, store.user.userId);
+}
 </script>
 
 <template>
@@ -31,7 +54,7 @@ onMounted(() => {
         {{ article.category }}
       </p>
       <p class="article-content-likes">
-        {{ article.likesCount }} likes
+        {{ likeCount }} likes
       </p>
       <p v-for="(a, i) in article.content" :key="i" class="article-content-singe">
         {{ a }}
@@ -43,10 +66,11 @@ onMounted(() => {
           Back to blog
         </router-link>
       </button>
-      <button class="btn btn-primary">
-        <router-link to="/blog">
-          Add to Favourites
-        </router-link>
+      <button v-if="isLiked" class="btn btn-primary" @click="like">
+        Remove from favourites
+      </button>
+      <button v-else class="btn btn-primary" @click="like">
+        Add to favourites
       </button>
     </div>
   </section>
@@ -55,13 +79,13 @@ onMounted(() => {
 <style scoped>
 .article:deep(h2) {
    text-align: left;
-   margin-left: 100px;
+   margin-left: 200px;
    margin-bottom: 4px;
 }
 
 .article-content {
    text-align: justify;
-   margin: 0 100px 40px 100px;
+   margin: 0 200px 40px 200px;
 }
 
 .article-content-created,
@@ -82,10 +106,10 @@ onMounted(() => {
 }
 
 .article-buttons-wrapper .btn:first-of-type {
-    margin-right: 20px;
+   margin-right: 20px;
 }
 
 .article-buttons-wrapper .btn.btn-primary a {
-    color: var(--clr-white);
+   color: var(--clr-white);
 }
 </style>
