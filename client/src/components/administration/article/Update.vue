@@ -22,7 +22,7 @@ const categories = ref([]);
 
 onMounted(() => {
   articlesService
-    .getById(articleId)
+    .getByIdAdmin(articleId)
     .then((res) => {
       data.value.title = res.title;
       data.value.content = res.content;

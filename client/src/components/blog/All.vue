@@ -12,6 +12,7 @@ onMounted(() => {
 });
 </script>
 
+<!--  todo extract li -->
 <template>
   <section class="blog">
     <Jumbo
