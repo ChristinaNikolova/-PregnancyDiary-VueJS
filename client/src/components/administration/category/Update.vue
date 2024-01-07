@@ -11,7 +11,6 @@ const categoryId = route.params.id;
 const formName = formNames.UPDATE;
 const data = ref({
   name: '',
-  picture: '',
 });
 const serverError = ref([]);
 const isDisabled = ref(false);
@@ -21,14 +20,13 @@ onMounted(() => {
     .getById(categoryId)
     .then((res) => {
       data.value.name = res.name;
-      data.value.picture = res.picture;
     })
     .catch(err => console.err(err));
 });
 
-function onSubmitHandler(name, picture) {
+function onSubmitHandler(name) {
   categoriesService
-    .update(categoryId, name, picture)
+    .update(categoryId, name)
     .then((res) => {
       if (res.message) {
         serverError.value = res.message;

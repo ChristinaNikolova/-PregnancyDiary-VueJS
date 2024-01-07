@@ -15,10 +15,6 @@ const categorySchema = new Schema({
     ],
     unique: true,
   },
-  picture: {
-    type: String,
-    required: [true, "Picture is required"],
-  },
 });
 
 categorySchema.index(

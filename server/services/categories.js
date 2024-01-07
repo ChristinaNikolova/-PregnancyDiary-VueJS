@@ -2,14 +2,13 @@ const Category = require("../models/Category");
 const { errors } = require("../utils/constants/global");
 const { categoryListViewModel } = require("../utils/mapper/category");
 
-async function create(name, picture) {
+async function create(name) {
   let category = await getByName(name);
   if (category) {
     throw new Error(errors.NAME_TAKEN);
   }
   category = new Category({
     name,
-    picture,
   });
   await category.save();
   return category;
@@ -34,7 +33,7 @@ async function getByName(name) {
   });
 }
 
-async function update(id, name, picture) {
+async function update(id, name) {
   const category = await getById(id);
   if (category.name.toLowerCase() !== name.toLowerCase()) {
     const result = await getByName(name);
@@ -42,9 +41,8 @@ async function update(id, name, picture) {
       throw new Error(errors.NAME_TAKEN);
     }
   }
-  category.name = name;
-  category.picture = picture;
 
+  category.name = name;
   await category.save();
   return category;
 }

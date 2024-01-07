@@ -2,8 +2,8 @@ import { httpMethods } from '../utils/constants/global';
 import { api } from './api';
 import { requester } from './requester';
 
-function create(name, picture) {
-  return requester(api.adminCategory, httpMethods.POST, { name, picture })
+function create(name) {
+  return requester(api.adminCategory, httpMethods.POST, { name })
     .then(res => res.json())
     .catch(err => console.error(err));
 };
@@ -35,8 +35,8 @@ function getById(id) {
     .catch(err => console.error(err));
 };
 
-function update(id, name, picture) {
-  return requester(`${api.adminCategory}/${id}`, httpMethods.PUT, { name, picture })
+function update(id, name) {
+  return requester(`${api.adminCategory}/${id}`, httpMethods.PUT, { name })
     .then(res => res.json())
     .catch(err => console.error(err));
 };

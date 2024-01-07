@@ -7,14 +7,13 @@ import Form from './Form.vue';
 const router = useRouter();
 const data = ref({
   name: '',
-  picture: '',
 });
 const serverError = ref([]);
 const isDisabled = ref(true);
 
-function onSubmitHandler(name, picture) {
+function onSubmitHandler(name) {
   categoriesService
-    .create(name, picture)
+    .create(name)
     .then((res) => {
       if (res.message) {
         serverError.value = res.message;
