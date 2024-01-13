@@ -72,17 +72,13 @@ function toogleSearchForm() {
       text="mommy-and-baby"
     />
     <div v-if="articles.length" class="blog-wrapper">
-      <div class="blog-title-wrapper">
-        <template v-if="!showSearchForm">
-          <h2 v-if="!showSearchForm" class="section-title">
-            Birth and Baby Blog
-          </h2>
-          <i class="fa-solid fa-magnifying-glass" @click="toogleSearchForm" />
-        </template>
-        <h2 v-else class="section-title">
-          Searched results
-        </h2>
-      </div>
+      <h2 v-if="!showSearchForm" class="section-title">
+        Birth and Baby Blog
+        <i class="fa-solid fa-magnifying-glass" @click="toogleSearchForm" />
+      </h2>
+      <h2 v-else class="section-title">
+        Searched results
+      </h2>
       <template v-if="showSearchForm">
         <Search @on-close="toogleSearchForm" />
       </template>
@@ -114,25 +110,20 @@ function toogleSearchForm() {
   width: 90%;
 }
 
-.blog-title-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
+.blog-wrapper .section-title {
+  position: relative;
 }
 
-.blog-title-wrapper h2 {
-  margin-bottom: unset;
-}
-
-.blog-title-wrapper i {
+.section-title i {
+  position: absolute;
   font-size: 16px;
+  right: 34%;
+  top: 46%;
 }
 
-.blog-title-wrapper i:hover {
+.section-title i:hover {
   cursor: pointer;
   color: var(--clr-brown);
-  font-weight: 700;
 }
 
 .blog-ul {
