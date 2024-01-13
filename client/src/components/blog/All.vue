@@ -8,12 +8,15 @@ import Pagination from '../shared/Pagination.vue';
 import Single from './Single.vue';
 import Search from './Search.vue';
 
+// todo test search and pagination together
+// todo close + clear search
 const router = useRouter();
 const route = useRoute();
 const articles = ref([]);
 const currentPage = ref(1);
 const pagesCount = ref(1);
 const showSearchForm = ref(false);
+const searchedQuery = ref('no search');
 
 onMounted(() => {
   loadArticles();
@@ -34,6 +37,16 @@ watch(route, (newValue) => {
   }
 });
 
+watch(searchedQuery, () => {
+  currentPage.value = 1;
+  loadArticles();
+  getNewQuery();
+});
+
+function onSeachHandler(query) {
+  searchedQuery.value = query;
+}
+
 function onPaginationHandler(direction, step) {
   if (direction) {
     const value = direction === directions.PREV ? -1 : 1;
@@ -50,7 +63,7 @@ function getNewQuery() {
 
 function loadArticles() {
   articlesService
-    .all(currentPage.value)
+    .all(currentPage.value, searchedQuery.value)
     .then((res) => {
       currentPage.value = Number(res.currentPage);
       pagesCount.value = Number(res.pagesCount);
@@ -71,7 +84,7 @@ function toogleSearchForm() {
       image="/images/Mother-kissing-her-sleeping-newborn-baby-1215321361_2125x1416-1024x683.jpeg"
       text="mommy-and-baby"
     />
-    <div v-if="articles.length" class="blog-wrapper">
+    <div v-if="articles.length || searchedQuery !== 'no search'" class="blog-wrapper">
       <h2 v-if="!showSearchForm" class="section-title">
         Birth and Baby Blog
         <i class="fa-solid fa-magnifying-glass" @click="toogleSearchForm" />
@@ -80,13 +93,17 @@ function toogleSearchForm() {
         Searched results
       </h2>
       <template v-if="showSearchForm">
-        <Search @on-close="toogleSearchForm" />
+        <Search
+          @on-search="onSeachHandler"
+          @on-close="toogleSearchForm"
+        />
       </template>
-      <ul class="blog-ul">
+      <ul v-if="articles.length" class="blog-ul">
         <template v-for="a in articles" :key="a.id">
           <Single :article="a" />
         </template>
       </ul>
+      <Empty v-else no-result="true" />
     </div>
     <template v-else>
       <Empty element="articles" />
@@ -96,6 +113,7 @@ function toogleSearchForm() {
       />
     </template>
     <Pagination
+      v-if="articles.length"
       :current-page="currentPage"
       :pages-count="pagesCount"
       url="/blog"
