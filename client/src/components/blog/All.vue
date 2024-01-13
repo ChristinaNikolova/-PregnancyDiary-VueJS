@@ -21,20 +21,15 @@ onMounted(() => {
 });
 
 function onPaginationHandler(direction, step) {
-  let value;
   if (direction) {
-    value = direction === directions.PREV ? -1 : 1;
-  }
-  else {
-    value = step;
-  }
-
-  if (currentPage.value + value > pagesCount.value) {
-    currentPage.value = pagesCount.value;
-  }
-  else {
+    const value = direction === directions.PREV ? -1 : 1;
     currentPage.value = currentPage.value + value;
   }
+  else {
+    currentPage.value = step;
+  }
+
+  console.log('all', currentPage.value);
   // form.scrollToTop();
 };
 </script>

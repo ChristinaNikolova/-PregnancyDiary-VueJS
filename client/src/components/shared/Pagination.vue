@@ -1,5 +1,4 @@
 <script setup>
-import { onMounted } from 'vue';
 import { directions } from '../../utils/constants/global';
 
 const props = defineProps({
@@ -20,11 +19,8 @@ const props = defineProps({
 //     default: '',
 //   },
 });
+// todo add icons for the pagination
 const emit = defineEmits(['onClickHandler']);
-
-onMounted(() => {
-  console.log('pagination', props.currentPage);
-});
 </script>
 
 <template>
@@ -37,83 +33,15 @@ onMounted(() => {
     >
       &lt;
     </router-link>
-
-    <!-- no direction -->
-    <router-link
-      v-if="props.currentPage - 4 > 0"
-      class="pagination"
-      :to="`${props.url}?page=${props.currentPage - 4}`"
-      @click="emit('onClickHandler', '', -4)"
-    >
-      {{ props.pagesCount - 4 }}
-    </router-link>
-
-    <a
-      v-if="props.currentPage - 3 > 0"
-      class="pagination"
-    >
-      ...
-    </a>
-
-    <!-- no direction -->
-    <router-link
-      v-if="props.currentPage - 2 > 0"
-      class="pagination"
-      :to="`${props.url}?page=${props.currentPage - 2}`"
-      @click="emit('onClickHandler', '', -2)"
-    >
-      {{ props.currentPage - 2 }}
-    </router-link>
-
-    <router-link
-      v-if="props.currentPage - 1 > 0"
-      class="pagination"
-      :to="`${props.url}?page=${props.currentPage - 1}`"
-      @click="emit('onClickHandler', directions.PREV)"
-    >
-      {{ props.currentPage - 1 }}
-    </router-link>
-
-    <a class="pagination test">
-      {{ props.currentPage }}
-    </a>
-
-    <router-link
-      v-if="props.currentPage + 1 < props.pagesCount"
-      class="pagination"
-      :to="`${props.url}?page=${props.currentPage + 1}`"
-      @click="emit('onClickHandler', directions.NEXT)"
-    >
-      {{ props.currentPage + 1 }}
-    </router-link>
-
-    <!-- no direction -->
-    <router-link
-      v-if="props.currentPage + 2 < props.pagesCount"
-      class="pagination"
-      :to="`${props.url}?page=${props.currentPage + 2}`"
-      @click="emit('onClickHandler', '', 2)"
-    >
-      {{ props.currentPage + 2 }}
-    </router-link>
-
-    <a
-      v-if="props.currentPage + 3 < props.pagesCount"
-      class="pagination"
-    >
-      ...
-    </a>
-
-    <!-- no direction -->
-    <router-link
-      v-if="props.currentPage + 1 <= props.pagesCount"
-      class="pagination"
-      :to="`${props.url}?page=${props.pagesCount}`"
-      @click="emit('onClickHandler', '', props.pagesCount)"
-    >
-      {{ props.pagesCount }}
-    </router-link>
-
+    <template v-for="index in props.pagesCount" :key="index">
+      <router-link
+        class="pagination"
+        :to="`${props.url}?page=${index}`"
+        @click="emit('onClickHandler', '', index)"
+      >
+        {{ index }}
+      </router-link>
+    </template>
     <router-link
       v-if="props.currentPage !== props.pagesCount"
       class="pagination"
