@@ -1,28 +1,19 @@
 <script setup>
-import { computed, reactive } from 'vue';
-import { useVuelidate } from '@vuelidate/core';
-import { helpers, required } from '@vuelidate/validators';
-import { global } from '../../utils/constants/error';
+import { reactive } from 'vue';
 import AppInput from '../shared/inputs/AppInput.vue';
+
+// todo remove data
 
 const emit = defineEmits(['onClose', 'onSearch']);
 const data = reactive({
   search: '',
 });
-
-const rules = computed(() => ({
-  search: {
-    required: helpers.withMessage(global.REQUIRED, required),
-  },
-}));
-
-const v$ = useVuelidate(rules, data);
 </script>
 
 <template>
   <section class="blog-search">
     <AppInput
-      v-model.trim="v$.search.$model"
+      v-model.trim="data.search"
       name="search"
       label="search"
     />
