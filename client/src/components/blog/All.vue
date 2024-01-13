@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted, ref, watch } from 'vue';
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import articlesService from '../../services/articles';
 import { directions } from '../../utils/constants/global';
 import forms from '../../utils/helpers/forms';
@@ -8,6 +8,7 @@ import Pagination from '../shared/Pagination.vue';
 import Single from './Single.vue';
 
 const router = useRouter();
+const route = useRoute();
 const articles = ref([]);
 const currentPage = ref(1);
 const pagesCount = ref(1);
@@ -23,6 +24,14 @@ watch(currentPage, (newValue, oldValue) => {
   }
 });
 
+watch(route, (newValue) => {
+  if (newValue.fullPath === '/blog?page=1') {
+    currentPage.value = 1;
+    getNewQuery();
+    loadArticles();
+  }
+});
+
 function onPaginationHandler(direction, step) {
   if (direction) {
     const value = direction === directions.PREV ? -1 : 1;
@@ -31,7 +40,6 @@ function onPaginationHandler(direction, step) {
   else {
     currentPage.value = step;
   }
-  forms.scrollToTop();
 };
 
 function getNewQuery() {
@@ -45,6 +53,7 @@ function loadArticles() {
       currentPage.value = Number(res.currentPage);
       pagesCount.value = Number(res.pagesCount);
       articles.value = res.articles;
+      forms.scrollToTop();
     })
     .catch(err => console.error(err));
 }

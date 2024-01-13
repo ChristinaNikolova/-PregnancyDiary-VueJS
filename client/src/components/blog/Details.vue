@@ -62,7 +62,7 @@ function getLikes(result) {
     </article>
     <div class="article-buttons-wrapper">
       <button class="btn btn-secondary">
-        <router-link to="/blog">
+        <router-link to="/blog?page=1">
           Back to blog
         </router-link>
       </button>

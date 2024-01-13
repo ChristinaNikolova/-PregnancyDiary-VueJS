@@ -44,7 +44,7 @@ function toogleMenu(e) {
           Diaries
         </li>
         <li class="header-nav-li">
-          <router-link to="/blog?page=1&query=">
+          <router-link to="/blog?page=1">
             Blog
           </router-link>
         </li>

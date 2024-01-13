@@ -26,7 +26,7 @@ const store = useAuthStore();
       <nav class="footer-right-nav">
         <ul class="footer-nav-ul">
           <li class="footer-nav-li">
-            <router-link to="/blog">
+            <router-link to="/blog?page=1">
               Blog
             </router-link>
           </li>
