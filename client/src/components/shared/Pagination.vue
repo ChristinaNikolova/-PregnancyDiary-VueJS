@@ -19,7 +19,6 @@ const props = defineProps({
 //     default: '',
 //   },
 });
-// todo add icons for the pagination
 const emit = defineEmits(['onClickHandler']);
 </script>
 
@@ -31,11 +30,12 @@ const emit = defineEmits(['onClickHandler']);
       :to="`${props.url}?page=${props.currentPage - 1}`"
       @click="emit('onClickHandler', directions.PREV)"
     >
-      &lt;
+      <i class="fa-solid fa-chevron-left" />
     </router-link>
     <template v-for="index in props.pagesCount" :key="index">
       <router-link
         class="pagination"
+        :class="[props.currentPage === index ? 'active' : '']"
         :to="`${props.url}?page=${index}`"
         @click="emit('onClickHandler', '', index)"
       >
@@ -48,7 +48,7 @@ const emit = defineEmits(['onClickHandler']);
       :to="`${props.url}?page=${props.currentPage + 1}`"
       @click="emit('onClickHandler', directions.NEXT)"
     >
-      &gt;
+      <i class="fa-solid fa-chevron-right" />
     </router-link>
   </div>
 </template>
@@ -65,15 +65,15 @@ const emit = defineEmits(['onClickHandler']);
 
 .pagination {
    color: var(--clr-brown);
-   font-weight: 500;
+   font-weight: 400;
 }
 
-.pagination.selected {
-   font-weight: 800;
+.pagination.active {
+   font-weight: 600;
    text-decoration: underline;
 }
 
-.pagination.test {
-    color: pink;
+.pagination i {
+   font-size: 14px;
 }
 </style>
