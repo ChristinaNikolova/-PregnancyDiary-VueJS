@@ -1,23 +1,26 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
+import { useRouter } from 'vue-router';
 import articlesService from '../../services/articles';
 import { directions } from '../../utils/constants/global';
+import forms from '../../utils/helpers/forms';
 import Pagination from '../shared/Pagination.vue';
 import Single from './Single.vue';
 
+const router = useRouter();
 const articles = ref([]);
 const currentPage = ref(1);
 const pagesCount = ref(1);
 
 onMounted(() => {
-  articlesService
-    .all()
-    .then((res) => {
-      currentPage.value = Number(res.currentPage);
-      pagesCount.value = Number(res.pagesCount);
-      articles.value = res.articles;
-    })
-    .catch(err => console.error(err));
+  loadArticles();
+});
+
+watch(currentPage, (newValue, oldValue) => {
+  if (newValue !== oldValue) {
+    loadArticles();
+    getNewQuery();
+  }
 });
 
 function onPaginationHandler(direction, step) {
@@ -28,10 +31,23 @@ function onPaginationHandler(direction, step) {
   else {
     currentPage.value = step;
   }
-
-  console.log('all', currentPage.value);
-  // form.scrollToTop();
+  forms.scrollToTop();
 };
+
+function getNewQuery() {
+  router.push(`/blog?page=${currentPage.value}`);
+};
+
+function loadArticles() {
+  articlesService
+    .all(currentPage.value)
+    .then((res) => {
+      currentPage.value = Number(res.currentPage);
+      pagesCount.value = Number(res.pagesCount);
+      articles.value = res.articles;
+    })
+    .catch(err => console.error(err));
+}
 </script>
 
 <template>
@@ -77,5 +93,6 @@ function onPaginationHandler(direction, step) {
   flex-wrap: wrap;
   gap: 26px;
   overflow: hidden;
+  margin-top: 60px;
 }
 </style>
