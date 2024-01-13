@@ -1,16 +1,42 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import articlesService from '../../services/articles';
+import { directions } from '../../utils/constants/global';
+import Pagination from '../shared/Pagination.vue';
 import Single from './Single.vue';
 
 const articles = ref([]);
+const currentPage = ref(1);
+const pagesCount = ref(1);
 
 onMounted(() => {
   articlesService
     .all()
-    .then(res => (articles.value = res.articles))
+    .then((res) => {
+      currentPage.value = Number(res.currentPage);
+      pagesCount.value = Number(res.pagesCount);
+      articles.value = res.articles;
+    })
     .catch(err => console.error(err));
 });
+
+function onPaginationHandler(direction, step) {
+  let value;
+  if (direction) {
+    value = direction === directions.PREV ? -1 : 1;
+  }
+  else {
+    value = step;
+  }
+
+  if (currentPage.value + value > pagesCount.value) {
+    currentPage.value = pagesCount.value;
+  }
+  else {
+    currentPage.value = currentPage.value + value;
+  }
+  // form.scrollToTop();
+};
 </script>
 
 <template>
@@ -36,6 +62,12 @@ onMounted(() => {
         text="pregnant-woman"
       />
     </template>
+    <Pagination
+      :current-page="currentPage"
+      :pages-count="pagesCount"
+      url="/blog"
+      @on-click-handler="onPaginationHandler"
+    />
   </section>
 </template>
 
