@@ -39,6 +39,7 @@ function loadArticles() {
       <AppTable
         :collection="articles"
         update-link="/administration/article/update"
+        show-details
         @on-delete-handler="onDeleteHandler"
       />
     </template>

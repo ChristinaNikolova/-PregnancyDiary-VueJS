@@ -10,7 +10,6 @@ import Search from './Search.vue';
 
 // todo close + clear search
 // todo close + clear search when header / footer clicked
-// todo update link in header, footer, details
 // todo test search and pagination together
 
 const router = useRouter();

@@ -10,6 +10,10 @@ const props = defineProps({
     type: String,
     default: '/',
   },
+  showDetails: {
+    type: Boolean,
+    default: false,
+  },
 });
 const emit = defineEmits(['onDeleteHandler']);
 </script>
@@ -31,7 +35,12 @@ const emit = defineEmits(['onDeleteHandler']);
       <tr v-for="c in props.collection" :key="c.id" class="table-body-row">
         <td v-for="(key, value) in c" :key="c[key] + generateUniqueId.getUniqueId()" class="table-body-row-name">
           <template v-if="value !== 'id'">
-            {{ key }}
+            <router-link v-if="value === 'title'" :to="`/blog/${c.id}`">
+              {{ key }}
+            </router-link>
+            <template v-else>
+              {{ key }}
+            </template>
           </template>
         </td>
         <td class="table-body-row-button">
@@ -54,7 +63,7 @@ const emit = defineEmits(['onDeleteHandler']);
 <style  scoped>
 .table {
   margin: 0 auto;
-  width: 70%;
+  width: 100%;
 }
 
 .table-head-row {
@@ -70,5 +79,10 @@ const emit = defineEmits(['onDeleteHandler']);
 .table-body-row-name {
   text-align: left;
   font-size: 18px;
+}
+
+.table-body-row-name a:hover {
+  color: var(--clr-brown);
+  font-weight: 500;
 }
 </style>
