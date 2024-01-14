@@ -14,10 +14,10 @@ const props = defineProps({
     type: String,
     default: '',
   },
-//   queryString: {
-//     type: String,
-//     default: '',
-//   },
+  queryString: {
+    type: String,
+    default: '',
+  },
 });
 const emit = defineEmits(['onClickHandler']);
 </script>
@@ -27,7 +27,7 @@ const emit = defineEmits(['onClickHandler']);
     <router-link
       v-if="props.currentPage !== 1"
       class="pagination"
-      :to="`${props.url}?page=${props.currentPage - 1}`"
+      :to="`${props.url}?page=${props.currentPage - 1}${props.queryString}`"
       @click="emit('onClickHandler', directions.PREV)"
     >
       <i class="fa-solid fa-chevron-left" />
@@ -36,7 +36,7 @@ const emit = defineEmits(['onClickHandler']);
       <router-link
         class="pagination"
         :class="[props.currentPage === index ? 'active' : '']"
-        :to="`${props.url}?page=${index}`"
+        :to="`${props.url}?page=${index}${props.queryString}`"
         @click="emit('onClickHandler', '', index)"
       >
         {{ index }}
@@ -45,7 +45,7 @@ const emit = defineEmits(['onClickHandler']);
     <router-link
       v-if="props.currentPage !== props.pagesCount"
       class="pagination"
-      :to="`${props.url}?page=${props.currentPage + 1}`"
+      :to="`${props.url}?page=${props.currentPage + 1}${props.queryString}`"
       @click="emit('onClickHandler', directions.NEXT)"
     >
       <i class="fa-solid fa-chevron-right" />

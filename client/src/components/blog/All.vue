@@ -120,6 +120,7 @@ function toogleSearchForm() {
       v-if="articles.length"
       :current-page="currentPage"
       :pages-count="pagesCount"
+      :query-string="`&query=${searchedQuery}`"
       url="/blog"
       @on-click-handler="onPaginationHandler"
     />
@@ -139,8 +140,12 @@ function toogleSearchForm() {
 .section-title i {
   position: absolute;
   font-size: 16px;
-  right: 35%;
+  right: 38%;
   top: 46%;
+}
+
+.section-title i.fa-filter {
+  right: 36%;
 }
 
 .section-title i:hover {
