@@ -2,7 +2,7 @@
 import { onMounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import articlesService from '../../services/articles';
-import { directions } from '../../utils/constants/global';
+import { directions, search } from '../../utils/constants/global';
 import forms from '../../utils/helpers/forms';
 import Pagination from '../shared/Pagination.vue';
 import Single from './Single.vue';
@@ -20,7 +20,7 @@ const articles = ref([]);
 const currentPage = ref(1);
 const pagesCount = ref(1);
 const showSearchForm = ref(false);
-const searchedQuery = ref('no search');
+const searchedQuery = ref(search.NO_SEARCH);
 
 onMounted(() => {
   loadArticles();
@@ -48,7 +48,9 @@ watch(searchedQuery, () => {
 });
 
 function onSeachHandler(query) {
-  searchedQuery.value = query;
+  if (query) {
+    searchedQuery.value = query;
+  }
 }
 
 function onPaginationHandler(direction, step) {
@@ -79,6 +81,9 @@ function loadArticles() {
 
 function toogleSearchForm() {
   showSearchForm.value = !showSearchForm.value;
+  if (!showSearchForm.value) {
+    searchedQuery.value = search.NO_SEARCH;
+  }
 }
 </script>
 
@@ -88,7 +93,7 @@ function toogleSearchForm() {
       image="/images/Mother-kissing-her-sleeping-newborn-baby-1215321361_2125x1416-1024x683.jpeg"
       text="mommy-and-baby"
     />
-    <div v-if="articles.length || searchedQuery !== 'no search'" class="blog-wrapper">
+    <div v-if="articles.length || searchedQuery !== search.NO_SEARCH" class="blog-wrapper">
       <h2 v-if="!showSearchForm" class="section-title">
         Birth and Baby Blog
         <i class="fa-solid fa-magnifying-glass" @click="toogleSearchForm" />
@@ -107,7 +112,7 @@ function toogleSearchForm() {
           <Single :article="a" />
         </template>
       </ul>
-      <Empty v-else no-result="true" />
+      <Empty v-else no-result />
     </div>
     <template v-else>
       <Empty element="articles" />
@@ -139,7 +144,7 @@ function toogleSearchForm() {
 .section-title i {
   position: absolute;
   font-size: 16px;
-  right: 34%;
+  right: 35%;
   top: 46%;
 }
 

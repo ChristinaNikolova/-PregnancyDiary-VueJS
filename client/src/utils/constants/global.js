@@ -19,6 +19,10 @@ export const formNames = {
   UPDATE: 'update',
 };
 
+export const search = {
+  NO_SEARCH: 'no search',
+};
+
 // export const classNames = {
 //   SHOW: 'show',
 //   HIDE: 'hide',

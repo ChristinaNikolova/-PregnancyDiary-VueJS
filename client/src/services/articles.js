@@ -1,8 +1,8 @@
-import { httpMethods } from '../utils/constants/global';
+import { httpMethods, search } from '../utils/constants/global';
 import { api } from './api';
 import { requester } from './requester';
 
-function all(currentPage = 1, query = 'no search') {
+function all(currentPage = 1, query = search.NO_SEARCH) {
   return fetch(`${api.articles}/${currentPage}/${query}`, {
     method: httpMethods.GET,
     headers: {
