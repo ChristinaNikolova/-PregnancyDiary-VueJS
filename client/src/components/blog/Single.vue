@@ -25,6 +25,7 @@ const props = defineProps({
 .blog-li {
   background-color: var(--clr-cream-bl);
   padding: 0px 0px 40px 0px;
+  overflow: hidden;
 }
 
 .blog-li-picture {
