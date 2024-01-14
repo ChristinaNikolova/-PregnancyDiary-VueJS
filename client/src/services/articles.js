@@ -3,7 +3,7 @@ import { api } from './api';
 import { requester } from './requester';
 
 function all(currentPage = 1, query = search.NO_SEARCH) {
-  return fetch(`${api.articles}/${currentPage}/${query}`, {
+  return fetch(`${api.articles}/all/${currentPage}/${query}`, {
     method: httpMethods.GET,
     headers: {
       'Content-Type': 'application/json',
@@ -18,6 +18,17 @@ function allAdmin() {
     .then(res => res.json())
     .catch(err => console.error(err));
 }
+
+function getByCategory(categoryId) {
+  return fetch(`${api.articles}/filter/${categoryId}/`, {
+    method: httpMethods.GET,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(res => res.json())
+    .catch(err => console.error(err));
+};
 
 function getById(id) {
   return requester(`${api.articles}/${id}`, httpMethods.GET)
@@ -68,4 +79,5 @@ export default {
   getByIdAdmin,
   update,
   like,
+  getByCategory,
 };

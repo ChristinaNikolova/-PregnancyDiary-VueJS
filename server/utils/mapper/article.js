@@ -19,6 +19,15 @@ function articleAdminViewModel(article) {
   };
 }
 
+function articleListByCategoryViewModel(article) {
+  return {
+    id: article._id,
+    title: article.title,
+    picture: article.picture,
+    createdAt: formatCreatedAt(article.createdAt),
+  };
+}
+
 function articleDetailsViewModel(article) {
   return {
     id: article._id,
@@ -51,5 +60,6 @@ function splitContentIntoArray(content) {
 module.exports = {
   articleListViewModel,
   articleAdminViewModel,
+  articleListByCategoryViewModel,
   articleDetailsViewModel,
 };

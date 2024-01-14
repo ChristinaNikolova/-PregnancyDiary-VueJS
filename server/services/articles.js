@@ -1,7 +1,11 @@
 const Article = require("../models/Article");
 const {
+  Types: { ObjectId },
+} = require("mongoose");
+const {
   articleListViewModel,
   articleAdminViewModel,
+  articleListByCategoryViewModel,
   articleDetailsViewModel,
 } = require("../utils/mapper/article");
 
@@ -23,6 +27,12 @@ async function allAdmin() {
       .populate("category", "name")
       .sort({ createdAt: -1, title: 1 })
   ).map(articleAdminViewModel);
+}
+
+async function getByCategory(categoryId) {
+  return (await Article.find({ category: new ObjectId(categoryId) })).map(
+    articleListByCategoryViewModel
+  );
 }
 
 async function getById(id) {
@@ -51,10 +61,6 @@ async function create(title, content, picture, category) {
   return article;
 }
 
-async function deleteById(id) {
-  return Article.findByIdAndDelete(id);
-}
-
 async function update(id, title, content, picture, category) {
   const article = await getByIdAdmin(id);
   if (article.title.toLowerCase() !== title.toLowerCase()) {
@@ -70,6 +76,10 @@ async function update(id, title, content, picture, category) {
 
   await article.save();
   return article;
+}
+
+async function deleteById(id) {
+  return Article.findByIdAndDelete(id);
 }
 
 async function getTotalCount(searchedQuery) {
@@ -110,4 +120,5 @@ module.exports = {
   getByIdAdmin,
   update,
   like,
+  getByCategory,
 };

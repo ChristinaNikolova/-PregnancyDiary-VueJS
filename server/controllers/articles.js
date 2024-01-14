@@ -1,12 +1,18 @@
 const router = require("express").Router();
 const { hasUser } = require("../middlewares/guards");
-const { all, getTotalCount, getById, like } = require("../services/articles");
+const {
+  all,
+  getTotalCount,
+  getByCategory,
+  getById,
+  like,
+} = require("../services/articles");
 const { pagination } = require("../utils/constants/global");
 const { mapErrors } = require("../utils/parser");
 
 // todo get last three
 
-router.get("/:page/:query", async (req, res) => {
+router.get("/all/:page/:query", async (req, res) => {
   try {
     const currentPage = req.params.page;
     const searchedQuery =
@@ -21,6 +27,17 @@ router.get("/:page/:query", async (req, res) => {
       searchedQuery
     );
     res.json({ articles, pagesCount, currentPage });
+  } catch (error) {
+    const message = mapErrors(error);
+    res.status(400).json({ message });
+  }
+});
+
+router.get("/filter/:categoryId", async (req, res) => {
+  try {
+    const categoryId = req.params.categoryId;
+    const article = await getByCategory(categoryId);
+    res.json(article);
   } catch (error) {
     const message = mapErrors(error);
     res.status(400).json({ message });
