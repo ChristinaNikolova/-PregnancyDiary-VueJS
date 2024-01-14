@@ -4,7 +4,7 @@ import categoriesService from '../../../services/categories';
 import AppTable from '../../shared/table/AppTable.vue';
 import AppList from '../../shared/table/AppList.vue';
 
-const title = 'All categories';
+const title = 'Total categories';
 const categories = ref([]);
 
 onMounted(() => {
@@ -30,7 +30,7 @@ function loadCategories() {
   <AppList element="categories" :is-element="!!categories.length">
     <template #title>
       <AppTitle
-        :title="title"
+        :title="`${title} : ${categories.length}`"
         image="/images/martha-brook-blog-post-brilliant-gifts-for-pregnant-women-pregnant-woman-sitting-on-bed-banner-1500x550.webp"
         text="administration-image"
       />
