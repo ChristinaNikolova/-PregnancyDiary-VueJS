@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue';
 import { useAuthStore } from '../store/auth';
+import { queries } from '../utils/constants/global';
 
 const store = useAuthStore();
 const showMenu = ref(false);
@@ -44,7 +45,7 @@ function toogleMenu(e) {
           Diaries
         </li>
         <li class="header-nav-li">
-          <router-link to="/blog?page=1">
+          <router-link :to="queries.BLOG_DEFAULT">
             Blog
           </router-link>
         </li>

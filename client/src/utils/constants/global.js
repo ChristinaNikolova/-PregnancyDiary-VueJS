@@ -23,6 +23,10 @@ export const search = {
   NO_SEARCH: 'no search',
 };
 
+export const queries = {
+  BLOG_DEFAULT: '/blog?page=1&query=no%20search',
+};
+
 // export const classNames = {
 //   SHOW: 'show',
 //   HIDE: 'hide',

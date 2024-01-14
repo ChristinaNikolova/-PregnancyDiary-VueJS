@@ -1,5 +1,6 @@
 <script setup>
 import { useAuthStore } from '../store/auth';
+import { queries } from '../utils/constants/global';
 
 const store = useAuthStore();
 </script>
@@ -26,7 +27,7 @@ const store = useAuthStore();
       <nav class="footer-right-nav">
         <ul class="footer-nav-ul">
           <li class="footer-nav-li">
-            <router-link to="/blog?page=1">
+            <router-link :to="queries.BLOG_DEFAULT">
               Blog
             </router-link>
           </li>

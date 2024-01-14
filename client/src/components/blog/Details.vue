@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router';
 import { useAuthStore } from '../../store/auth';
 import articlesService from '../../services/articles';
 import likes from '../../utils/helpers/likes';
+import { queries } from '../../utils/constants/global';
 import AppTitle from '../shared/AppTitle.vue';
 
 const store = useAuthStore();
@@ -62,7 +63,7 @@ function getLikes(result) {
     </article>
     <div class="article-buttons-wrapper">
       <button class="btn btn-secondary">
-        <router-link to="/blog?page=1">
+        <router-link :to="queries.BLOG_DEFAULT">
           Back to blog
         </router-link>
       </button>

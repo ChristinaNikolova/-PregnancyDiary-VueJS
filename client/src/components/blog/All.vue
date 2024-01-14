@@ -2,14 +2,13 @@
 import { onMounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import articlesService from '../../services/articles';
-import { directions, search } from '../../utils/constants/global';
+import { directions, queries, search } from '../../utils/constants/global';
 import forms from '../../utils/helpers/forms';
 import Pagination from '../shared/Pagination.vue';
 import Single from './Single.vue';
 import Search from './Search.vue';
 
 // todo close + clear search
-// todo search empty string
 // todo close + clear search when header / footer clicked
 // todo update link in header, footer, details
 // todo test search and pagination together
@@ -34,8 +33,9 @@ watch(currentPage, (newValue, oldValue) => {
 });
 
 watch(route, (newValue) => {
-  if (newValue.fullPath === '/blog?page=1') {
+  if (newValue.fullPath === queries.BLOG_DEFAULT) {
     currentPage.value = 1;
+    toogleSearchForm();
     getNewQuery();
     loadArticles();
   }
@@ -64,7 +64,7 @@ function onPaginationHandler(direction, step) {
 };
 
 function getNewQuery() {
-  router.push(`/blog?page=${currentPage.value}`);
+  router.push(`/blog?page=${currentPage.value}&query=${searchedQuery.value}`);
 };
 
 function loadArticles() {
