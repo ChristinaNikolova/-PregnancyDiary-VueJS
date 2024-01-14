@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../components/Home.vue';
 import Blog from '../components/blog/All.vue';
+import ByCategory from '../components/blog/ByCategory.vue';
 import SingleArticle from '../components/blog/Details.vue';
 import Login from '../components/auth/Login.vue';
 import Register from '../components/auth/Register.vue';
@@ -14,6 +15,7 @@ const routes = [
   { path: '/register', component: Register, beforeEnter: isGuest },
   { path: '/logout', component: Logout, beforeEnter: isUser },
   { path: '/blog', component: Blog },
+  { path: '/blog/by-category/:id', component: ByCategory },
   { path: '/blog/:id', component: SingleArticle },
   { path: '/administration/category', component: () => import('../components/administration/category/All.vue'), beforeEnter: isAdmin },
   { path: '/administration/category/create', component: () => import('../components/administration/category/Create.vue'), beforeEnter: isAdmin },

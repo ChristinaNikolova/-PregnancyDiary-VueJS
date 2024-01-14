@@ -7,6 +7,7 @@ import forms from '../../utils/helpers/forms';
 import Pagination from '../shared/Pagination.vue';
 import Single from './Single.vue';
 import Search from './Search.vue';
+import Filter from './Filter.vue';
 
 const router = useRouter();
 const route = useRoute();
@@ -15,6 +16,9 @@ const currentPage = ref(1);
 const pagesCount = ref(1);
 const showSearchForm = ref(false);
 const searchedQuery = ref(search.NO_SEARCH);
+const showFilter = ref(false);
+
+// todo organise HTML
 
 onMounted(() => {
   loadArticles();
@@ -80,6 +84,10 @@ function toogleSearchForm() {
     searchedQuery.value = search.NO_SEARCH;
   }
 }
+
+function filterCategories() {
+  showFilter.value = !showFilter.value;
+}
 </script>
 
 <template>
@@ -92,6 +100,7 @@ function toogleSearchForm() {
       <h2 v-if="!showSearchForm" class="section-title">
         Birth and Baby Blog
         <i class="fa-solid fa-magnifying-glass" @click="toogleSearchForm" />
+        <i class="fa-solid fa-filter" @click="filterCategories" />
       </h2>
       <h2 v-else class="section-title">
         Searched results
@@ -102,6 +111,7 @@ function toogleSearchForm() {
           @on-close="toogleSearchForm"
         />
       </template>
+      <Filter v-if="showFilter" />
       <ul v-if="articles.length" class="blog-ul">
         <template v-for="a in articles" :key="a.id">
           <Single :article="a" />
