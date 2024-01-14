@@ -8,10 +8,6 @@ import Pagination from '../shared/Pagination.vue';
 import Single from './Single.vue';
 import Search from './Search.vue';
 
-// todo close + clear search
-// todo close + clear search when header / footer clicked
-// todo test search and pagination together
-
 const router = useRouter();
 const route = useRoute();
 const articles = ref([]);
