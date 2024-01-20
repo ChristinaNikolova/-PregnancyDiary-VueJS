@@ -13,11 +13,15 @@ const props = defineProps({
 const comments = ref([]);
 
 onMounted(() => {
+  loadComments();
+});
+
+function loadComments() {
   commentsService
     .all(props.articleId)
     .then(res => (comments.value = res))
     .catch(err => console.error(err));
-});
+}
 </script>
 
 <template>
@@ -25,8 +29,8 @@ onMounted(() => {
     <h2 class="section-title">
       Comments
     </h2>
-    <Form :article-id="articleId" />
-    <ul v-if="comments">
+    <Form :article-id="articleId" @finish="loadComments" />
+    <ul v-if="comments.length">
       <li v-for="c in comments" :key="c.id">
         {{ c.content }}
       </li>

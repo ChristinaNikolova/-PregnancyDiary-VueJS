@@ -3,12 +3,7 @@ import { api } from './api';
 import { requester } from './requester';
 
 function all(articleId) {
-  return fetch(`${api.comments}/${articleId}/`, {
-    method: httpMethods.GET,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
+  return requester(`${api.comments}/${articleId}`, httpMethods.GET)
     .then(res => res.json())
     .catch(err => console.error(err));
 }

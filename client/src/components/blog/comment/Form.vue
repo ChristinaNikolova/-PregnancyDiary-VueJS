@@ -1,17 +1,19 @@
 <script setup>
-import { computed, reactive, ref, watch } from 'vue';
+import { computed, nextTick, reactive, ref, watch } from 'vue';
 import { useVuelidate } from '@vuelidate/core';
 import { helpers, maxLength, minLength, required } from '@vuelidate/validators';
 import { global } from '../../../utils/constants/error';
 import { comment } from '../../../utils/constants/model';
 import commentsService from '../../../services/comments';
 
+// todo test server error
 const props = defineProps({
   articleId: {
     type: String,
     required: true,
   },
 });
+const emit = defineEmits(['finish']);
 const data = reactive({
   content: '',
 });
@@ -44,7 +46,16 @@ async function onSubmitHandler() {
   commentsService
     .create(data.content, props.articleId)
     .then((res) => {
-      console.log(res);
+      if (res.message) {
+        serverError.value = res.message;
+        return;
+      }
+      data.content = '';
+      nextTick(() => {
+        v$.value.$reset();
+      });
+      serverError.value = [];
+      emit('finish');
     })
     .catch(err => console.error(err));
 };
