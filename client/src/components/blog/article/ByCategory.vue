@@ -1,9 +1,9 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import articlesService from '../../services/articles';
-import { queries } from '../../utils/constants/global';
-import forms from '../../utils/helpers/forms';
+import articlesService from '../../../services/articles';
+import { queries } from '../../../utils/constants/global';
+import forms from '../../../utils/helpers/forms';
 
 const route = useRoute();
 const categoryId = route.params.id;

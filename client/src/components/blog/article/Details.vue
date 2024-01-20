@@ -1,11 +1,11 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import { useAuthStore } from '../../store/auth';
-import articlesService from '../../services/articles';
-import likes from '../../utils/helpers/likes';
-import { queries } from '../../utils/constants/global';
-import AppTitle from '../shared/AppTitle.vue';
+import { useAuthStore } from '../../../store/auth';
+import articlesService from '../../../services/articles';
+import likes from '../../../utils/helpers/likes';
+import { queries } from '../../../utils/constants/global';
+import AppTitle from '../../shared/AppTitle.vue';
 
 const store = useAuthStore();
 const route = useRoute();

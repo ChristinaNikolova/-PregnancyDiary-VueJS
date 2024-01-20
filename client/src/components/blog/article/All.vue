@@ -1,10 +1,10 @@
 <script setup>
 import { onMounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import articlesService from '../../services/articles';
-import { directions, queries, search } from '../../utils/constants/global';
-import forms from '../../utils/helpers/forms';
-import Pagination from '../shared/Pagination.vue';
+import articlesService from '../../../services/articles';
+import { directions, queries, search } from '../../../utils/constants/global';
+import forms from '../../../utils/helpers/forms';
+import Pagination from '../../shared/Pagination.vue';
 import Single from './Single.vue';
 import Search from './Search.vue';
 import Filter from './Filter.vue';

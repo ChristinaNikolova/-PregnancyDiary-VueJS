@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue';
-import categoriesService from '../../services/categories';
+import categoriesService from '../../../services/categories';
 
 const categories = ref([]);
 

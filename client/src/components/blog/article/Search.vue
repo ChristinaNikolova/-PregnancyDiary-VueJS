@@ -1,6 +1,6 @@
 <script setup>
 import { reactive } from 'vue';
-import AppInput from '../shared/inputs/AppInput.vue';
+import AppInput from '../../shared/inputs/AppInput.vue';
 
 // todo remove data
 
