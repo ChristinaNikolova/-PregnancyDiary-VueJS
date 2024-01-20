@@ -2,10 +2,11 @@
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import articlesService from '../../services/articles';
+import { queries } from '../../utils/constants/global';
 
-// todo add title. all categories, back to blog
 const route = useRoute();
 const categoryId = route.params.id;
+const categoryName = route.params.name;
 const articles = ref([]);
 
 onMounted(() => {
@@ -18,7 +19,14 @@ onMounted(() => {
 
 <template>
   <section class="by-category">
-    <ul class="by-category-ul">
+    <Jumbo
+      image="/images/pexels-photo-3890481.jpeg"
+      text="working-mommy"
+    />
+    <h2 class="section-title">
+      {{ categoryName }}
+    </h2>
+    <ul v-if="articles.length" class="by-category-ul">
       <li v-for="a in articles" :key="a.id" class="by-category-li">
         <router-link :to="`/blog/${a.id}`">
           <div class="by-category-li-img-wrapper">
@@ -33,35 +41,43 @@ onMounted(() => {
         </router-link>
       </li>
     </ul>
+    <Empty v-else element="articles" />
+    <button class="btn btn-secondary">
+      <router-link :to="queries.BLOG_DEFAULT">
+        Back to blog
+      </router-link>
+    </button>
   </section>
 </template>
 
 <style scoped>
 .by-category-ul {
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: center;
-   align-items: center;
-   gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 80px;
+  margin-bottom: 80px;
 }
 
 .by-category-li {
-   width: 30%;
-   height: 430px;
-   text-align: left;
-   background-color: var(--clr-cream-bl);
+  width: 30%;
+  height: 430px;
+  text-align: left;
+  background-color: var(--clr-cream-bl);
 }
 
 .by-category-li-img-wrapper {
-   width:100%;
-   height: 300px;
-   overflow: hidden;
+  width:100%;
+  height: 300px;
+  overflow: hidden;
 }
 
 .by-category-li-img {
-   width: 100%;
-   height: 100%;
-   object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .by-category-li-img:hover {

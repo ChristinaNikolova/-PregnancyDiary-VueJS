@@ -19,7 +19,7 @@ onMounted(() => {
     </h3>
     <ul class="blog-filter-ul">
       <li v-for="c in categories" :key="c.id" class="blog-filter-li">
-        <router-link :to="`/blog/by-category/${c.id}`">
+        <router-link :to="`/blog/by-category/${c.name}/${c.id}`">
           {{ c.name }}
         </router-link>
       </li>
