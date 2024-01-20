@@ -18,8 +18,6 @@ const showSearchForm = ref(false);
 const searchedQuery = ref(search.NO_SEARCH);
 const showFilter = ref(false);
 
-// todo organise HTML
-
 onMounted(() => {
   loadArticles();
 });
@@ -99,7 +97,7 @@ function filterCategories() {
     <div v-if="articles.length || searchedQuery !== search.NO_SEARCH" class="blog-wrapper">
       <h2 v-if="!showSearchForm" class="section-title">
         Birth and Baby Blog
-        <i class="fa-solid fa-magnifying-glass" @click="toogleSearchForm" />
+        <i v-if="!showFilter" class="fa-solid fa-magnifying-glass" @click="toogleSearchForm" />
         <i class="fa-solid fa-filter" @click="filterCategories" />
       </h2>
       <h2 v-else class="section-title">

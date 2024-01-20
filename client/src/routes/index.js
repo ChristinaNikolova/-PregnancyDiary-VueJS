@@ -16,7 +16,7 @@ const routes = [
   { path: '/logout', component: Logout, beforeEnter: isUser },
   { path: '/blog', component: Blog },
   { path: '/blog/by-category/:id', component: ByCategory },
-  { path: '/blog/:id', component: SingleArticle },
+  { path: '/blog/:id', component: SingleArticle, beforeEnter: isUser },
   { path: '/administration/category', component: () => import('../components/administration/category/All.vue'), beforeEnter: isAdmin },
   { path: '/administration/category/create', component: () => import('../components/administration/category/Create.vue'), beforeEnter: isAdmin },
   { path: '/administration/category/update/:id', component: () => import('../components/administration/category/Update.vue'), beforeEnter: isAdmin },

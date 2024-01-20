@@ -28,6 +28,10 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.blog-filter .section-title {
+  font-size: 32px;
+}
+
 .blog-filter-ul {
   width: 90%;
   margin: 0 auto;
