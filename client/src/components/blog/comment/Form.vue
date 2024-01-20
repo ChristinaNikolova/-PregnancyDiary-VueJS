@@ -6,7 +6,6 @@ import { global } from '../../../utils/constants/error';
 import { comment } from '../../../utils/constants/model';
 import commentsService from '../../../services/comments';
 
-// todo test server error
 const props = defineProps({
   articleId: {
     type: String,
@@ -62,6 +61,7 @@ async function onSubmitHandler() {
 </script>
 
 <template>
+  <ServerError v-if="serverError.length" :errors="serverError" />
   <form class="form" @submit.prevent="onSubmitHandler">
     <AppTextarea
       v-model.trim="v$.content.$model"
