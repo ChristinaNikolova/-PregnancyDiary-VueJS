@@ -46,7 +46,7 @@ onMounted(() => {
       </li>
     </ul>
     <Empty v-else element="articles" />
-    <button class="btn btn-secondary">
+    <button type="button" class="btn btn-secondary">
       <router-link :to="queries.BLOG_DEFAULT">
         Back to blog
       </router-link>

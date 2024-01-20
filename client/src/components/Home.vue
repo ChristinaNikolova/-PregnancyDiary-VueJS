@@ -8,7 +8,7 @@
       <p class="home-content-text">
         A Baby Fills a Place in Your Heart That You Never Knew Was Empty!
       </p>
-      <button class="btn btn-primary">
+      <button type="button" class="btn btn-primary">
         Create your diary
       </button>
     </section>
@@ -22,7 +22,7 @@
           Ensure you document the wonderful moments before it's too late.
         </p>
         <div class="home-user-btns-wrapper">
-          <button class="btn btn-secondary">
+          <button type="button" class="btn btn-secondary">
             Login
           </button>
         </div>
