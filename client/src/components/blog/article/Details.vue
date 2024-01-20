@@ -1,11 +1,12 @@
 <script setup>
-import { onMounted, ref } from 'vue';
-import { useRoute } from 'vue-router';
-import { useAuthStore } from '../../../store/auth';
-import articlesService from '../../../services/articles';
-import likes from '../../../utils/helpers/likes';
-import { queries } from '../../../utils/constants/global';
-import AppTitle from '../../shared/AppTitle.vue';
+import { onMounted, ref } from "vue";
+import { useRoute } from "vue-router";
+import { useAuthStore } from "../../../store/auth";
+import articlesService from "../../../services/articles";
+import likes from "../../../utils/helpers/likes";
+import { queries } from "../../../utils/constants/global";
+import AppTitle from "../../shared/AppTitle.vue";
+import Comments from "../comment/All.vue";
 
 const store = useAuthStore();
 const route = useRoute();
@@ -22,7 +23,7 @@ onMounted(() => {
       likeCount.value = res.likes.length;
       isLiked.value = getLikes(res.likes);
     })
-    .catch(err => console.error(err));
+    .catch((err) => console.error(err));
 });
 
 function like() {
@@ -32,7 +33,7 @@ function like() {
       likeCount.value = res.likes.length;
       isLiked.value = getLikes(res.likes);
     })
-    .catch(err => console.error(err));
+    .catch((err) => console.error(err));
 }
 
 function getLikes(result) {
@@ -54,21 +55,23 @@ function getLikes(result) {
       <p class="article-content-category">
         {{ article.category }}
       </p>
-      <p class="article-content-likes">
-        {{ likeCount }} likes
-      </p>
-      <p v-for="(a, i) in article.content" :key="i" class="article-content-singe">
+      <p class="article-content-likes">{{ likeCount }} likes</p>
+      <p
+        v-for="(a, i) in article.content"
+        :key="i"
+        class="article-content-singe"
+      >
         {{ a }}
       </p>
     </article>
     <div class="article-buttons-wrapper">
       <button class="btn btn-secondary">
-        <router-link :to="queries.BLOG_DEFAULT">
-          Back to blog
-        </router-link>
+        <router-link :to="queries.BLOG_DEFAULT"> Back to blog </router-link>
       </button>
       <button class="btn btn-secondary">
-        <router-link :to="`/blog/by-category/${article.category}/${article.categoryId}`">
+        <router-link
+          :to="`/blog/by-category/${article.category}/${article.categoryId}`"
+        >
           Back to {{ article.category }}
         </router-link>
       </button>
@@ -79,6 +82,7 @@ function getLikes(result) {
         Add to favourites
       </button>
     </div>
+    <Comments :article-id="id" />
   </section>
 </template>
 
@@ -109,6 +113,10 @@ function getLikes(result) {
 .article-content-singe {
   letter-spacing: 1px;
   margin-bottom: 28px;
+}
+
+.article-buttons-wrapper {
+  margin-bottom: 100px;
 }
 
 .article-buttons-wrapper .btn:first-of-type,
