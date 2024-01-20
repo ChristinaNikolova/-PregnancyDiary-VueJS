@@ -9,7 +9,6 @@ const props = defineProps({
     required: true,
   },
 });
-
 const comments = ref([]);
 
 onMounted(() => {

@@ -101,6 +101,9 @@ function toogleMenu(e) {
 
 <style scoped>
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -108,6 +111,7 @@ function toogleMenu(e) {
   gap: 40px;
   padding-top: 50px;
   padding-bottom: 30px;
+  background-color: var(--clr-cream-bg);
 }
 
 .header-logo {
