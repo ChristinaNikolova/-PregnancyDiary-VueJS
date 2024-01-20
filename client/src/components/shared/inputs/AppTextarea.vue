@@ -1,5 +1,5 @@
 <script setup>
-import { onUpdated, ref } from "vue";
+import { onUpdated, ref } from 'vue';
 
 const props = defineProps({
   modelValue: {
@@ -8,25 +8,22 @@ const props = defineProps({
   },
   name: {
     type: String,
-    required: true,
-    default: "",
+    default: '',
   },
   label: {
     type: String,
-    required: true,
-    default: "",
+    default: '',
   },
   rows: {
     type: String,
-    required: true,
-    default: "10",
+    default: '10',
   },
   errors: {
     type: Array,
     default: () => [],
   },
 });
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits(['update:modelValue']);
 const small = ref(false);
 
 onUpdated(() => {
@@ -37,7 +34,7 @@ onUpdated(() => {
 
 function onInput(e) {
   const { value } = e.target;
-  emit("update:modelValue", value);
+  emit('update:modelValue', value);
 }
 
 function onFocus() {

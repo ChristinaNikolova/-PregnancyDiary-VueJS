@@ -1,7 +1,7 @@
 <script setup>
-import { onMounted, ref } from "vue";
-import commentsService from "../../../services/comments";
-import Form from "./Form.vue";
+import { onMounted, ref } from 'vue';
+import commentsService from '../../../services/comments';
+import Form from './Form.vue';
 
 const props = defineProps({
   articleId: {
@@ -15,15 +15,17 @@ const comments = ref([]);
 onMounted(() => {
   commentsService
     .all(props.articleId)
-    .then((res) => (comments.value = res))
-    .catch((err) => console.error(err));
+    .then(res => (comments.value = res))
+    .catch(err => console.error(err));
 });
 </script>
 
 <template>
   <section class="comments">
-    <h2 class="section-title">Comments</h2>
-    <Form />
+    <h2 class="section-title">
+      Comments
+    </h2>
+    <Form :article-id="articleId" />
     <ul v-if="comments">
       <li v-for="c in comments" :key="c.id">
         {{ c.content }}

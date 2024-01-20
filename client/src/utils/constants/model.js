@@ -16,3 +16,8 @@ export const category = {
   NAME_MIN_LEN: 3,
   NAME_MAX_LEN: 30,
 };
+
+export const comment = {
+  CONTENT_MIN_LEN: 10,
+  CONTENT_MAX_LEN: 1000,
+};
