@@ -27,7 +27,21 @@ async function create(articleId, userId, content) {
   return result;
 }
 
+async function like(id, userId) {
+  const comment = await Comment.findById(id);
+
+  if (comment.likes.includes(userId)) {
+    const index = comment.likes.indexOf(userId);
+    comment.likes.splice(index, 1);
+  } else {
+    comment.likes.push(userId);
+  }
+
+  return comment.save();
+}
+
 module.exports = {
   all,
   create,
+  like,
 };

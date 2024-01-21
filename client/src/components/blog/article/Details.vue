@@ -26,7 +26,7 @@ onMounted(() => {
     .catch(err => console.error(err));
 });
 
-function like() {
+function onLike() {
   articlesService
     .like(id)
     .then((res) => {
@@ -79,10 +79,10 @@ function getLikes(result) {
           Back to {{ article.category }}
         </router-link>
       </button>
-      <button v-if="isLiked" class="btn btn-primary" @click="like">
+      <button v-if="isLiked" class="btn btn-primary" @click="onLike">
         Remove from favourites
       </button>
-      <button v-else class="btn btn-primary" @click="like">
+      <button v-else class="btn btn-primary" @click="onLike">
         Add to favourites
       </button>
     </div>

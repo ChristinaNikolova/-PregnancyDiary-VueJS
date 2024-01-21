@@ -31,7 +31,12 @@ function loadComments() {
     </h2>
     <Form :article-id="articleId" @finish="loadComments" />
     <ul v-if="comments.length" class="comments-ul">
-      <Single v-for="c in comments" :key="c.id" :comment="c" />
+      <Single
+        v-for="c in comments"
+        :key="c.id"
+        :comment="c"
+        :article-id="props.articleId"
+      />
     </ul>
   </section>
 </template>
