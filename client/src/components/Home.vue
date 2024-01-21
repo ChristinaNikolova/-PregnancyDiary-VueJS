@@ -23,7 +23,9 @@
         </p>
         <div class="home-user-btns-wrapper">
           <button type="button" class="btn btn-secondary">
-            Login
+            <router-link to="/login">
+              Login
+            </router-link>
           </button>
         </div>
       </div>
@@ -66,5 +68,9 @@
   letter-spacing: 1.2px;
   line-height: 1.8;
   margin-bottom: 26px;
+}
+
+.home-user-btns-wrapper a {
+  color: var(--clr-brown);
 }
 </style>
