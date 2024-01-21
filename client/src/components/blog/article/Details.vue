@@ -8,6 +8,7 @@ import { queries } from '../../../utils/constants/global';
 import AppTitle from '../../shared/AppTitle.vue';
 import Comments from '../comment/All.vue';
 import forms from '../../../utils/helpers/forms';
+import Loading from '../../shared/Loading.vue';
 
 const store = useAuthStore();
 const route = useRoute();
@@ -45,50 +46,53 @@ function getLikes(result) {
 
 <template>
   <section class="article">
-    <AppTitle
-      :title="article.title"
-      :image="article.picture"
-      :text="article.title"
-    />
-    <article class="article-content">
-      <p class="article-content-created">
-        {{ article.createdAt }}
-      </p>
-      <p class="article-content-category">
-        {{ article.category }}
-      </p>
-      <p class="article-content-likes">
-        {{ likeCount }} likes
-      </p>
-      <p
-        v-for="(a, i) in article.content"
-        :key="i"
-        class="article-content-singe"
-      >
-        {{ a }}
-      </p>
-    </article>
-    <div class="article-buttons-wrapper">
-      <button class="btn btn-secondary">
-        <router-link :to="queries.BLOG_DEFAULT">
-          Back to blog
-        </router-link>
-      </button>
-      <button class="btn btn-secondary">
-        <router-link
-          :to="`/blog/by-category/${article.category}/${article.categoryId}`"
+    <template v-if="article">
+      <AppTitle
+        :title="article.title"
+        :image="article.picture"
+        :text="article.title"
+      />
+      <article class="article-content">
+        <p class="article-content-created">
+          {{ article.createdAt }}
+        </p>
+        <p class="article-content-category">
+          {{ article.category }}
+        </p>
+        <p class="article-content-likes">
+          {{ likeCount }} likes
+        </p>
+        <p
+          v-for="(a, i) in article.content"
+          :key="i"
+          class="article-content-singe"
         >
-          Back to {{ article.category }}
-        </router-link>
-      </button>
-      <button v-if="isLiked" class="btn btn-primary" @click="onLike">
-        Remove from favourites
-      </button>
-      <button v-else class="btn btn-primary" @click="onLike">
-        Add to favourites
-      </button>
-    </div>
-    <Comments :article-id="id" />
+          {{ a }}
+        </p>
+      </article>
+      <div class="article-buttons-wrapper">
+        <button class="btn btn-secondary">
+          <router-link :to="queries.BLOG_DEFAULT">
+            Back to blog
+          </router-link>
+        </button>
+        <button class="btn btn-secondary">
+          <router-link
+            :to="`/blog/by-category/${article.category}/${article.categoryId}`"
+          >
+            Back to {{ article.category }}
+          </router-link>
+        </button>
+        <button v-if="isLiked" class="btn btn-primary" @click="onLike">
+          Remove from favourites
+        </button>
+        <button v-else class="btn btn-primary" @click="onLike">
+          Add to favourites
+        </button>
+      </div>
+      <Comments :article-id="id" />
+    </template>
+    <Loading v-else />
   </section>
 </template>
 
