@@ -7,6 +7,7 @@ import likes from '../../../utils/helpers/likes';
 import { queries } from '../../../utils/constants/global';
 import AppTitle from '../../shared/AppTitle.vue';
 import Comments from '../comment/All.vue';
+import forms from '../../../utils/helpers/forms';
 
 const store = useAuthStore();
 const route = useRoute();
@@ -22,6 +23,7 @@ onMounted(() => {
       article.value = res;
       likeCount.value = res.likes.length;
       isLiked.value = getLikes(res.likes);
+      forms.scrollToTop();
     })
     .catch(err => console.error(err));
 });
