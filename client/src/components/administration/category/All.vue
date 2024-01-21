@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue';
 import categoriesService from '../../../services/categories';
 import AppTable from '../../shared/table/AppTable.vue';
 import AppList from '../../shared/table/AppList.vue';
+import Loading from '../../shared/Loading.vue';
 
 const title = 'Total categories';
 const categories = ref([]);
@@ -27,7 +28,7 @@ function loadCategories() {
 </script>
 
 <template>
-  <AppList element="categories" :is-element="!!categories.length">
+  <AppList v-if="categories.length" element="categories" :is-element="!!categories.length">
     <template #title>
       <AppTitle
         :title="`${title} : ${categories.length}`"
@@ -43,4 +44,5 @@ function loadCategories() {
       />
     </template>
   </AppList>
+  <Loading v-else />
 </template>

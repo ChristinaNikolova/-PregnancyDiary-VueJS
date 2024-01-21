@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue';
 import articlesService from '../../../services/articles';
 import AppTable from '../../shared/table/AppTable.vue';
 import AppList from '../../shared/table/AppList.vue';
+import Loading from '../../shared/Loading.vue';
 
 const title = 'Total articles';
 const articles = ref([]);
@@ -27,7 +28,7 @@ function loadArticles() {
 </script>
 
 <template>
-  <AppList element="articles" :is-element="!!articles.length">
+  <AppList v-if="articles.length" element="articles" :is-element="!!articles.length">
     <template #title>
       <AppTitle
         :title="`${title} : ${articles.length}`"
@@ -44,4 +45,5 @@ function loadArticles() {
       />
     </template>
   </AppList>
+  <Loading v-else />
 </template>
