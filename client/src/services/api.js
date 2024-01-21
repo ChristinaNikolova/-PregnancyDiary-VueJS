@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3030";
+const baseUrl = 'http://localhost:3030';
 
 export const api = {
   register: `${baseUrl}/auth/register`,
@@ -9,5 +9,5 @@ export const api = {
   articles: `${baseUrl}/articles`,
   categories: `${baseUrl}/categories`,
   comments: `${baseUrl}/comments`,
-  //   users: `${baseUrl}/users`,
+  users: `${baseUrl}/users`,
 };

@@ -32,7 +32,9 @@ const store = useAuthStore();
             </router-link>
           </li>
           <li v-if="store.user.isAuthenticated" class="footer-nav-li">
-            Favourites
+            <router-link to="/user/favourite-articles">
+              Favourites Articles
+            </router-link>
           </li>
           <li v-if="store.user.isAuthenticated" class="footer-nav-li">
             <router-link to="/logout">

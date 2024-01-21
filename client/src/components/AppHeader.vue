@@ -50,7 +50,9 @@ function toogleMenu(e) {
           </router-link>
         </li>
         <li v-if="store.user.isAuthenticated" class="header-nav-li">
-          Favourites
+          <router-link to="/user/favourite-articles">
+            Favourites Articles
+          </router-link>
         </li>
         <li v-if="store.user.isAdmin" class="header-nav-li header-admin">
           Administration
