@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue';
 import commentsService from '../../../services/comments';
 import Form from './Form.vue';
+import Single from './Single.vue';
 
 const props = defineProps({
   articleId: {
@@ -29,10 +30,8 @@ function loadComments() {
       Comments
     </h2>
     <Form :article-id="articleId" @finish="loadComments" />
-    <ul v-if="comments.length">
-      <li v-for="c in comments" :key="c.id">
-        {{ c.content }}
-      </li>
+    <ul v-if="comments.length" class="comments-ul">
+      <Single v-for="c in comments" :key="c.id" :comment="c" />
     </ul>
   </section>
 </template>
@@ -47,5 +46,12 @@ function loadComments() {
   margin: unset;
   text-align: center;
   margin-bottom: 50px;
+}
+
+.comments-ul {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>

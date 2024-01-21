@@ -111,9 +111,7 @@ function filterCategories() {
       </template>
       <Filter v-if="showFilter" />
       <ul v-if="articles.length" class="blog-ul">
-        <template v-for="a in articles" :key="a.id">
-          <Single :article="a" />
-        </template>
+        <Single v-for="a in articles" :key="a.id" :article="a" />
       </ul>
       <Empty v-else no-result />
     </div>

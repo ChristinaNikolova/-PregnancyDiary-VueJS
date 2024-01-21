@@ -1,12 +1,12 @@
 <script setup>
-import { onMounted, ref } from "vue";
-import { useRoute } from "vue-router";
-import { useAuthStore } from "../../../store/auth";
-import articlesService from "../../../services/articles";
-import likes from "../../../utils/helpers/likes";
-import { queries } from "../../../utils/constants/global";
-import AppTitle from "../../shared/AppTitle.vue";
-import Comments from "../comment/All.vue";
+import { onMounted, ref } from 'vue';
+import { useRoute } from 'vue-router';
+import { useAuthStore } from '../../../store/auth';
+import articlesService from '../../../services/articles';
+import likes from '../../../utils/helpers/likes';
+import { queries } from '../../../utils/constants/global';
+import AppTitle from '../../shared/AppTitle.vue';
+import Comments from '../comment/All.vue';
 
 const store = useAuthStore();
 const route = useRoute();
@@ -23,7 +23,7 @@ onMounted(() => {
       likeCount.value = res.likes.length;
       isLiked.value = getLikes(res.likes);
     })
-    .catch((err) => console.error(err));
+    .catch(err => console.error(err));
 });
 
 function like() {
@@ -33,7 +33,7 @@ function like() {
       likeCount.value = res.likes.length;
       isLiked.value = getLikes(res.likes);
     })
-    .catch((err) => console.error(err));
+    .catch(err => console.error(err));
 }
 
 function getLikes(result) {
@@ -55,7 +55,9 @@ function getLikes(result) {
       <p class="article-content-category">
         {{ article.category }}
       </p>
-      <p class="article-content-likes">{{ likeCount }} likes</p>
+      <p class="article-content-likes">
+        {{ likeCount }} likes
+      </p>
       <p
         v-for="(a, i) in article.content"
         :key="i"
@@ -66,7 +68,9 @@ function getLikes(result) {
     </article>
     <div class="article-buttons-wrapper">
       <button class="btn btn-secondary">
-        <router-link :to="queries.BLOG_DEFAULT"> Back to blog </router-link>
+        <router-link :to="queries.BLOG_DEFAULT">
+          Back to blog
+        </router-link>
       </button>
       <button class="btn btn-secondary">
         <router-link
@@ -94,6 +98,7 @@ function getLikes(result) {
 }
 
 .article-content {
+  font-size: 18px;
   text-align: justify;
   margin: 0 200px 40px 200px;
 }
@@ -111,7 +116,7 @@ function getLikes(result) {
 }
 
 .article-content-singe {
-  letter-spacing: 1px;
+  letter-spacing: .7px;
   margin-bottom: 28px;
 }
 
