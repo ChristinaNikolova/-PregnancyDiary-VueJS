@@ -23,8 +23,8 @@
         </p>
         <div class="home-user-btns-wrapper">
           <button type="button" class="btn btn-secondary">
-            <router-link to="/login">
-              Login
+            <router-link to="/blog">
+              Blog
             </router-link>
           </button>
         </div>
