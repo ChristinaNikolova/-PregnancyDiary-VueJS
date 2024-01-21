@@ -4,7 +4,6 @@ import { useRoute } from 'vue-router';
 import articlesService from '../../../services/articles';
 import forms from '../../../utils/helpers/forms';
 import List from '../../shared/articles/List.vue';
-import Loading from '../../shared/Loading.vue';
 
 const route = useRoute();
 const categoryId = route.params.id;
@@ -31,7 +30,6 @@ onMounted(() => {
     <h2 class="section-title">
       {{ categoryName }}
     </h2>
-    <List v-if="articles.length" :articles="articles" />
-    <Loading v-else />
+    <List :articles="articles" />
   </section>
 </template>

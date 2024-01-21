@@ -2,8 +2,6 @@
 import { reactive } from 'vue';
 import AppInput from '../../shared/inputs/AppInput.vue';
 
-// todo remove data
-
 const emit = defineEmits(['onClose', 'onSearch']);
 const data = reactive({
   search: '',

@@ -2,7 +2,6 @@
 import { onMounted, ref } from 'vue';
 import usersService from '../../services/users';
 import List from '../shared/articles/List.vue';
-import Loading from '../shared/Loading.vue';
 
 const articles = ref([]);
 onMounted(() => {
@@ -22,8 +21,7 @@ onMounted(() => {
     <h2 class="section-title">
       Favourite Articles
     </h2>
-    <List v-if="articles.length" :articles="articles" />
-    <Loading v-else />
+    <List :articles="articles" />
   </section>
 </template>
 
