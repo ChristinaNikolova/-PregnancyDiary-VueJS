@@ -20,8 +20,19 @@ function like(id, articleId) {
     .catch(err => console.error(err));
 }
 
+function deleteById(id) {
+  return requester(`${api.comments}/${id}`, httpMethods.DELETE)
+    .then((res) => {
+      if (res.status !== 204) {
+        return res.json();
+      }
+    })
+    .catch(err => console.error(err));
+};
+
 export default {
   all,
   create,
   like,
+  deleteById,
 };

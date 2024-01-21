@@ -14,6 +14,7 @@ const props = defineProps({
     required: true,
   },
 });
+const emit = defineEmits(['finish']);
 const store = useAuthStore();
 const likeCount = ref(0);
 const isLiked = ref(false);
@@ -30,6 +31,13 @@ function onLike() {
       likeCount.value = res.likes.length;
       isLiked.value = getLikes(res.likes);
     })
+    .catch(err => console.error(err));
+}
+
+function onDelete() {
+  commentsService
+    .deleteById(props.comment.id)
+    .then(() => emit('finish'))
     .catch(err => console.error(err));
 }
 
@@ -56,7 +64,10 @@ function getLikes(result) {
     </p>
     <div class="comment-single-footer-wrapper">
       <p v-if="store.user.userId === props.comment.creatorId" class="comment-single-delete">
-        <i class="fa-solid fa-trash" />
+        <i
+          class="fa-solid fa-trash"
+          @click="onDelete"
+        />
       </p>
       <p v-else class="comment-single-like">
         <i v-if="isLiked" class="fa-solid fa-thumbs-up" @click="onLike" />

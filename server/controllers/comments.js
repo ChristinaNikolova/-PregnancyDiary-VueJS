@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { hasUser } = require("../middlewares/guards");
-const { all, create, like } = require("../services/comments");
+const { all, create, like, deleteById } = require("../services/comments");
 const { mapErrors } = require("../utils/parser");
 
 //todo check if all hasUser
@@ -34,6 +34,17 @@ router.post("/:articleId/:id", hasUser(), async (req, res) => {
     const userId = req.user._id;
     const comment = await like(id, userId);
     res.json(comment);
+  } catch (error) {
+    const message = mapErrors(error);
+    res.status(400).json({ message });
+  }
+});
+
+router.delete("/:id", hasUser(), async (req, res) => {
+  try {
+    const id = req.params.id;
+    await deleteById(id);
+    res.status(204).end();
   } catch (error) {
     const message = mapErrors(error);
     res.status(400).json({ message });

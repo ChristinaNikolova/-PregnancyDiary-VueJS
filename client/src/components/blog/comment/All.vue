@@ -36,6 +36,7 @@ function loadComments() {
         :key="c.id"
         :comment="c"
         :article-id="props.articleId"
+        @finish="loadComments"
       />
     </ul>
   </section>
