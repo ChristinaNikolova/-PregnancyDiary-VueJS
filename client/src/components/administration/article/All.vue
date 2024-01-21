@@ -3,7 +3,6 @@ import { onMounted, ref } from 'vue';
 import articlesService from '../../../services/articles';
 import AppTable from '../../shared/table/AppTable.vue';
 import AppList from '../../shared/table/AppList.vue';
-import Loading from '../../shared/Loading.vue';
 
 const title = 'Total articles';
 const articles = ref([]);

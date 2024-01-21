@@ -11,6 +11,7 @@ import ServerError from './components/shared/errors/ServerError.vue';
 import FormButton from './components/shared/buttons/Form.vue';
 import AppTitle from './components/shared/AppTitle.vue';
 import Empty from './components/shared/Empty.vue';
+import Loading from './components/shared/Loading.vue';
 import App from './App.vue';
 import './styles/index.css';
 
@@ -31,5 +32,5 @@ app.component('ClientError', ClientError);
 app.component('ServerError', ServerError);
 app.component('AppTitle', AppTitle);
 app.component('Empty', Empty);
-// app.component('Loading', Loading);
+app.component('Loading', Loading);
 app.mount('#app');

@@ -8,7 +8,6 @@ import { queries } from '../../../utils/constants/global';
 import AppTitle from '../../shared/AppTitle.vue';
 import Comments from '../comment/All.vue';
 import forms from '../../../utils/helpers/forms';
-import Loading from '../../shared/Loading.vue';
 
 const store = useAuthStore();
 const route = useRoute();
