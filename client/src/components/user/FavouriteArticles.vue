@@ -1,12 +1,13 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import usersService from '../../services/users';
+import List from '../shared/articles/List.vue';
 
 const articles = ref([]);
 onMounted(() => {
   usersService
     .allFavArticles()
-    .then(res => console.log(res))
+    .then(res => articles.value = res)
     .catch(err => console.error(err));
 });
 </script>
