@@ -4,6 +4,7 @@ import Blog from '../components/blog/article/All.vue';
 import ByCategory from '../components/blog/article/ByCategory.vue';
 import SingleArticle from '../components/blog/article/Details.vue';
 import AllDiaries from '../components/diary/All.vue';
+import DetailsDiary from '../components/diary/Details.vue';
 import CreateDiary from '../components/diary/Create.vue';
 import FavouriteArticles from '../components/user/FavouriteArticles.vue';
 import Login from '../components/auth/Login.vue';
@@ -21,6 +22,7 @@ const routes = [
   { path: '/blog/by-category/:name/:id', component: ByCategory },
   { path: '/blog/:id', component: SingleArticle, beforeEnter: isUser },
   { path: '/diary', component: AllDiaries, beforeEnter: isUser },
+  { path: '/diary/:id', component: DetailsDiary, beforeEnter: isUser },
   { path: '/diary/create', component: CreateDiary, beforeEnter: isUser },
   { path: '/user/favourite-articles', component: FavouriteArticles, beforeEnter: isUser },
   { path: '/administration/category', component: () => import('../components/administration/category/All.vue'), beforeEnter: isAdmin },

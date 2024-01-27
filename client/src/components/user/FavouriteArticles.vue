@@ -24,7 +24,3 @@ onMounted(() => {
     <List :articles="articles" />
   </section>
 </template>
-
-<style scoped>
-
-</style>

@@ -4,6 +4,7 @@ const {
 } = require("mongoose");
 const { errors } = require("../utils/constants/global");
 const { compareDate } = require("../utils/parser");
+const { diaryListViewModel } = require("../utils/mapper/diary");
 
 async function create(
   title,
@@ -30,7 +31,9 @@ async function create(
 }
 
 async function all(userId) {
-  return await Diary.find({ creator: new ObjectId(userId) });
+  return (await Diary.find({ creator: new ObjectId(userId) })).map(
+    diaryListViewModel
+  );
 }
 
 module.exports = {
