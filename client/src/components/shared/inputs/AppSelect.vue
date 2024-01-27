@@ -18,7 +18,7 @@ const props = defineProps({
     type: Array,
     required: () => [],
   },
-  categories: {
+  collection: {
     type: Array,
     required: () => [],
   },
@@ -45,7 +45,7 @@ function onChange($event) {
         <option disabled value="">
           Please relect {{ props.name }}
         </option>
-        <option v-for="c in props.categories" :key="c.id ? c.id : c" :value="c.id ? c.id : c">
+        <option v-for="c in props.collection" :key="c.id ? c.id : c" :value="c.id ? c.id : c">
           {{ c.name ? c.name : c }}
         </option>
       </select>

@@ -11,8 +11,10 @@ const props = defineProps({
   initialData: {
     type: Object,
     default: () => ({
-      name: '',
+      title: '',
+      content: '',
       picture: '',
+      category: '',
     }),
   },
   serverError: {
@@ -115,7 +117,7 @@ async function onSubmitFormHandler() {
         :errors="v$?.category.$errors"
         name="category"
         label="Category"
-        :categories="categories"
+        :collection="categories"
       />
       <slot name="buttons" />
     </form>
