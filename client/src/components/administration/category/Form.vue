@@ -1,5 +1,5 @@
 <script setup>
-import { computed, reactive, ref, watch } from 'vue';
+import { computed, onUpdated, reactive, ref, watch } from 'vue';
 import { useVuelidate } from '@vuelidate/core';
 import { helpers, maxLength, minLength, required } from '@vuelidate/validators';
 import { formNames } from '../../../utils/constants/global';
@@ -29,6 +29,11 @@ const emit = defineEmits(['onSubmitHandler', 'checkIsDisabled']);
 const title = `${props.formName} Category`;
 const data = reactive(props.initialData);
 const isDisabled = ref(props.initialDisabled);
+const errors = ref([]);
+
+onUpdated(() => {
+  errors.value = props.serverError;
+});
 
 const rules = computed(() => ({
   name: {
@@ -45,7 +50,7 @@ watch(data, () => {
   emit('checkIsDisabled', isDisabled.value);
 }, { deep: true });
 
-watch(props.serverError, () => {
+watch(errors, () => {
   isDisabled.value = props.serverError.length;
   emit('checkIsDisabled', isDisabled.value);
 });

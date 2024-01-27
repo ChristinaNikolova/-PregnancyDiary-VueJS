@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, reactive, ref, watch } from 'vue';
+import { computed, onMounted, onUpdated, reactive, ref, watch } from 'vue';
 import { useVuelidate } from '@vuelidate/core';
 import { helpers, maxLength, minLength, required, url } from '@vuelidate/validators';
 import categoriesService from '../../../services/categories';
@@ -34,12 +34,17 @@ const title = `${props.formName} Article`;
 const data = reactive(props.initialData);
 const isDisabled = ref(props.initialDisabled);
 const categories = ref([]);
+const errors = ref([]);
 
 onMounted(() => {
   categoriesService
     .all()
     .then(res => categories.value = res)
     .catch(err => console.error(err));
+});
+
+onUpdated(() => {
+  errors.value = props.serverError;
 });
 
 const rules = computed(() => ({
@@ -69,7 +74,7 @@ watch(data, () => {
   emit('checkIsDisabled', isDisabled.value);
 }, { deep: true });
 
-watch(props.serverError, () => {
+watch(errors, () => {
   isDisabled.value = props.serverError.length;
   emit('checkIsDisabled', isDisabled.value);
 });

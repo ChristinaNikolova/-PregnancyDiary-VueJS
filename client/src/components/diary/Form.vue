@@ -1,5 +1,5 @@
 <script setup>
-import { computed, reactive, ref, watch } from 'vue';
+import { computed, onUpdated, reactive, ref, watch } from 'vue';
 import { useVuelidate } from '@vuelidate/core';
 import { helpers, required } from '@vuelidate/validators';
 import { formNames, genders } from '../../utils/constants/global';
@@ -32,6 +32,11 @@ const gender = Object.values(genders);
 const title = `${props.formName} Diary`;
 const data = reactive(props.initialData);
 const isDisabled = ref(props.initialDisabled);
+const errors = ref([]);
+
+onUpdated(() => {
+  errors.value = props.serverError;
+});
 
 const rules = computed(() => ({
   positiveTestDate: {
@@ -54,7 +59,7 @@ watch(data, () => {
   emit('checkIsDisabled', isDisabled.value);
 }, { deep: true });
 
-watch(props.serverError, () => {
+watch(errors, () => {
   isDisabled.value = props.serverError.length;
   emit('checkIsDisabled', isDisabled.value);
 });
