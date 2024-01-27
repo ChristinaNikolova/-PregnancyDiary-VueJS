@@ -12,6 +12,8 @@ router.post("/", hasUser(), async (req, res) => {
     }
     const userId = req.user._id;
     const diary = await create(
+      req.body.title,
+      req.body.description,
       req.body.positiveTestDate,
       req.body.dueDate,
       req.body.gender,

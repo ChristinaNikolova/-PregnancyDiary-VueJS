@@ -4,8 +4,33 @@ const {
   Types: { ObjectId },
 } = require("mongoose");
 const { date } = require("../utils/constants/global");
+const { diary } = require("../utils/constants/model");
 
 const diarySchema = new Schema({
+  title: {
+    type: String,
+    required: [true, "Title is required"],
+    minlength: [
+      diary.TITLE_MIN_LEN,
+      `Title should be at least ${diary.TITLE_MIN_LEN} characters long`,
+    ],
+    maxlength: [
+      diary.TITLE_MAX_LEN,
+      `Title should be maximal ${diary.TITLE_MAX_LEN} characters long`,
+    ],
+  },
+  description: {
+    type: String,
+    required: [true, "Description is required"],
+    minlength: [
+      diary.DESC_MIN_LEN,
+      `Description should be at least ${diary.DESC_MIN_LEN} characters long`,
+    ],
+    maxlength: [
+      diary.DESC_MAX_LEN,
+      `Description should be maximal ${diary.DESC_MAX_LEN} characters long`,
+    ],
+  },
   positiveTestDate: {
     type: String,
     required: [true, "Date is required"],

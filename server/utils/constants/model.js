@@ -22,6 +22,13 @@ const comment = {
   CONTENT_MAX_LEN: 1000,
 };
 
+const diary = {
+  TITLE_MIN_LEN: 5,
+  TITLE_MAX_LEN: 100,
+  DESC_MIN_LEN: 10,
+  DESC_MAX_LEN: 1000,
+};
+
 const moment = {
   TITLE_MIN_LEN: 3,
   TITLE_MAX_LEN: 100,
@@ -46,6 +53,7 @@ module.exports = {
   baby,
   category,
   comment,
+  diary,
   moment,
   user,
   week,
