@@ -39,7 +39,7 @@ const errors = {
 };
 
 const date = {
-  DATE_PATTERN: /^[a-z]{2}.[0-9]{2}.[0-9]{4}$/,
+  DATE_PATTERN: /^[0-9]{2}.[0-9]{2}.[0-9]{4}$/,
 };
 
 module.exports = {
