@@ -6,6 +6,8 @@ import Form from './Form.vue';
 
 const router = useRouter();
 const data = ref({
+  title: '',
+  description: '',
   positiveTestDate: '',
   dueDate: '',
   gender: '',
@@ -13,9 +15,9 @@ const data = ref({
 const serverError = ref([]);
 const isDisabled = ref(true);
 
-function onSubmitHandler(positiveTestDate, dueDate, gender) {
+function onSubmitHandler(title, description, positiveTestDate, dueDate, gender) {
   diariesService
-    .create(positiveTestDate, dueDate, gender)
+    .create(title, description, positiveTestDate, dueDate, gender)
     .then((res) => {
       if (res.message) {
         serverError.value = res.message;

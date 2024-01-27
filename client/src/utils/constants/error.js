@@ -2,9 +2,9 @@ export const global = {
   TITLE(min, max) {
     return `Title should be between ${min} and ${max} characters long`;
   },
-  //   DESC(min, max) {
-  //     return `Description should be between ${min} and ${max} characters long`;
-  //   },
+  DESC(min, max) {
+    return `Description should be between ${min} and ${max} characters long`;
+  },
   NAME(min, max) {
     return `Name should be between ${min} and ${max} characters long`;
   },

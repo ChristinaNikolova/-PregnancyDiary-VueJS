@@ -1,15 +1,18 @@
 <script setup>
 import { computed, onUpdated, reactive, ref, watch } from 'vue';
 import { useVuelidate } from '@vuelidate/core';
-import { helpers, required } from '@vuelidate/validators';
+import { helpers, maxLength, minLength, required } from '@vuelidate/validators';
 import { formNames, genders } from '../../utils/constants/global';
 import { global } from '../../utils/constants/error';
+import { diary as models } from '../../utils/constants/model';
 import diary from '../../utils/validators/diary';
 
 const props = defineProps({
   initialData: {
     type: Object,
     default: () => ({
+      title: '',
+      description: '',
       positiveTest: '',
       dueDate: '',
       gender: '',
@@ -39,6 +42,16 @@ onUpdated(() => {
 });
 
 const rules = computed(() => ({
+  title: {
+    required: helpers.withMessage(global.REQUIRED, required),
+    minLength: helpers.withMessage(global.TITLE(models.TITLE_MIN_LEN, models.TITLE_MAX_LEN), minLength(models.TITLE_MIN_LEN)),
+    maxLength: helpers.withMessage(global.TITLE(models.TITLE_MIN_LEN, models.TITLE_MAX_LEN), maxLength(models.TITLE_MAX_LEN)),
+  },
+  description: {
+    required: helpers.withMessage(global.REQUIRED, required),
+    minLength: helpers.withMessage(global.DESC(models.DESC_MIN_LEN, models.DESC_MAX_LEN), minLength(models.DESC_MIN_LEN)),
+    maxLength: helpers.withMessage(global.DESC(models.DESC_MIN_LEN, models.DESC_MAX_LEN), maxLength(models.DESC_MAX_LEN)),
+  },
   positiveTestDate: {
     required: helpers.withMessage(global.REQUIRED, required),
     validDate: helpers.withMessage(global.DATE, diary.validDate),
@@ -55,7 +68,7 @@ const rules = computed(() => ({
 const v$ = useVuelidate(rules, data);
 
 watch(data, () => {
-  isDisabled.value = v$.value.positiveTestDate.$invalid || v$.value.dueDate.$invalid || v$.value.gender.$invalid;
+  isDisabled.value = v$.value.title.$invalid || v$.value.description.$invalid || v$.value.positiveTestDate.$invalid || v$.value.dueDate.$invalid || v$.value.gender.$invalid;
   emit('checkIsDisabled', isDisabled.value);
 }, { deep: true });
 
@@ -69,7 +82,7 @@ async function onSubmitFormHandler() {
   if (!isValid) {
     return;
   }
-  emit('onSubmitHandler', data.positiveTestDate, data.dueDate, data.gender.toLowerCase());
+  emit('onSubmitHandler', data.title, data.description, data.positiveTestDate, data.dueDate, data.gender.toLowerCase());
 };
 </script>
 
@@ -83,6 +96,20 @@ async function onSubmitFormHandler() {
     />
     <ServerError v-if="props.serverError.length" :errors="props.serverError" />
     <form class="form" @submit.prevent="onSubmitFormHandler">
+      <AppInput
+        v-model.trim="v$.title.$model"
+        :errors="v$?.title.$errors"
+        name="title"
+        type="text"
+        label="Title"
+      />
+      <AppTextarea
+        v-model.trim="v$.description.$model"
+        :errors="v$?.description.$errors"
+        name="description"
+        label="Description"
+        rows="15"
+      />
       <AppInput
         v-model.trim="v$.positiveTestDate.$model"
         :errors="v$?.positiveTestDate.$errors"
