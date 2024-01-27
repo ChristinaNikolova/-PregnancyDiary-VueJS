@@ -36,7 +36,6 @@ async function like(id, userId) {
   } else {
     comment.likes.push(userId);
   }
-
   return comment.save();
 }
 

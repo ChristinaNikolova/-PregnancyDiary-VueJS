@@ -8,6 +8,13 @@ function create(positiveTestDate, dueDate, gender) {
     .catch(err => console.error(err));
 }
 
+function all() {
+  return requester(`${api.diaries}`, httpMethods.GET)
+    .then(res => res.json())
+    .catch(err => console.error(err));
+};
+
 export default {
   create,
+  all,
 };

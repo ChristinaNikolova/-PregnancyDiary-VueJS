@@ -1,4 +1,7 @@
 const Diary = require("../models/Diary");
+const {
+  Types: { ObjectId },
+} = require("mongoose");
 const { errors } = require("../utils/constants/global");
 const { compareDate } = require("../utils/parser");
 
@@ -17,6 +20,11 @@ async function create(positiveTestDate, dueDate, gender, userId) {
   return diary;
 }
 
+async function all(userId) {
+  return await Diary.find({ creator: new ObjectId(userId) });
+}
+
 module.exports = {
   create,
+  all,
 };
