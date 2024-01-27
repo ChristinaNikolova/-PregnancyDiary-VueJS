@@ -9,7 +9,9 @@
         A Baby Fills a Place in Your Heart That You Never Knew Was Empty!
       </p>
       <button type="button" class="btn btn-primary">
-        Create your diary
+        <router-link to="/diary/create">
+          Create new diary
+        </router-link>
       </button>
     </section>
     <section class="home-user">
@@ -72,5 +74,9 @@
 
 .home-user-btns-wrapper a {
   color: var(--clr-brown);
+}
+
+.home .btn.btn-primary a {
+  color: var(--clr-white);
 }
 </style>

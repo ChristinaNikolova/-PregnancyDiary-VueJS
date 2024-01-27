@@ -39,7 +39,9 @@ function toogleMenu(e) {
           </router-link>
         </li>
         <li class="header-nav-li">
-          Create new diary
+          <router-link to="/diary/create">
+            Create new diary
+          </router-link>
         </li>
         <li v-if="store.user.isAuthenticated" class="header-nav-li">
           Diaries

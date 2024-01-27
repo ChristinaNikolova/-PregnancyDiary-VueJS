@@ -16,7 +16,9 @@ const store = useAuthStore();
             </router-link>
           </li>
           <li class="footer-nav-li">
-            Create new diary
+            <router-link to="/diary/create">
+              Create new diary
+            </router-link>
           </li>
           <li v-if="store.user.isAuthenticated" class="footer-nav-li">
             Diaries
