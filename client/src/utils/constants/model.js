@@ -23,5 +23,5 @@ export const comment = {
 };
 
 export const diary = {
-  DATE_REGEX: /^[0-9]{2}.[0-9]{2}.[0-9]{4}$/g,
+  DATE_REGEX: /^(0[1-9]|[12][0-9]|3[01])[.](0[1-9]|1[012])[.](19|20)[0-9]{2}$/g,
 };
