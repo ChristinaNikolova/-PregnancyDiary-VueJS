@@ -27,7 +27,7 @@ const errors = {
   },
   //   SELECT_CATEGORY: "Please select category",
   NAME_TAKEN: "Name is already taken",
-  //   TITEL_TAKEN: "Title is already taken",
+  TITEL_TAKEN: "Title is already taken",
   EMAIL_TAKEN: "Email is already taken",
   LOGIN: "Incorrect email or password",
   NOT_LOGGED_IN: "Please log in",
@@ -39,7 +39,7 @@ const errors = {
 };
 
 const date = {
-  DATE_PATTERN: /^[0-9]{2}.[0-9]{2}.[0-9]{4}$/,
+  DATE_PATTERN: /^[a-z]{2}.[0-9]{2}.[0-9]{4}$/,
 };
 
 module.exports = {

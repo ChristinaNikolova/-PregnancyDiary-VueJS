@@ -8,6 +8,7 @@ const {
   articleListByCategoryViewModel,
   articleDetailsViewModel,
 } = require("../utils/mapper/article");
+const { errors } = require("../utils/constants/global");
 
 async function all(take, skip, searchedQuery) {
   return (
