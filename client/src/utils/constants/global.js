@@ -28,8 +28,15 @@ export const queries = {
 };
 
 export const genders = {
-  MALE: 'Male',
-  FEMALE: 'Female',
+  BOY: 'boy',
+  GIRL: 'girl',
   SURPRICE: 'Surprice',
   UNKNOWN: 'I don\'t know yet',
+};
+
+export const diaryPictures = {
+  BOY,
+  GIRL,
+  IDONTKNOW,
+  SURPRICE,
 };

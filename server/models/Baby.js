@@ -18,7 +18,7 @@ const babySchema = new Schema({
   gender: {
     type: String,
     required: [true, "Gender is required"],
-    enum: ["male", "female"],
+    enum: ["boy", "girl"],
   },
   birthDate: {
     type: String,
