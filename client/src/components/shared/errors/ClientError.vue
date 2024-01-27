@@ -10,12 +10,18 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="client-error">
-    {{ props.error }}
+  <div class="client-error-wrapper">
+    <div class="client-error">
+      {{ props.error }}
+    </div>
   </div>
 </template>
 
 <style scoped>
+.client-error-wrapper {
+  margin-bottom: 20px;
+}
+
 .client-error {
   position: absolute;
   left: 10%;
