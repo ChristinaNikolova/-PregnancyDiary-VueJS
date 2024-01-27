@@ -22,6 +22,20 @@ function formatCreatedAt(createdAt) {
   );
 }
 
+function compareDate(date1, date2) {
+  const positiveTestDate = parseDate(date1);
+  const dueDate = parseDate(date2);
+  return dueDate > positiveTestDate;
+}
+
+function parseDate(date) {
+  const parts = date.split(".").map((p) => p.trim());
+  const year = parts[2];
+  const month = Number(parts[1]) - 1;
+  const day = Number(parts[0]) + 1;
+  return new Date(year, month, day);
+}
+
 const monthNames = [
   "January",
   "February",
@@ -40,4 +54,5 @@ const monthNames = [
 module.exports = {
   mapErrors,
   formatCreatedAt,
+  compareDate,
 };

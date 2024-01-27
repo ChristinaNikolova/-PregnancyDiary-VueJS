@@ -36,6 +36,7 @@ const errors = {
   TOKEN_INVALID: "Invalid authorization token",
   DATABASE: "Database error",
   DATABASE_CONNECTION: "Error connecting to database",
+  INVALID_DATE: "Due date should be after the positive test date",
 };
 
 const date = {
