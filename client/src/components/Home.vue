@@ -25,8 +25,8 @@
         </p>
         <div class="home-user-btns-wrapper">
           <button type="button" class="btn btn-secondary">
-            <router-link to="/blog">
-              Blog
+            <router-link to="/diary">
+              My Diaries
             </router-link>
           </button>
         </div>

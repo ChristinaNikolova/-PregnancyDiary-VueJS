@@ -21,7 +21,9 @@ const store = useAuthStore();
             </router-link>
           </li>
           <li v-if="store.user.isAuthenticated" class="footer-nav-li">
-            Diaries
+            <router-link to="/diary">
+              My diaries
+            </router-link>
           </li>
           <li class="footer-nav-li" />
         </ul>

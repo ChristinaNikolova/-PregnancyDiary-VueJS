@@ -44,7 +44,9 @@ function toogleMenu(e) {
           </router-link>
         </li>
         <li v-if="store.user.isAuthenticated" class="header-nav-li">
-          Diaries
+          <router-link to="/diary">
+            My diaries
+          </router-link>
         </li>
         <li class="header-nav-li">
           <router-link :to="queries.BLOG_DEFAULT">
