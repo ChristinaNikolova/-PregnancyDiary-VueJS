@@ -6,7 +6,7 @@ const {
 const { date } = require("../utils/constants/global");
 
 const diarySchema = new Schema({
-  positiveTest: {
+  positiveTestDate: {
     type: String,
     required: [true, "Date is required"],
     match: [date.DATE_PATTERN, "Date date should be in format DD.MM.YYYY"],
@@ -19,7 +19,7 @@ const diarySchema = new Schema({
   gender: {
     type: String,
     required: [true, "Gender is required"],
-    enum: ["male", "female", "dontKnow", "surprice"],
+    enum: ["male", "female", "i don't know yet", "surprice"],
   },
   isBabyBorn: {
     type: Boolean,
@@ -28,7 +28,6 @@ const diarySchema = new Schema({
   baby: {
     type: ObjectId,
     ref: "Baby",
-    required: true,
   },
   creator: {
     type: ObjectId,
