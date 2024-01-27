@@ -11,6 +11,7 @@ export const global = {
   CONTENT(min, max) {
     return `Content should be between ${min} and ${max} characters long`;
   },
+  DATE: 'Date should be in format DD.MM.YYYY',
   REQUIRED: 'Field is required',
   URL: 'Invalid URL',
   DEFAULT: 'Error',

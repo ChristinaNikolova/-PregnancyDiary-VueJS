@@ -10,4 +10,5 @@ export const api = {
   categories: `${baseUrl}/categories`,
   comments: `${baseUrl}/comments`,
   users: `${baseUrl}/users`,
+  diaries: `${baseUrl}/diaries`,
 };

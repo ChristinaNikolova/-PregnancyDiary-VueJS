@@ -27,7 +27,9 @@ export const queries = {
   BLOG_DEFAULT: '/blog?page=1&query=no%20search',
 };
 
-// export const genders = {
-//   MALE: 'male',
-//   FEMALE: 'female',
-// };
+export const genders = {
+  MALE: 'Male',
+  FEMALE: 'Female',
+  SURPRICE: 'Surprice',
+  UNKNOWN: 'I don\'t know yet',
+};

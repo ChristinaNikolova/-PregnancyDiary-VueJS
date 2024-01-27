@@ -21,3 +21,7 @@ export const comment = {
   CONTENT_MIN_LEN: 10,
   CONTENT_MAX_LEN: 1000,
 };
+
+export const diary = {
+  DATE_REGEX: /^[0-9]{2}.[0-9]{2}.[0-9]{4}$/g,
+};
