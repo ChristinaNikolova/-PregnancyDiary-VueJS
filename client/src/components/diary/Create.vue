@@ -14,7 +14,6 @@ const serverError = ref([]);
 const isDisabled = ref(true);
 
 function onSubmitHandler(positiveTestDate, dueDate, gender) {
-  console.log('in', positiveTestDate, dueDate, gender);
   diariesService
     .create(positiveTestDate, dueDate, gender)
     .then((res) => {
