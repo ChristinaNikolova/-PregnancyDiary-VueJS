@@ -1,4 +1,4 @@
-// todo const { formatCreatedAt } = require("../parser");
+const { weekListViewModel } = require("./week");
 
 function diaryListViewModel(diary) {
   return {
@@ -11,6 +11,19 @@ function diaryListViewModel(diary) {
   };
 }
 
+function diaryDetailsViewModel(diary) {
+  return {
+    id: diary._id,
+    title: diary.title,
+    description: diary.description,
+    positiveTestDate: diary.positiveTestDate,
+    dueDate: diary.dueDate,
+    gender: diary.gender,
+    weeks: diary.weeks.map(weekListViewModel).sort((a, b) => a.title - b.title),
+  };
+}
+
 module.exports = {
   diaryListViewModel,
+  diaryDetailsViewModel,
 };

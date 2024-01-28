@@ -3,11 +3,10 @@ const {
   model,
   Types: { ObjectId },
 } = require("mongoose");
-const { week } = require("../utils/constants/model");
 
 const weekSchema = new Schema({
   title: {
-    type: String,
+    type: Number,
   },
   subTitle: {
     type: String,

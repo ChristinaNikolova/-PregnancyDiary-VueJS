@@ -3,9 +3,12 @@ const Week = require("../models/Week");
 const {
   Types: { ObjectId },
 } = require("mongoose");
-const { errors } = require("../utils/constants/global");
 const { compareDate, getTrimesterName } = require("../utils/parser");
-const { diaryListViewModel } = require("../utils/mapper/diary");
+const {
+  diaryListViewModel,
+  diaryDetailsViewModel,
+} = require("../utils/mapper/diary");
+const { errors } = require("../utils/constants/global");
 const { subTitle, text } = require("../utils/constants/week");
 
 async function create(
@@ -45,9 +48,10 @@ async function deleteById(id) {
 }
 
 async function getById(id, hasToMap = false) {
-  // todo update model(...)
-  const diary = await Diary.findById(id);
-  return hasToMap ? diaryListViewModel(diary) : diary;
+  if (hasToMap) {
+    return diaryDetailsViewModel(await Diary.findById(id).populate("weeks"));
+  }
+  return await Diary.findById(id);
 }
 
 async function update(
@@ -78,7 +82,7 @@ async function getWeeks() {
     const weekNumber = i + 1;
     const weekTitle = weekNumber.toString();
     const week = new Week({
-      title: weekTitle,
+      title: weekNumber,
       subTitle: subTitle[weekTitle],
       text: text[weekTitle],
       trimester: getTrimesterName(weekNumber),
