@@ -1,4 +1,5 @@
 const { errors } = require("./constants/global");
+const { trimester } = require("./constants/week");
 
 function mapErrors(err) {
   if (Array.isArray(err)) {
@@ -51,8 +52,18 @@ const monthNames = [
   "December",
 ];
 
+function getTrimesterName(week) {
+  if (week <= 13) {
+    return trimester.FIRST;
+  } else if (week <= 27) {
+    return trimester.SECOND;
+  }
+  return trimester.THIRD;
+}
+
 module.exports = {
   mapErrors,
   formatCreatedAt,
   compareDate,
+  getTrimesterName,
 };

@@ -43,11 +43,6 @@ const user = {
   PASSWORD_MAX_LEN: 50,
 };
 
-const week = {
-  WEEK_MIN: 0,
-  WEEK_MAX: 45,
-};
-
 module.exports = {
   article,
   baby,
@@ -56,5 +51,4 @@ module.exports = {
   diary,
   moment,
   user,
-  week,
 };

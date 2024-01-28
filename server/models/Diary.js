@@ -59,7 +59,7 @@ const diarySchema = new Schema({
     ref: "User",
     required: true,
   },
-  week: {
+  weeks: {
     type: [ObjectId],
     ref: "Week",
     default: [],

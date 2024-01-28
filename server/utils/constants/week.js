@@ -84,7 +84,14 @@ const text = {
   40: "Welcome to your final week of pregnancy! Well, not really! Week forty means you are full-term, but carrying the baby for one or two extra weeks is not uncommon, and many future moms experience this.Week 40 can be mentally difficult, thanks to constant wondering when the baby will decide to come out and meet you finally.",
 };
 
+const trimester = {
+  FIRST: "first",
+  SECOND: "second",
+  THIRD: "third",
+};
+
 module.exports = {
   subTitle,
   text,
+  trimester,
 };
