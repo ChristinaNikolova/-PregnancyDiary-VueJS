@@ -25,7 +25,7 @@ function loadDiaries() {
     <h2 class="section-title">
       My Diaries
     </h2>
-    <ul class="all-diaries-ul">
+    <ul v-if="diaries.length" class="all-diaries-ul">
       <Single
         v-for="d in diaries"
         :key="d.id"
@@ -33,6 +33,13 @@ function loadDiaries() {
         @finish="loadDiaries"
       />
     </ul>
+    <template v-else>
+      <Empty element="diaries" />
+      <Jumbo
+        image="/images/web3-woman-pregnant-light-spiritual-shutterstock_1466000780.webp"
+        text="pregnant-woman"
+      />
+    </template>
   </section>
 </template>
 
