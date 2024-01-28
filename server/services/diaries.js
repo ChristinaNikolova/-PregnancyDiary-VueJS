@@ -40,6 +40,10 @@ async function all(userId) {
   );
 }
 
+async function deleteById(id) {
+  return Diary.findByIdAndDelete(id);
+}
+
 async function getWeeks() {
   let weeks = [];
   for (let i = 0; i < 40; i++) {
@@ -60,4 +64,5 @@ async function getWeeks() {
 module.exports = {
   create,
   all,
+  deleteById,
 };

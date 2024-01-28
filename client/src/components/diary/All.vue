@@ -5,11 +5,15 @@ import Single from './Single.vue';
 
 const diaries = ref([]);
 onMounted(() => {
+  loadDiaries();
+});
+
+function loadDiaries() {
   diariesService
     .all()
     .then(res => diaries.value = res)
     .catch(err => console.error(err));
-});
+}
 </script>
 
 <template>
@@ -22,7 +26,12 @@ onMounted(() => {
       My Diaries
     </h2>
     <ul class="all-diaries-ul">
-      <Single v-for="d in diaries" :key="d.id" :diary="d" />
+      <Single
+        v-for="d in diaries"
+        :key="d.id"
+        :diary="d"
+        @finish="loadDiaries"
+      />
     </ul>
   </section>
 </template>

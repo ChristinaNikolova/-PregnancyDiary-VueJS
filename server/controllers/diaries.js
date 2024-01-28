@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { hasUser } = require("../middlewares/guards");
-const { create, all } = require("../services/diaries");
+const { create, all, deleteById } = require("../services/diaries");
 const { mapErrors } = require("../utils/parser");
 const { validationResult } = require("express-validator");
 
@@ -31,6 +31,17 @@ router.get("/", hasUser(), async (req, res) => {
     const userId = req.user._id;
     const diaries = await all(userId);
     res.json(diaries);
+  } catch (error) {
+    const message = mapErrors(error);
+    res.status(400).json({ message });
+  }
+});
+
+router.delete("/:id", hasUser(), async (req, res) => {
+  try {
+    const id = req.params.id;
+    await deleteById(id);
+    res.status(204).end();
   } catch (error) {
     const message = mapErrors(error);
     res.status(400).json({ message });

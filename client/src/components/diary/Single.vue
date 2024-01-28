@@ -1,7 +1,8 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { diaryPictures, genders } from '../../utils/constants/global';
+import diariesService from '../../services/diaries';
 
 const props = defineProps({
   diary: {
@@ -9,7 +10,9 @@ const props = defineProps({
     default: () => {},
   },
 });
+const emit = defineEmits(['finish']);
 const router = useRouter();
+const isHovering = ref(false);
 
 const getImage = computed(() => {
   let image = '';
@@ -28,13 +31,39 @@ const getImage = computed(() => {
   return image;
 });
 
+function onDelete() {
+  diariesService
+    .deleteById(props.diary.id)
+    .then(() => {
+      emit('finish');
+    })
+    .catch(err => console.error(err));
+}
+
+function onUpdate() {
+  router.push(`/diary/update/${props.diary.id}`);
+}
+
 function navigateToDetails() {
   router.push(`/diary/${props.diary.id}`);
-}
+};
+
+function onMouseEnter() {
+  isHovering.value = true;
+};
+
+function onMouseLeave() {
+  isHovering.value = false;
+};
 </script>
 
 <template>
-  <li class="single-diary-li" @click="navigateToDetails">
+  <li
+    class="single-diary-li"
+    @mouseenter="onMouseEnter"
+    @mouseleave="onMouseLeave"
+    @click="navigateToDetails"
+  >
     <div class="single-diary-li-img-wrapper">
       <img class="single-diary-li-img" :src="getImage" alt="diary-image">
       <div class="single-diary-li-img-content-wrapper">
@@ -42,6 +71,10 @@ function navigateToDetails() {
         <p class="single-diary-li-img-text">
           Due Date: {{ props.diary.dueDate }}
         </p>
+        <div v-if="isHovering" class="single-diary-li-img-icons-wrapper">
+          <i class="fa-solid fa-pen" @click.stop="onUpdate()" />
+          <i class="fa-solid fa-trash" @click.stop="onDelete" />
+        </div>
       </div>
     </div>
     <div class="single-diary-li-content-wrapper">
@@ -115,5 +148,14 @@ function navigateToDetails() {
 
 .single-diary-li-content-text {
   font-size: 18px;
+}
+
+.single-diary-li-img-icons-wrapper {
+  font-size: 14px;
+  color: var(--clr-brown);
+}
+
+.single-diary-li-img-icons-wrapper .fa-pen {
+  margin-right: 6px;
 }
 </style>
