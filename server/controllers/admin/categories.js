@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const { validationResult } = require("express-validator");
 const { isAdmin } = require("../../middlewares/guards");
 const {
   getById,
@@ -11,10 +10,6 @@ const { mapErrors } = require("../../utils/parser");
 
 router.post("/", isAdmin(), async (req, res) => {
   try {
-    const { errors } = validationResult(req);
-    if (errors.length > 0) {
-      throw mapErrors(errors);
-    }
     const category = await create(req.body.name);
     res.json(category);
   } catch (error) {
@@ -47,10 +42,6 @@ router.get("/:id", isAdmin(), async (req, res) => {
 
 router.put("/:id", isAdmin(), async (req, res) => {
   try {
-    const { errors } = validationResult(req);
-    if (errors.length > 0) {
-      throw mapErrors(errors);
-    }
     const id = req.params.id;
     const category = await update(id, req.body.name);
     res.json(category);
