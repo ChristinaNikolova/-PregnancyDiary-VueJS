@@ -27,6 +27,12 @@ export const queries = {
   BLOG_DEFAULT: '/blog?page=1&query=no%20search',
 };
 
+export const trimesters = {
+  FIRST: 'first',
+  SECOND: 'second',
+  THIRD: 'third',
+};
+
 export const genders = {
   BOY: 'boy',
   GIRL: 'girl',
