@@ -31,7 +31,7 @@ const props = defineProps({
   },
 });
 const emit = defineEmits(['onSubmitHandler', 'checkIsDisabled']);
-const gender = Object.values(genders);
+const gender = Object.values(genders).map(g => g.toUpperCase());
 const title = `${props.formName} Diary`;
 const data = reactive(props.initialData);
 const isDisabled = ref(props.initialDisabled);

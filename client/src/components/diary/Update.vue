@@ -27,7 +27,7 @@ onMounted(() => {
       data.value.description = res.description;
       data.value.positiveTestDate = res.positiveTestDate;
       data.value.dueDate = res.dueDate;
-      data.value.gender = res.gender;
+      data.value.gender = res.gender.toUpperCase();
     })
     .catch(err => console.err(err));
 });
