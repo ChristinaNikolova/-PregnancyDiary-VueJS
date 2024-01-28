@@ -51,7 +51,3 @@ function checkIsDisabled(disable) {
     </template>
   </Form>
 </template>
-
-<style scoped>
-
-</style>

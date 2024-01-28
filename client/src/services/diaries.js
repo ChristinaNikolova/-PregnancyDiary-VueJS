@@ -24,8 +24,22 @@ function deleteById(id) {
     .catch(err => console.error(err));
 };
 
+function getById(id) {
+  return requester(`${api.diaries}/${id}`, httpMethods.GET)
+    .then(res => res.json())
+    .catch(err => console.error(err));
+};
+
+function update(id, title, description, positiveTestDate, dueDate, gender) {
+  return requester(`${api.diaries}/${id}`, httpMethods.PUT, { title, description, positiveTestDate, dueDate, gender })
+    .then(res => res.json())
+    .catch(err => console.error(err));
+};
+
 export default {
   create,
   all,
   deleteById,
+  getById,
+  update,
 };

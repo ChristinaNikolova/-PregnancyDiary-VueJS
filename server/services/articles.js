@@ -42,8 +42,7 @@ async function getById(id) {
 }
 
 async function getByIdAdmin(id) {
-  const article = await Article.findById(id);
-  return article;
+  return await Article.findById(id);
 }
 
 async function create(title, content, picture, category) {
@@ -74,7 +73,6 @@ async function update(id, title, content, picture, category) {
   article.content = content;
   article.picture = picture;
   article.category = category;
-
   await article.save();
   return article;
 }

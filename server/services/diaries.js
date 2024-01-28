@@ -44,6 +44,34 @@ async function deleteById(id) {
   return Diary.findByIdAndDelete(id);
 }
 
+async function getById(id, hasToMap = false) {
+  // todo update model(...)
+  const diary = await Diary.findById(id);
+  return hasToMap ? diaryListViewModel(diary) : diary;
+}
+
+async function update(
+  id,
+  title,
+  description,
+  positiveTestDate,
+  dueDate,
+  gender
+) {
+  const validDates = compareDate(positiveTestDate, dueDate);
+  if (!validDates) {
+    throw new Error(errors.INVALID_DATE);
+  }
+  const diary = await getById(id);
+  diary.title = title;
+  diary.description = description;
+  diary.positiveTestDate = positiveTestDate;
+  diary.dueDate = dueDate;
+  diary.gender = gender;
+  await diary.save();
+  return diary;
+}
+
 async function getWeeks() {
   let weeks = [];
   for (let i = 0; i < 40; i++) {
@@ -65,4 +93,6 @@ module.exports = {
   create,
   all,
   deleteById,
+  getById,
+  update,
 };
