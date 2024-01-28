@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
+import { trimesters } from '../../utils/constants/global';
 import diariesService from '../../services/diaries';
 
 const route = useRoute();
@@ -42,33 +43,47 @@ onMounted(() => {
       </div>
     </section>
     <section class="diary-details-weeks">
-      <h3>Weeks</h3>
-      <div class="wrapper">
-        <h4>First Trimester</h4>
-        <ul>
+      <h3 class="section-title">
+        Pregnancy Week by Week
+      </h3>
+      <p class="diary-details-weeks-content">
+        Get Excited for Every Milestone: Our “Pregnancy Week by Week” articles provide an in-depth look at the incredible journey of nurturing new life inside your body. Each week, we’ll take you through the developmental milestones your baby is reaching, as well as the physical and emotional changes you can expect.
+      </p>
+      <div class="diary-details-weeks-trimester-wrapper">
+        <h4 class="diary-details-weeks-trimester-title section-title">
+          First Trimester
+        </h4>
+        <ul class="diary-details-weeks-trimester-ul">
           <template v-for="w in diary.weeks">
-            <li v-if="w.trimester === 'first'" :key="w.id">
+            <li v-if="w.trimester === trimesters.FIRST" :key="w.id" class="diary-details-weeks-trimester-li">
               {{ w.title }}
+              <img :src="`/images/weeks/${w.title}.jpg`" :alt="`${w.title}-week`">
             </li>
           </template>
         </ul>
       </div>
-      <div class="wrapper">
-        <h4>Second Trimester</h4>
-        <ul>
+      <div class="diary-details-weeks-trimester-wrapper">
+        <h4 class="diary-details-weeks-trimester-title section-title">
+          Second Trimester
+        </h4>
+        <ul class="diary-details-weeks-trimester-ul">
           <template v-for="w in diary.weeks">
-            <li v-if="w.trimester === 'second'" :key="w.id">
+            <li v-if="w.trimester === trimesters.SECOND" :key="w.id" class="diary-details-weeks-trimester-li">
               {{ w.title }}
+              <img :src="`/images/weeks/${w.title}.jpg`" :alt="`${w.title}-week`">
             </li>
           </template>
         </ul>
       </div>
-      <div class="wrapper">
-        <h4>Third Trimester</h4>
-        <ul>
+      <div class="diary-details-weeks-trimester-wrapper">
+        <h4 class="diary-details-weeks-trimester-title section-title">
+          Third Trimester
+        </h4>
+        <ul class="diary-details-weeks-trimester-ul">
           <template v-for="w in diary.weeks">
-            <li v-if="w.trimester === 'third'" :key="w.id">
+            <li v-if="w.trimester === trimesters.THIRD" :key="w.id" class="diary-details-weeks-trimester-li">
               {{ w.title }}
+              <img :src="`/images/weeks/${w.title}.jpg`" :alt="`${w.title}-week`">
             </li>
           </template>
         </ul>
@@ -83,7 +98,7 @@ onMounted(() => {
   color: var(--clr-white);
 }
 
-.diary-details .section-title {
+.diary-details h2.section-title {
   color: var(--clr-white);
 }
 
@@ -113,6 +128,8 @@ onMounted(() => {
   width: 400px;
   background-color: var(--clr-cream-bg);
   padding: 100px;
+  -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.33);
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.33);
 }
 
 .diary-details-info-positive-test-date {
@@ -130,5 +147,47 @@ onMounted(() => {
 .diary-details-weeks {
   background-color: var(--clr-cream-bl);
   color: var(--clr-dark-grey);
+  padding-top: 60px;
+}
+
+.diary-details h3.section-title {
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+.diary-details-weeks-content {
+  text-align: center;
+  font-size: 18px;
+  text-transform: lowercase;
+  line-height: 2;
+  letter-spacing: 1.1px;
+  margin-bottom: 80px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.diary-details-weeks-trimester-wrapper {
+  margin-bottom: 100px;
+}
+
+.diary-details-weeks-trimester-title {
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+
+.diary-details-weeks-trimester-ul {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 100% 50% 70% 70%;
 }
 </style>
