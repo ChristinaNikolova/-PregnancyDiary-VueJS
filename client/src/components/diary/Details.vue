@@ -56,8 +56,13 @@ onMounted(() => {
         <ul class="diary-details-weeks-trimester-ul">
           <template v-for="w in diary.weeks">
             <li v-if="w.trimester === trimesters.FIRST" :key="w.id" class="diary-details-weeks-trimester-li">
-              {{ w.title }}
-              <img :src="`/images/weeks/${w.title}.jpg`" :alt="`${w.title}-week`">
+              <img class="diary-details-weeks-trimester-li-img" :src="`/images/weeks/${w.title}.jpg`" :alt="`${w.title}-week`">
+              <h6 class="diary-details-weeks-trimester-li-title">
+                {{ w.title }} week pregnant
+              </h6>
+              <p class="diary-details-weeks-trimester-li-content">
+                {{ w.subTitle }}
+              </p>
             </li>
           </template>
         </ul>
@@ -69,8 +74,13 @@ onMounted(() => {
         <ul class="diary-details-weeks-trimester-ul">
           <template v-for="w in diary.weeks">
             <li v-if="w.trimester === trimesters.SECOND" :key="w.id" class="diary-details-weeks-trimester-li">
-              {{ w.title }}
-              <img :src="`/images/weeks/${w.title}.jpg`" :alt="`${w.title}-week`">
+              <img class="diary-details-weeks-trimester-li-img" :src="`/images/weeks/${w.title}.jpg`" :alt="`${w.title}-week`">
+              <h6 class="diary-details-weeks-trimester-li-title">
+                {{ w.title }} week pregnant
+              </h6>
+              <p class="diary-details-weeks-trimester-li-content">
+                {{ w.subTitle }}
+              </p>
             </li>
           </template>
         </ul>
@@ -82,8 +92,13 @@ onMounted(() => {
         <ul class="diary-details-weeks-trimester-ul">
           <template v-for="w in diary.weeks">
             <li v-if="w.trimester === trimesters.THIRD" :key="w.id" class="diary-details-weeks-trimester-li">
-              {{ w.title }}
-              <img :src="`/images/weeks/${w.title}.jpg`" :alt="`${w.title}-week`">
+              <img class="diary-details-weeks-trimester-li-img" :src="`/images/weeks/${w.title}.jpg`" :alt="`${w.title}-week`">
+              <h6 class="diary-details-weeks-trimester-li-title">
+                {{ w.title }} week pregnant
+              </h6>
+              <p class="diary-details-weeks-trimester-li-content">
+                {{ w.subTitle }}
+              </p>
             </li>
           </template>
         </ul>
@@ -148,6 +163,7 @@ onMounted(() => {
   background-color: var(--clr-cream-bl);
   color: var(--clr-dark-grey);
   padding-top: 60px;
+  padding-bottom: 60px;
 }
 
 .diary-details h3.section-title {
@@ -181,13 +197,29 @@ onMounted(() => {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 50px;
 }
 
-img {
-  width: 200px;
-  height: 200px;
+.diary-details-weeks-trimester-li {
+  width: 30%;
+  width: 250px;
+  height: 250px;
+  margin-bottom: 90px;
+}
+
+.diary-details-weeks-trimester-li-img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  border-radius: 100% 50% 70% 70%;
+  border-radius: 100% 70% 65% 70%;
+}
+
+.diary-details-weeks-trimester-li-title {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.diary-details-weeks-trimester-li-content {
+  font-size: 14px;
 }
 </style>
