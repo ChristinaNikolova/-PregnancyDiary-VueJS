@@ -209,28 +209,28 @@ onMounted(() => {
 }
 
 .week-details-mood::before {
+  position: absolute;
+  content: "";
+  top: -60px;
+  left: 120px;
   width: 120px;
   height: 100px;
   border-radius: 50%;
   background-color: var(--clr-white);
   line-height: 75px;
   text-align: center;
-  position: absolute;
-  content: "";
-  top: -60px;
-  left: 120px;
 }
 
 .week-details-mood::after {
+  position: absolute;
+  content: "";
+  top: -20px;
+  left: 60px;
   width: 100px;
   height: 60px;
   border-radius: 50%;
   background-color: var(--clr-white);
   line-height: 75px;
   text-align: center;
-  position: absolute;
-  content: "";
-  top: -20px;
-  left: 60px;
 }
 </style>
