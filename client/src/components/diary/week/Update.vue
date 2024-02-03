@@ -26,15 +26,14 @@ onMounted(() => {
     .then((res) => {
       data.value.title = res.title;
       data.value.mood = res.mood;
-      data.value.myWeight = res.myWeight === 0 ? '' : res.myWeight;
-      data.value.myBellySize = res.myBellySize === 0 ? '' : res.myBellySize;
-      data.value.babyWeight = res.babyWeight === 0 ? '' : res.babyWeight;
-      data.value.babyHeight = res.babyHeight === 0 ? '' : res.babyHeight;
+      data.value.myWeight = res.myWeight.toString();
+      data.value.myBellySize = res.myBellySize.toString();
+      data.value.babyWeight = res.babyWeight.toString();
+      data.value.babyHeight = res.babyHeight.toString();
     })
     .catch(err => console.err(err));
 });
 
-// todo order moods alphabetical
 function onSubmitHandler(mood, myWeight, myBellySize, babyWeight, babyHeight) {
   weeksServices
     .update(weekId, mood, myWeight, myBellySize, babyWeight, babyHeight)

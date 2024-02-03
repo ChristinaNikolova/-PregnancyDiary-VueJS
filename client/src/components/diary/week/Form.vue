@@ -33,6 +33,7 @@ const data = reactive(props.initialData);
 const title = `${props.formName} week ${props.initialData.title}`;
 const isDisabled = ref(props.initialDisabled);
 const errors = ref([]);
+const orderedMoods = moods.sort();
 
 onUpdated(() => {
   errors.value = props.serverError;
@@ -86,7 +87,7 @@ async function onSubmitFormHandler() {
       <div class="form-wrapper">
         <label>Moods:</label>
         <div class="checkboxes-wrapper">
-          <div v-for="m in moods" :key="m">
+          <div v-for="m in orderedMoods" :key="m">
             <input
               :id="m"
               v-model="data.mood"

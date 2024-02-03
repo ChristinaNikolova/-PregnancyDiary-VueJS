@@ -81,7 +81,7 @@ function onMouseLeave() {
         Baby's weight:
         <br>
         {{ week.babyWeight }}
-        <span class="week-details-info-dimension">gramm</span>
+        <span class="week-details-info-dimension">gramms</span>
       </div>
       <div class="week-details-info-baby-height">
         Baby's height:
