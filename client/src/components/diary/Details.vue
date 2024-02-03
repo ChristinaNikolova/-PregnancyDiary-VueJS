@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import diariesService from '../../services/diaries';
 import All from './week/All.vue';
+import List from './week/List.vue';
 
 const route = useRoute();
 const diaryId = route.params.id;
@@ -42,7 +43,17 @@ onMounted(() => {
         Gender: <br>{{ diary.gender }}
       </div>
     </section>
-    <All :weeks="diary.weeks" />
+    <All :weeks="diary.weeks">
+      <template #first>
+        <List title="First" :weeks="diary.weeks" />
+      </template>
+      <template #second>
+        <List title="Second" :weeks="diary.weeks" />
+      </template>
+      <template #third>
+        <List title="Third" :weeks="diary.weeks" />
+      </template>
+    </All>
   </section>
 </template>
 
