@@ -7,6 +7,8 @@ const route = useRoute();
 const weekId = route.params.id;
 const week = ref({});
 
+// todo back button + diaryId
+// todo scroll to top here and diary details
 onMounted(() => {
   weeksService
     .getById(weekId)
@@ -21,39 +23,194 @@ onMounted(() => {
       image="/images/personalised+pregnancy+journal.jpg"
       text="diary"
     />
-    <h2 class="section-title">
-      Week {{ week.title }}
-    </h2>
-    <p class="week-details-description">
-      {{ week.subTitle }}
-    </p>
-    <img :src="`/images/weeks/${week.title}.jpg`" :alt="`${week.title}-week`">
+    <div class="week-details-titles-wrapper">
+      <h2 class="section-title">
+        Week {{ week.title }}
+      </h2>
+      <h4 class="week-details-sub-title">
+        {{ week.subTitle }}
+      </h4>
+    </div>
+    <div class="week-details-img-wrapper">
+      <img class="week-details-img" :src="`/images/weeks/${week.title}.jpg`" :alt="`${week.title}-week`">
+    </div>
     <p class="week-details-description">
       {{ week.text }}
     </p>
-    <section class="week-details-info">
+    <div class="week-details-info-warpper">
       <div class="week-details-info-trimester">
-        Trimester: {{ week.trimester }}
+        Trimester:
+        <br>
+        {{ week.trimester }}
       </div>
       <div class="week-details-info-my-weight">
-        My weight: {{ week.myWeight }}
+        My weight:
+        <br>
+        {{ week.myWeight }}
+        <span class="week-details-info-dimension">kg</span>
       </div>
       <div class="week-details-info-my-belly-size">
-        Belly size: {{ week.myBellySize }}
+        Belly size:
+        <br>
+        {{ week.myBellySize }}
+        <span class="week-details-info-dimension">cm</span>
       </div>
       <div class="week-details-info-baby-weight">
-        Baby's weight: {{ week.babyWeight }}
+        Baby's weight:
+        <br>
+        {{ week.babyWeight }}
+        <span class="week-details-info-dimension">gramm</span>
       </div>
       <div class="week-details-info-baby-height">
-        Baby's height {{ week.babyHeight }}
+        Baby's height:
+        <br>
+        {{ week.babyHeight }}
+        <span class="week-details-info-dimension">cm</span>
       </div>
-    </section>
-    <section class="week-details-mood">
-      mood
+    </div>
+    <section class="week-details-moods">
+      <div class="week-details-mood">
+        HAPPY
+      </div>
+      <div class="week-details-mood">
+        SAD
+      </div>
+      <div class="week-details-mood">
+        melancholic
+      </div>
+      <div class="week-details-mood">
+        surpised
+      </div>
     </section>
   </section>
 </template>
 
 <style scoped>
+.week-details {
+  background-color: var(--clr-light-brown);
+  color: var(--clr-white);
+}
 
+.week-details-titles-wrapper {
+    margin: 0 auto;
+}
+
+.week-details h2.section-title {
+  color: var(--clr-white);
+}
+
+.week-details-sub-title {
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 60px;
+}
+
+.week-details-img-wrapper {
+  margin: 0 auto 60px auto;
+  width: 50%;
+}
+
+.week-details-img {
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+  -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.33);
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.33);
+  border-radius: 100% 70% 65% 70%;
+}
+
+.week-details-description {
+  text-align: center;
+  font-size: 18px;
+  text-transform: capitalize;
+  line-height: 2;
+  letter-spacing: 1.1px;
+  margin-bottom: 120px;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+.week-details-info-warpper {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 70px;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--clr-brown);
+}
+
+.week-details-info-trimester,
+.week-details-info-my-weight,
+.week-details-info-my-belly-size,
+.week-details-info-baby-weight,
+.week-details-info-baby-height {
+  width: 400px;
+  background-color: var(--clr-cream-bg);
+  padding: 100px;
+  -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.33);
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.33);
+  border-radius: 70% 70% 70% 50% / 40% 60% 80% 80%;
+  margin-bottom: 70px;
+}
+
+.week-details-info-dimension {
+    text-transform: lowercase;
+}
+
+.week-details-moods {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 50px;
+    background-color: var(--clr-grey);
+    color: var(--clr-brown);
+    font-size: 18px;
+    text-transform: uppercase;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.week-details-mood {
+  display: inline-block;
+  width: 300px;
+  height: 100px;
+  border-radius: 100px / 50px;
+  background-color: var(--clr-white);
+  line-height: 100px;
+  text-align: center;
+  margin-left: 100px;
+  margin-top: 100px;
+  position: relative;
+}
+
+.week-details-mood::before{
+  width: 120px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: var(--clr-white);
+  line-height: 75px;
+  text-align: center;
+  position: absolute;
+  content: "";
+  top: -50px;
+  left: 120px;
+}
+
+.week-details-mood::after {
+  width: 100px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--clr-white);
+  line-height: 75px;
+  text-align: center;
+  position: absolute;
+  content: "";
+  top: -20px;
+  left: 60px;
+}
 </style>

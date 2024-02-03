@@ -95,7 +95,7 @@ onMounted(() => {
 }
 
 .diary-details-info-positive-test-date {
-  border-radius: 70% 70% 70% 50% / 40% 60% 80% 80%;;
+  border-radius: 70% 70% 70% 50% / 40% 60% 80% 80%;
 }
 
 .diary-details-info-due-date {
