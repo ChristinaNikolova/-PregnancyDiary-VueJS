@@ -9,6 +9,7 @@ const week = ref({});
 
 // todo back button + diaryId
 // todo scroll to top here and diary details
+// todo no moods and no moments
 onMounted(() => {
   weeksService
     .getById(weekId)
@@ -37,7 +38,7 @@ onMounted(() => {
     <p class="week-details-description">
       {{ week.text }}
     </p>
-    <div class="week-details-info-warpper">
+    <div class="week-details-info-wrapper">
       <div class="week-details-info-trimester">
         Trimester:
         <br>
@@ -68,18 +69,29 @@ onMounted(() => {
         <span class="week-details-info-dimension">cm</span>
       </div>
     </div>
-    <section class="week-details-moods">
-      <div class="week-details-mood">
-        HAPPY
-      </div>
-      <div class="week-details-mood">
-        SAD
-      </div>
-      <div class="week-details-mood">
-        melancholic
-      </div>
-      <div class="week-details-mood">
-        surpised
+    <section class="week-details-moods-wrapper">
+      <h4 class="week-details-moods-title section-title">
+        My Mood
+      </h4>
+      <div class="week-details-moods">
+        <div class="week-details-mood">
+          HAPPY
+        </div>
+        <div class="week-details-mood">
+          SAD
+        </div>
+        <div class="week-details-mood">
+          melancholic
+        </div>
+        <div class="week-details-mood">
+          surpised
+        </div>
+        <div class="week-details-mood">
+          surpised
+        </div>
+        <div class="week-details-mood">
+          surpised
+        </div>
       </div>
     </section>
   </section>
@@ -92,7 +104,7 @@ onMounted(() => {
 }
 
 .week-details-titles-wrapper {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .week-details h2.section-title {
@@ -130,7 +142,7 @@ onMounted(() => {
   padding-right: 80px;
 }
 
-.week-details-info-warpper {
+.week-details-info-wrapper {
   width: 80%;
   margin: 0 auto;
   display: flex;
@@ -158,37 +170,45 @@ onMounted(() => {
 }
 
 .week-details-info-dimension {
-    text-transform: lowercase;
+  text-transform: lowercase;
+}
+
+.week-details-moods-wrapper {
+  background-color: var(--clr-grey);
+  color: var(--clr-brown);
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 100px;
+}
+
+.week-details-moods-title {
+  font-size: 36px;
+  margin-bottom: 150px;
 }
 
 .week-details-moods {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 50px;
-    background-color: var(--clr-grey);
-    color: var(--clr-brown);
-    font-size: 18px;
-    text-transform: uppercase;
-    padding-top: 100px;
-    padding-bottom: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
 }
 
 .week-details-mood {
-  display: inline-block;
+  position: relative;
   width: 300px;
   height: 100px;
   border-radius: 100px / 50px;
   background-color: var(--clr-white);
   line-height: 100px;
   text-align: center;
-  margin-left: 100px;
-  margin-top: 100px;
-  position: relative;
+  margin-bottom: 80px;
+  -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.08);
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.08);
 }
 
-.week-details-mood::before{
+.week-details-mood::before {
   width: 120px;
   height: 100px;
   border-radius: 50%;
