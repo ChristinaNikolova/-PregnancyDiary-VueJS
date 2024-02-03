@@ -197,7 +197,7 @@ onMounted(() => {
   text-align: center;
   position: absolute;
   content: "";
-  top: -50px;
+  top: -60px;
   left: 120px;
 }
 
