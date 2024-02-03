@@ -7,6 +7,9 @@ const props = defineProps({
     type: String,
     default: 'First',
   },
+  diaryId: {
+    type: String,
+  },
   weeks: {
     type: Array,
     default: () => [],
@@ -21,7 +24,7 @@ const props = defineProps({
     </h4>
     <ul class="diary-details-weeks-trimester-ul">
       <template v-for="w in props.weeks" :key="w.id">
-        <Single v-if="w.trimester === trimesters[props.title.toUpperCase()]" :week="w" />
+        <Single v-if="w.trimester === trimesters[props.title.toUpperCase()]" :week="w" :diary-id="props.diaryId" />
       </template>
     </ul>
   </div>

@@ -4,18 +4,23 @@ const props = defineProps({
     type: Object,
     default: () => {},
   },
+  diaryId: {
+    type: String,
+  },
 });
 </script>
 
 <template>
   <li class="diary-details-weeks-trimester-li">
-    <img class="diary-details-weeks-trimester-li-img" :src="`/images/weeks/${props.week.title}.jpg`" :alt="`${props.week.title}-week`">
-    <h6 class="diary-details-weeks-trimester-li-title">
-      {{ props.week.title }} week pregnant
-    </h6>
-    <p class="diary-details-weeks-trimester-li-content">
-      {{ props.week.subTitle }}
-    </p>
+    <router-link :to="`/diary/${props.diaryId}/${props.week.id}`">
+      <img class="diary-details-weeks-trimester-li-img" :src="`/images/weeks/${props.week.title}.jpg`" :alt="`${props.week.title}-week`">
+      <h6 class="diary-details-weeks-trimester-li-title">
+        {{ props.week.title }} week pregnant
+      </h6>
+      <p class="diary-details-weeks-trimester-li-content">
+        {{ props.week.subTitle }}
+      </p>
+    </router-link>
   </li>
 </template>
 
@@ -25,6 +30,11 @@ const props = defineProps({
   width: 250px;
   height: 250px;
   margin-bottom: 110px;
+}
+
+.diary-details-weeks-trimester-li:hover {
+  transform: scale(1.04);
+  transition: all .6s;
 }
 
 .diary-details-weeks-trimester-li-img {

@@ -12,10 +12,7 @@ const diary = ref({});
 onMounted(() => {
   diariesService
     .getById(diaryId)
-    .then((res) => {
-      diary.value = res;
-      console.log(diary.value);
-    })
+    .then(res => diary.value = res)
     .catch(err => console.error(err));
 });
 </script>
@@ -45,13 +42,13 @@ onMounted(() => {
     </section>
     <All :weeks="diary.weeks">
       <template #first>
-        <List title="First" :weeks="diary.weeks" />
+        <List title="First" :weeks="diary.weeks" :diary-id="diaryId" />
       </template>
       <template #second>
-        <List title="Second" :weeks="diary.weeks" />
+        <List title="Second" :weeks="diary.weeks" :diary-id="diaryId" />
       </template>
       <template #third>
-        <List title="Third" :weeks="diary.weeks" />
+        <List title="Third" :weeks="diary.weeks" :diary-id="diaryId" />
       </template>
     </All>
   </section>
