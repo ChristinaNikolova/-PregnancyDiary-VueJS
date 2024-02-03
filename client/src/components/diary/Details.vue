@@ -42,13 +42,13 @@ onMounted(() => {
     </section>
     <All :weeks="diary.weeks">
       <template #first>
-        <List title="First" :weeks="diary.weeks" :diary-id="diaryId" />
+        <List title="First" :weeks="diary.weeks" />
       </template>
       <template #second>
-        <List title="Second" :weeks="diary.weeks" :diary-id="diaryId" />
+        <List title="Second" :weeks="diary.weeks" />
       </template>
       <template #third>
-        <List title="Third" :weeks="diary.weeks" :diary-id="diaryId" />
+        <List title="Third" :weeks="diary.weeks" />
       </template>
     </All>
   </section>

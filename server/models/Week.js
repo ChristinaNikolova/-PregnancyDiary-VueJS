@@ -19,7 +19,7 @@ const weekSchema = new Schema({
     enum: ["first", "second", "third"],
   },
   mood: {
-    type: String,
+    type: [String],
     enum: [
       "happy",
       "sad",
@@ -57,18 +57,23 @@ const weekSchema = new Schema({
       "depressed",
       "confortable",
     ],
+    default: [],
   },
   myWeight: {
     type: Number,
+    default: 0,
   },
   myBellySize: {
     type: Number,
+    default: 0,
   },
   babyWeight: {
     type: Number,
+    default: 0,
   },
   babyHeight: {
     type: Number,
+    default: 0,
   },
   moments: {
     type: [ObjectId],

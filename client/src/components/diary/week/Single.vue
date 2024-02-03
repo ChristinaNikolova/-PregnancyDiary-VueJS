@@ -4,15 +4,12 @@ const props = defineProps({
     type: Object,
     default: () => {},
   },
-  diaryId: {
-    type: String,
-  },
 });
 </script>
 
 <template>
   <li class="diary-details-weeks-trimester-li">
-    <router-link :to="`/diary/${props.diaryId}/${props.week.id}`">
+    <router-link :to="`/diary/week/${props.week.id}`">
       <img class="diary-details-weeks-trimester-li-img" :src="`/images/weeks/${props.week.title}.jpg`" :alt="`${props.week.title}-week`">
       <h6 class="diary-details-weeks-trimester-li-title">
         {{ props.week.title }} week pregnant

@@ -11,4 +11,5 @@ export const api = {
   comments: `${baseUrl}/comments`,
   users: `${baseUrl}/users`,
   diaries: `${baseUrl}/diaries`,
+  weeks: `${baseUrl}/weeks`,
 };

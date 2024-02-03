@@ -5,6 +5,7 @@ const categoriesController = require("../controllers/categories");
 const commentsController = require("../controllers/comments");
 const usersController = require("../controllers/users");
 const diariesController = require("../controllers/diaries");
+const weeksController = require("../controllers/weeks");
 const adminArticlesController = require("../controllers/admin/articles");
 const adminCategoriesController = require("../controllers/admin/categories");
 
@@ -16,6 +17,7 @@ module.exports = (app) => {
   app.use("/comments", commentsController);
   app.use("/users", usersController);
   app.use("/diaries", diariesController);
+  app.use("/weeks", weeksController);
   app.use("/admin/articles", adminArticlesController);
   app.use("/admin/categories", adminCategoriesController);
 };
