@@ -1,12 +1,14 @@
 <script setup>
 import { onMounted, ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import weeksService from '../../../services/weeks';
 import forms from '../../../utils/helpers/forms';
 
 const route = useRoute();
+const router = useRouter();
 const weekId = route.params.id;
 const week = ref({});
+const isHovering = ref(false);
 
 // todo back button + diaryId
 onMounted(() => {
@@ -18,6 +20,18 @@ onMounted(() => {
     })
     .catch(err => console.error(err));
 });
+
+function onUpdate() {
+  router.push(`/diary/week/update/${weekId}`);
+}
+
+function onMouseEnter() {
+  isHovering.value = true;
+};
+
+function onMouseLeave() {
+  isHovering.value = false;
+};
 </script>
 
 <template>
@@ -26,14 +40,19 @@ onMounted(() => {
       image="/images/personalised+pregnancy+journal.jpg"
       text="diary"
     />
-    <div class="week-details-titles-wrapper">
+    <div
+      class="week-details-title-icon-wrapper"
+      @mouseenter="onMouseEnter"
+      @mouseleave="onMouseLeave"
+    >
       <h2 class="section-title">
         Week {{ week.title }}
       </h2>
-      <h4 class="week-details-sub-title">
-        {{ week.subTitle }}
-      </h4>
+      <i v-if="isHovering" class="fa-solid fa-pen" @click.stop="onUpdate()" />
     </div>
+    <h4 class="week-details-sub-title">
+      {{ week.subTitle }}
+    </h4>
     <div class="week-details-img-wrapper">
       <img class="week-details-img" :src="`/images/weeks/${week.title}.jpg`" :alt="`${week.title}-week`">
     </div>
@@ -101,6 +120,11 @@ onMounted(() => {
       <h4 class="week-details-title section-title">
         My Moments
       </h4>
+      <div class="week-details-moments-btn-wrapper">
+        <button class="btn btn-secondary">
+          Add moment
+        </button>
+      </div>
       <div v-if="week?.moments?.length" class="week-details-moments" />
       <Empty v-else element="moments" />
     </section>
@@ -113,12 +137,25 @@ onMounted(() => {
   color: var(--clr-white);
 }
 
-.week-details-titles-wrapper {
-  margin: 0 auto;
+.week-details-title-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 40px;
 }
 
-.week-details h2.section-title {
+.week-details-title-icon-wrapper:hover {
+  cursor: pointer;
+}
+
+.week-details-title-icon-wrapper .section-title {
   color: var(--clr-white);
+  margin-bottom: unset;
+}
+
+.week-details-title-icon-wrapper i {
+  font-size: 16px;
 }
 
 .week-details-sub-title {
@@ -128,8 +165,8 @@ onMounted(() => {
 }
 
 .week-details-img-wrapper {
-  margin: 0 auto 60px auto;
   width: 50%;
+  margin: 0 auto 80px auto;
 }
 
 .week-details-img {
@@ -255,8 +292,13 @@ onMounted(() => {
 
 .week-details-moments-wrapper .week-details-title {
   color: var(--clr-white);
+  margin-bottom: 90px;
 }
 .week-details-moments-wrapper :deep(.empty-title::after) {
   border-color: var(--clr-white);
+}
+
+.week-details-moments-btn-wrapper {
+  margin-bottom: 80px;
 }
 </style>
