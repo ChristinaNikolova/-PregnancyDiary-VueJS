@@ -9,7 +9,7 @@ const week = ref({});
 
 // todo back button + diaryId
 // todo scroll to top here and diary details
-// todo no moods and no moments
+// todo no moments
 onMounted(() => {
   weeksService
     .getById(weekId)
@@ -73,7 +73,7 @@ onMounted(() => {
       <h4 class="week-details-moods-title section-title">
         My Mood
       </h4>
-      <div class="week-details-moods">
+      <div v-if="week.mood.length" class="week-details-moods">
         <div class="week-details-mood">
           HAPPY
         </div>
@@ -93,6 +93,7 @@ onMounted(() => {
           surpised
         </div>
       </div>
+      <Empty v-else element="moods" />
     </section>
   </section>
 </template>
