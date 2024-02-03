@@ -1,8 +1,8 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import { trimesters } from '../../utils/constants/global';
 import diariesService from '../../services/diaries';
+import All from './week/All.vue';
 
 const route = useRoute();
 const diaryId = route.params.id;
@@ -42,68 +42,7 @@ onMounted(() => {
         Gender: <br>{{ diary.gender }}
       </div>
     </section>
-    <section class="diary-details-weeks">
-      <h3 class="section-title">
-        Pregnancy Week by Week
-      </h3>
-      <p class="diary-details-weeks-content">
-        Get Excited for Every Milestone: Our “Pregnancy Week by Week” articles provide an in-depth look at the incredible journey of nurturing new life inside your body. Each week, we’ll take you through the developmental milestones your baby is reaching, as well as the physical and emotional changes you can expect.
-      </p>
-      <div class="diary-details-weeks-trimester-wrapper">
-        <h4 class="diary-details-weeks-trimester-title section-title">
-          First Trimester
-        </h4>
-        <ul class="diary-details-weeks-trimester-ul">
-          <template v-for="w in diary.weeks">
-            <li v-if="w.trimester === trimesters.FIRST" :key="w.id" class="diary-details-weeks-trimester-li">
-              <img class="diary-details-weeks-trimester-li-img" :src="`/images/weeks/${w.title}.jpg`" :alt="`${w.title}-week`">
-              <h6 class="diary-details-weeks-trimester-li-title">
-                {{ w.title }} week pregnant
-              </h6>
-              <p class="diary-details-weeks-trimester-li-content">
-                {{ w.subTitle }}
-              </p>
-            </li>
-          </template>
-        </ul>
-      </div>
-      <div class="diary-details-weeks-trimester-wrapper">
-        <h4 class="diary-details-weeks-trimester-title section-title">
-          Second Trimester
-        </h4>
-        <ul class="diary-details-weeks-trimester-ul">
-          <template v-for="w in diary.weeks">
-            <li v-if="w.trimester === trimesters.SECOND" :key="w.id" class="diary-details-weeks-trimester-li">
-              <img class="diary-details-weeks-trimester-li-img" :src="`/images/weeks/${w.title}.jpg`" :alt="`${w.title}-week`">
-              <h6 class="diary-details-weeks-trimester-li-title">
-                {{ w.title }} week pregnant
-              </h6>
-              <p class="diary-details-weeks-trimester-li-content">
-                {{ w.subTitle }}
-              </p>
-            </li>
-          </template>
-        </ul>
-      </div>
-      <div class="diary-details-weeks-trimester-wrapper">
-        <h4 class="diary-details-weeks-trimester-title section-title">
-          Third Trimester
-        </h4>
-        <ul class="diary-details-weeks-trimester-ul">
-          <template v-for="w in diary.weeks">
-            <li v-if="w.trimester === trimesters.THIRD" :key="w.id" class="diary-details-weeks-trimester-li">
-              <img class="diary-details-weeks-trimester-li-img" :src="`/images/weeks/${w.title}.jpg`" :alt="`${w.title}-week`">
-              <h6 class="diary-details-weeks-trimester-li-title">
-                {{ w.title }} week pregnant
-              </h6>
-              <p class="diary-details-weeks-trimester-li-content">
-                {{ w.subTitle }}
-              </p>
-            </li>
-          </template>
-        </ul>
-      </div>
-    </section>
+    <All :weeks="diary.weeks" />
   </section>
 </template>
 
@@ -157,69 +96,5 @@ onMounted(() => {
 
 .diary-details-info-gender {
   border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%;
-}
-
-.diary-details-weeks {
-  background-color: var(--clr-cream-bl);
-  color: var(--clr-dark-grey);
-  padding-top: 60px;
-  padding-bottom: 60px;
-}
-
-.diary-details h3.section-title {
-  font-size: 36px;
-  margin-bottom: 40px;
-}
-
-.diary-details-weeks-content {
-  text-align: center;
-  font-size: 18px;
-  text-transform: lowercase;
-  line-height: 2;
-  letter-spacing: 1.1px;
-  margin-bottom: 80px;
-  padding-left: 50px;
-  padding-right: 50px;
-}
-.diary-details-weeks-trimester-wrapper {
-  margin-bottom: 100px;
-}
-
-.diary-details-weeks-trimester-title {
-  font-size: 30px;
-  margin-bottom: 40px;
-}
-
-.diary-details-weeks-trimester-ul {
-  width: 90%;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
-}
-
-.diary-details-weeks-trimester-li {
-  width: 30%;
-  width: 250px;
-  height: 250px;
-  margin-bottom: 90px;
-}
-
-.diary-details-weeks-trimester-li-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 100% 70% 65% 70%;
-}
-
-.diary-details-weeks-trimester-li-title {
-  font-size: 14px;
-  margin-bottom: 8px;
-}
-
-.diary-details-weeks-trimester-li-content {
-  font-size: 14px;
 }
 </style>
