@@ -70,10 +70,10 @@ onMounted(() => {
       </div>
     </div>
     <section class="week-details-moods-wrapper">
-      <h4 class="week-details-moods-title section-title">
+      <h4 class="week-details-title section-title">
         My Mood
       </h4>
-      <div v-if="week.mood.length" class="week-details-moods">
+      <div v-if="week?.mood?.length" class="week-details-moods">
         <div class="week-details-mood">
           HAPPY
         </div>
@@ -94,6 +94,13 @@ onMounted(() => {
         </div>
       </div>
       <Empty v-else element="moods" />
+    </section>
+    <section class="week-details-moments-wrapper">
+      <h4 class="week-details-title section-title">
+        My Moments
+      </h4>
+      <div v-if="week?.moments?.length" class="week-details-moments" />
+      <Empty v-else element="moments" />
     </section>
   </section>
 </template>
@@ -183,8 +190,9 @@ onMounted(() => {
   padding: 100px;
 }
 
-.week-details-moods-title {
+.week-details-title {
   font-size: 36px;
+  text-transform: uppercase;
   margin-bottom: 150px;
 }
 
@@ -233,5 +241,20 @@ onMounted(() => {
   background-color: var(--clr-white);
   line-height: 75px;
   text-align: center;
+}
+
+.week-details-moments-wrapper {
+  background-color: var(--clr-light-brown);
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 100px;
+}
+
+.week-details-moments-wrapper .week-details-title {
+  color: var(--clr-white);
+}
+.week-details-moments-wrapper :deep(.empty-title::after) {
+  border-color: var(--clr-white);
 }
 </style>
