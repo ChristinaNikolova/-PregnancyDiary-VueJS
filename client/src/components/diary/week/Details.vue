@@ -2,18 +2,20 @@
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import weeksService from '../../../services/weeks';
+import forms from '../../../utils/helpers/forms';
 
 const route = useRoute();
 const weekId = route.params.id;
 const week = ref({});
 
 // todo back button + diaryId
-// todo scroll to top here and diary details
-// todo no moments
 onMounted(() => {
   weeksService
     .getById(weekId)
-    .then(res => week.value = res)
+    .then((res) => {
+      week.value = res;
+      forms.scrollToTop();
+    })
     .catch(err => console.error(err));
 });
 </script>

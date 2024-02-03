@@ -2,6 +2,8 @@
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import diariesService from '../../services/diaries';
+import forms from '../../utils/helpers/forms';
+
 import All from './week/All.vue';
 import List from './week/List.vue';
 
@@ -12,7 +14,10 @@ const diary = ref({});
 onMounted(() => {
   diariesService
     .getById(diaryId)
-    .then(res => diary.value = res)
+    .then((res) => {
+      diary.value = res;
+      forms.scrollToTop();
+    })
     .catch(err => console.error(err));
 });
 </script>
