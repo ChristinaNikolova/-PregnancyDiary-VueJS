@@ -1,5 +1,5 @@
 <script setup>
-import { onUpdated, reactive, ref, watch } from 'vue';
+import { onUpdated, reactive, ref } from 'vue';
 import { formNames, moods } from '../../../utils/constants/global';
 
 const props = defineProps({
@@ -21,17 +21,12 @@ const props = defineProps({
     type: String,
     default: formNames.CREATE,
   },
-  initialDisabled: {
-    type: Boolean,
-    default: true,
-  },
 });
-const emit = defineEmits(['onSubmitHandler', 'checkIsDisabled']);
+const emit = defineEmits(['onSubmitHandler']);
 // todo week update
 // todo test server error
 const data = reactive(props.initialData);
 const title = `${props.formName} week ${props.initialData.title}`;
-const isDisabled = ref(props.initialDisabled);
 const errors = ref([]);
 const orderedMoods = moods.sort();
 
@@ -39,13 +34,7 @@ onUpdated(() => {
   errors.value = props.serverError;
 });
 
-watch(errors, () => {
-  isDisabled.value = props.serverError.length;
-  emit('checkIsDisabled', isDisabled.value);
-});
-
 async function onSubmitFormHandler() {
-  console.log('test', data.mood);
   emit('onSubmitHandler', data.mood, data.myWeight, data.myBellySize, data.babyWeight, data.babyHeight);
 };
 </script>

@@ -18,7 +18,6 @@ const data = ref({
   babyHeight: '',
 });
 const serverError = ref([]);
-const isDisabled = ref(false);
 
 onMounted(() => {
   weeksServices
@@ -51,23 +50,17 @@ function onSubmitHandler(mood, myWeight, myBellySize, babyWeight, babyHeight) {
 function onCancelFormHandler() {
   router.push({ path: `/diary/week/${weekId}` });
 };
-
-function checkIsDisabled(disable) {
-  isDisabled.value = !!disable;
-};
 </script>
 
 <template>
   <Form
     :initial-data="data"
     :server-error="serverError"
-    :initial-disabled="isDisabled"
     :form-name="formName"
     @on-submit-handler="onSubmitHandler"
-    @check-is-disabled="checkIsDisabled"
   >
     <template #buttons>
-      <FormButton :form-name="formName" :is-disabled="isDisabled" @on-cancel-form-handler="onCancelFormHandler" />
+      <FormButton :form-name="formName" :is-disabled="false" @on-cancel-form-handler="onCancelFormHandler" />
     </template>
   </Form>
 </template>
