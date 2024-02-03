@@ -11,7 +11,7 @@ const weekId = route.params.id;
 const formName = formNames.UPDATE;
 const data = ref({
   title: '',
-  mood: '',
+  mood: [],
   myWeight: '',
   myBellySize: '',
   babyWeight: '',
@@ -34,6 +34,7 @@ onMounted(() => {
     .catch(err => console.err(err));
 });
 
+// todo order moods alphabetical
 function onSubmitHandler(mood, myWeight, myBellySize, babyWeight, babyHeight) {
   weeksServices
     .update(weekId, mood, myWeight, myBellySize, babyWeight, babyHeight)

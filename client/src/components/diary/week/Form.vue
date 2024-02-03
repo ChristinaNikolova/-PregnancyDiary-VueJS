@@ -1,13 +1,13 @@
 <script setup>
 import { onUpdated, reactive, ref, watch } from 'vue';
-import { formNames } from '../../../utils/constants/global';
+import { formNames, moods } from '../../../utils/constants/global';
 
 const props = defineProps({
   initialData: {
     type: Object,
     default: () => ({
       title: '',
-      mood: '',
+      mood: [],
       myWeight: '',
       myBellySize: '',
       babyWeight: '',
@@ -44,6 +44,7 @@ watch(errors, () => {
 });
 
 async function onSubmitFormHandler() {
+  console.log('test', data.mood);
   emit('onSubmitHandler', data.mood, data.myWeight, data.myBellySize, data.babyWeight, data.babyHeight);
 };
 </script>
@@ -82,7 +83,37 @@ async function onSubmitFormHandler() {
         type="number"
         label="Baby's height in cm"
       />
+      <div class="form-wrapper">
+        <label>Moods:</label>
+        <div class="checkboxes-wrapper">
+          <div v-for="m in moods" :key="m">
+            <input
+              :id="m"
+              v-model="data.mood"
+              type="checkbox"
+              :name="m"
+              :value="m"
+            >
+            <label :for="m">{{ m }}</label>
+          </div>
+        </div>
+      </div>
       <slot name="buttons" />
     </form>
   </section>
 </template>
+
+<!-- todo checked    :checked="data.mood.includes(m)" -->
+
+<style scoped>
+.checkboxes-wrapper {
+  width: 80%;
+  margin:  0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+}
+</style>
