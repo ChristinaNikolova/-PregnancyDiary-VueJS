@@ -18,7 +18,7 @@ const props = defineProps({
     <p class="last-three-articles-li-content">
       {{ props.article.shortContent }}
     </p>
-    <button class="btn btn-primary">
+    <button type="button" class="btn btn-primary">
       <router-link :to="`/blog/${props.article.id}`">
         Continue reading
       </router-link>

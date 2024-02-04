@@ -96,7 +96,7 @@ function onMouseLeave() {
         My Moments
       </h4>
       <div class="week-details-moments-btn-wrapper">
-        <button class="btn btn-secondary">
+        <button type="button" class="btn btn-secondary">
           Add moment
         </button>
       </div>

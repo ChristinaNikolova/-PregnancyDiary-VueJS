@@ -70,22 +70,32 @@ function getLikes(result) {
         </p>
       </article>
       <div class="article-buttons-wrapper">
-        <button class="btn btn-secondary">
+        <button type="button" class="btn btn-secondary">
           <router-link :to="queries.BLOG_DEFAULT">
             Back to blog
           </router-link>
         </button>
-        <button class="btn btn-secondary">
+        <button type="button" class="btn btn-secondary">
           <router-link
             :to="`/blog/by-category/${article.category}/${article.categoryId}`"
           >
             Back to {{ article.category }}
           </router-link>
         </button>
-        <button v-if="isLiked" class="btn btn-primary" @click="onLike">
+        <button
+          v-if="isLiked"
+          type="button"
+          class="btn btn-primary"
+          @click="onLike"
+        >
           Remove from favourites
         </button>
-        <button v-else class="btn btn-primary" @click="onLike">
+        <button
+          v-else
+          type="button"
+          class="btn btn-primary"
+          @click="onLike"
+        >
           Add to favourites
         </button>
       </div>

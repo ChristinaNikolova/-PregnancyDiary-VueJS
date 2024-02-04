@@ -34,7 +34,7 @@ function loadDiaries() {
       />
     </ul>
     <template v-else>
-      <button class="btn btn-primary">
+      <button type="button" class="btn btn-primary">
         <router-link to="/diary/create">
           Create diary
         </router-link>
