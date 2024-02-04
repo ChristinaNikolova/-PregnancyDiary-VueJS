@@ -30,7 +30,7 @@ onMounted(() => {
       data.value.babyWeight = res.babyWeight.toString();
       data.value.babyHeight = res.babyHeight.toString();
     })
-    .catch(err => console.err(err));
+    .catch(err => console.error(err));
 });
 
 function onSubmitHandler(mood, myWeight, myBellySize, babyWeight, babyHeight) {

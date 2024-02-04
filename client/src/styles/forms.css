@@ -65,3 +65,25 @@
 .textarea {
   height: unset;
 }
+
+.checkbox-form-wrapper {
+  width: 80%;
+  margin:  0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  border: 1px solid var(--clr-black);
+  padding: 2px 12px 14px 14px;
+}
+.checkboxes-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+}
+.checkbox-label {
+  margin-bottom: 12px;
+}

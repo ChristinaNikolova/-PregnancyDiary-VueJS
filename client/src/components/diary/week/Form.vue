@@ -73,10 +73,10 @@ async function onSubmitFormHandler() {
         type="number"
         label="Baby's height in cm"
       />
-      <div class="form-wrapper">
-        <label>Moods:</label>
+      <div class="checkbox-form-wrapper">
+        <label class="checkbox-label">Moods:</label>
         <div class="checkboxes-wrapper">
-          <div v-for="m in orderedMoods" :key="m">
+          <div v-for="m in orderedMoods" :key="m" class="checkbox-wrapper">
             <input
               :id="m"
               v-model="data.mood"
@@ -92,18 +92,3 @@ async function onSubmitFormHandler() {
     </form>
   </section>
 </template>
-
-<!-- todo checked    :checked="data.mood.includes(m)" -->
-
-<style scoped>
-.checkboxes-wrapper {
-  width: 80%;
-  margin:  0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  font-size: 18px;
-}
-</style>

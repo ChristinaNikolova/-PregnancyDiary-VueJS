@@ -24,7 +24,7 @@ const emit = defineEmits(['onCancelFormHandler']);
 </template>
 
 <style scoped>
-.form-buttons-wrapper{
+.form-buttons-wrapper {
   display: flex;
   gap: 18px;
 }
