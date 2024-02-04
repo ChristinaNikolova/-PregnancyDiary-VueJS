@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import weeksService from '../../../services/weeks';
 import forms from '../../../utils/helpers/forms';
+import All from '../mood/All.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -90,32 +91,7 @@ function onMouseLeave() {
         <span class="week-details-info-dimension">cm</span>
       </div>
     </div>
-    <section class="week-details-moods-wrapper">
-      <h4 class="week-details-title section-title">
-        My Mood
-      </h4>
-      <div v-if="week?.mood?.length" class="week-details-moods">
-        <div class="week-details-mood">
-          HAPPY
-        </div>
-        <div class="week-details-mood">
-          SAD
-        </div>
-        <div class="week-details-mood">
-          melancholic
-        </div>
-        <div class="week-details-mood">
-          surpised
-        </div>
-        <div class="week-details-mood">
-          surpised
-        </div>
-        <div class="week-details-mood">
-          surpised
-        </div>
-      </div>
-      <Empty v-else element="moods" />
-    </section>
+    <All :moods="week.mood" />
     <section class="week-details-moments-wrapper">
       <h4 class="week-details-title section-title">
         My Moments
@@ -220,66 +196,10 @@ function onMouseLeave() {
   text-transform: lowercase;
 }
 
-.week-details-moods-wrapper {
-  background-color: var(--clr-grey);
-  color: var(--clr-brown);
-  font-size: 18px;
-  font-weight: 500;
-  text-transform: uppercase;
-  padding: 100px;
-}
-
 .week-details-title {
   font-size: 36px;
   text-transform: uppercase;
   margin-bottom: 150px;
-}
-
-.week-details-moods {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 100px;
-}
-
-.week-details-mood {
-  position: relative;
-  width: 300px;
-  height: 100px;
-  border-radius: 100px / 50px;
-  background-color: var(--clr-white);
-  line-height: 100px;
-  text-align: center;
-  margin-bottom: 80px;
-  -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.08);
-  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.08);
-}
-
-.week-details-mood::before {
-  position: absolute;
-  content: "";
-  top: -60px;
-  left: 120px;
-  width: 120px;
-  height: 100px;
-  border-radius: 50%;
-  background-color: var(--clr-white);
-  line-height: 75px;
-  text-align: center;
-}
-
-.week-details-mood::after {
-  position: absolute;
-  content: "";
-  top: -20px;
-  left: 60px;
-  width: 100px;
-  height: 60px;
-  border-radius: 50%;
-  background-color: var(--clr-white);
-  line-height: 75px;
-  text-align: center;
 }
 
 .week-details-moments-wrapper {
@@ -294,6 +214,7 @@ function onMouseLeave() {
   color: var(--clr-white);
   margin-bottom: 90px;
 }
+
 .week-details-moments-wrapper :deep(.empty-title::after) {
   border-color: var(--clr-white);
 }
