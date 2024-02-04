@@ -34,6 +34,11 @@ function loadDiaries() {
       />
     </ul>
     <template v-else>
+      <button class="btn btn-primary">
+        <router-link to="/diary/create">
+          Create diary
+        </router-link>
+      </button>
       <Empty element="diaries" />
       <Jumbo
         image="/images/web3-woman-pregnant-light-spiritual-shutterstock_1466000780.webp"
@@ -50,5 +55,13 @@ function loadDiaries() {
   gap: 80px;
   justify-content: center;
   align-items: center;
+}
+
+.all-diaries button {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.all-diaries button a {
+  color: var(--clr-white);
 }
 </style>

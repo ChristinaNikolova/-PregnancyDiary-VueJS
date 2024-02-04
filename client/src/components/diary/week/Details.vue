@@ -68,25 +68,25 @@ function onMouseLeave() {
       <div class="week-details-info-my-weight">
         My weight:
         <br>
-        {{ week.myWeight }}
+        {{ week.myWeight ? week.myWeight : 0 }}
         <span class="week-details-info-dimension">kg</span>
       </div>
       <div class="week-details-info-my-belly-size">
         Belly size:
         <br>
-        {{ week.myBellySize }}
+        {{ week.myBellySize ? week.myBellySize : 0 }}
         <span class="week-details-info-dimension">cm</span>
       </div>
       <div class="week-details-info-baby-weight">
         Baby's weight:
         <br>
-        {{ week.babyWeight }}
+        {{ week.babyWeight ? week.babyHeight : 0 }}
         <span class="week-details-info-dimension">gramms</span>
       </div>
       <div class="week-details-info-baby-height">
         Baby's height:
         <br>
-        {{ week.babyHeight }}
+        {{ week.babyHeight ? week.babyHeight : 0 }}
         <span class="week-details-info-dimension">cm</span>
       </div>
     </div>

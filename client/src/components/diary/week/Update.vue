@@ -25,10 +25,10 @@ onMounted(() => {
     .then((res) => {
       data.value.title = res.title;
       data.value.mood = res.mood;
-      data.value.myWeight = res.myWeight.toString();
-      data.value.myBellySize = res.myBellySize.toString();
-      data.value.babyWeight = res.babyWeight.toString();
-      data.value.babyHeight = res.babyHeight.toString();
+      data.value.myWeight = res.myWeight ? res.myWeight.toString() : '0';
+      data.value.myBellySize = res.myBellySize ? res.myBellySize.toString() : '0';
+      data.value.babyWeight = res.babyWeight ? res.babyWeight.toString() : '0';
+      data.value.babyHeight = res.babyHeight ? res.babyHeight.toString() : '0';
     })
     .catch(err => console.error(err));
 });
