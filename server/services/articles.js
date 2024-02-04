@@ -7,6 +7,7 @@ const {
   articleAdminViewModel,
   articleListByCategoryViewModel,
   articleDetailsViewModel,
+  articleLastThreeListViewModel,
 } = require("../utils/mapper/article");
 const { errors } = require("../utils/constants/global");
 
@@ -112,7 +113,7 @@ async function getByTitle(title) {
 async function getLastThree() {
   return (
     await Article.find({}).sort({ createdAt: -1, title: 1 }).limit(3)
-  ).map(articleListByCategoryViewModel);
+  ).map(articleLastThreeListViewModel);
 }
 
 module.exports = {

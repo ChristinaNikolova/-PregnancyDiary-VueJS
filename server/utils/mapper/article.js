@@ -28,6 +28,15 @@ function articleListByCategoryViewModel(article) {
   };
 }
 
+function articleLastThreeListViewModel(article) {
+  return {
+    id: article._id,
+    title: article.title,
+    picture: article.picture,
+    shortContent: article.content.slice(0, 350) + "...",
+  };
+}
+
 function articleDetailsViewModel(article) {
   return {
     id: article._id,
@@ -63,4 +72,5 @@ module.exports = {
   articleAdminViewModel,
   articleListByCategoryViewModel,
   articleDetailsViewModel,
+  articleLastThreeListViewModel,
 };
