@@ -16,7 +16,6 @@ import AppTitle from './shared/AppTitle.vue';
   </section>
 </template>
 
-// todo extract button a white
 <style scoped>
 .not-found a {
   color: var(--clr-white);

@@ -24,7 +24,6 @@ const props = defineProps({
 });
 const emit = defineEmits(['onSubmitHandler']);
 // todo week update
-// todo test server error
 const data = reactive(props.initialData);
 const title = `${props.formName} week ${props.initialData.title}`;
 const errors = ref([]);
