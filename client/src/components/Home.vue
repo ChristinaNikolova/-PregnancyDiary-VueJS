@@ -49,7 +49,29 @@ onMounted(() => {
         </div>
       </div>
     </section>
-    <section class="home-blog" />
+    <section class="home-blog">
+      <div class="home-blog-img-wrapper">
+        <img class="home-blog-img" src="/images/LoveAndWildJuly2020-61.jpg" alt="pregnancy-diary-blog">
+      </div>
+      <h2 class="section-title home-blog-title">
+        Check our blog
+      </h2>
+      <button type="button" class="btn btn-primary">
+        <router-link to="/blog?page=1&query=no%20search">
+          Go to blog
+        </router-link>
+      </button>
+    </section>
+    <section class="home-articles">
+      <h2 class="home-articles-title">
+        Recent Articles
+      </h2>
+      <ul class="home-articles-ul">
+        <li v-for="a in lastThreeArticles" :key="a.id" class="home-articles-li">
+          {{ a.shortContent }}
+        </li>
+      </ul>
+    </section>
   </section>
 </template>
 
@@ -96,5 +118,43 @@ onMounted(() => {
 
 .home .btn.btn-primary a {
   color: var(--clr-white);
+}
+
+.home-blog {
+  padding-top: 130px;
+  padding-bottom: 130px;
+}
+
+.home-blog-img-wrapper {
+  max-width: 700px;
+  max-height: 500px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.home-blog-img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.home-blog-title {
+  margin-bottom: 40px;
+}
+
+.home-articles {
+  background-color: var(--clr-cream-bl);
+  padding: 30px 10px;
+}
+
+.home-articles-ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.home-articles-li {
+  width: 30%;
+  background-color: var(--clr-cream-bg);
 }
 </style>

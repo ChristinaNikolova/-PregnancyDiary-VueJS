@@ -140,13 +140,13 @@ function onMouseLeave() {
 }
 
 .week-details-img-wrapper {
-  width: 50%;
+  max-width: 500px;
+  max-height: 500px;
   margin: 0 auto 80px auto;
 }
 
 .week-details-img {
-  width: 500px;
-  height: 500px;
+  width: 100%;
   object-fit: cover;
   -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.33);
   box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.33);
