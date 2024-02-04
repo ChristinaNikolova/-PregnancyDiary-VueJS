@@ -11,7 +11,6 @@ const weekId = route.params.id;
 const week = ref({});
 const isHovering = ref(false);
 
-// todo back button + diaryId
 onMounted(() => {
   weeksService
     .getById(weekId)

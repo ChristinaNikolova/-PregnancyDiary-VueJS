@@ -23,14 +23,14 @@ const props = defineProps({
   },
 });
 const emit = defineEmits(['onSubmitHandler']);
-// todo week update
 const data = reactive(props.initialData);
-const title = `${props.formName} week ${props.initialData.title}`;
+const title = ref(`${props.formName} week `);
 const errors = ref([]);
 const orderedMoods = moods.sort();
 
 onUpdated(() => {
   errors.value = props.serverError;
+  title.value = `${props.formName} week ${props.initialData.title}`;
 });
 
 async function onSubmitFormHandler() {
