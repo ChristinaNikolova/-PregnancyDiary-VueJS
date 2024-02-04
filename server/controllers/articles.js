@@ -6,11 +6,20 @@ const {
   getByCategory,
   getById,
   like,
+  getLastThree,
 } = require("../services/articles");
 const { pagination } = require("../utils/constants/global");
 const { mapErrors } = require("../utils/parser");
 
-// todo get last three
+router.get("/lastThree", async (req, res) => {
+  try {
+    const articles = await getLastThree();
+    res.json(articles);
+  } catch (error) {
+    const message = mapErrors(error);
+    res.status(400).json({ message });
+  }
+});
 
 router.get("/all/:page/:query", async (req, res) => {
   try {

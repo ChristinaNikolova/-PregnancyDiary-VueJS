@@ -1,15 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue';
-import homeService from '../services/home';
-
-const lastThreeArticles = ref([]);
-
-onMounted(() => {
-  homeService
-    .getLastThreeArticles()
-    .then(res => lastThreeArticles.value = res)
-    .catch(err => console.error(err));
-});
+import LastThree from './blog/article/LastThree.vue';
 </script>
 
 <template>
@@ -63,24 +53,7 @@ onMounted(() => {
       <h2 class="section-title home-articles-title">
         Recent Articles
       </h2>
-      <ul class="home-articles-ul">
-        <li v-for="a in lastThreeArticles" :key="a.id" class="home-articles-li">
-          <div class="home-articles-li-img-wrapper">
-            <img class="home-articles-li-img" :src="a.picture" :alt="a.title">
-          </div>
-          <h5 class="home-articles-li-title">
-            {{ a.title }}
-          </h5>
-          <p class="home-articles-li-content">
-            {{ a.shortContent }}
-          </p>
-          <button class="btn btn-primary">
-            <router-link :to="`/blog/${a.id}`">
-              Continue reading
-            </router-link>
-          </button>
-        </li>
-      </ul>
+      <LastThree />
     </section>
   </section>
 </template>
@@ -158,47 +131,5 @@ onMounted(() => {
 
 .home-articles-title {
   margin-bottom: 60px;
-}
-
-.home-articles-ul {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
-}
-
-.home-articles-li {
-  width: 30%;
-  background-color: var(--clr-cream-bg);
-  overflow: hidden;
-  padding-bottom: 80px ;
-}
-
-.home-articles-li-img-wrapper {
-  width: 500px;
-  height: 600px;
-  margin: 50px auto;
-}
-
-.home-articles-li-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.home-articles-li-title {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 30px;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.home-articles-li-content {
-  font-size: 16px;
-  text-align: justify;
-  margin-bottom: 60px;
-  padding-left: 30px;
-  padding-right: 30px;
 }
 </style>

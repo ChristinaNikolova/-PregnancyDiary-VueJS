@@ -70,6 +70,17 @@ function like(id) {
     .catch(err => console.error(err));
 }
 
+function getLastThreeArticles() {
+  return fetch(`${api.articles}/lastThree`, {
+    method: httpMethods.GET,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(res => res.json())
+    .catch(err => console.error(err));
+};
+
 export default {
   all,
   allAdmin,
@@ -80,4 +91,5 @@ export default {
   update,
   like,
   getByCategory,
+  getLastThreeArticles,
 };
