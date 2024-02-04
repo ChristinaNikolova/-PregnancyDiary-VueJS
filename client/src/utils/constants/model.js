@@ -27,5 +27,15 @@ export const diary = {
   TITLE_MAX_LEN: 100,
   DESC_MIN_LEN: 10,
   DESC_MAX_LEN: 1000,
+};
+
+export const moment = {
+  TITLE_MIN_LEN: 3,
+  TITLE_MAX_LEN: 100,
+  CONTENT_MIN_LEN: 10,
+  CONTENT_MAX_LEN: 1000,
+};
+
+export const date = {
   DATE_REGEX: /^(0[1-9]|[12][0-9]|3[01])[.](0[1-9]|1[012])[.](19|20)[0-9]{2}$/g,
 };

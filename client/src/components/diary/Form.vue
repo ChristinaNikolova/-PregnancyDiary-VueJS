@@ -5,7 +5,7 @@ import { helpers, maxLength, minLength, required } from '@vuelidate/validators';
 import { formNames, genders } from '../../utils/constants/global';
 import { global } from '../../utils/constants/error';
 import { diary as models } from '../../utils/constants/model';
-import diary from '../../utils/validators/diary';
+import date from '../../utils/validators/date';
 
 const props = defineProps({
   initialData: {
@@ -54,11 +54,11 @@ const rules = computed(() => ({
   },
   positiveTestDate: {
     required: helpers.withMessage(global.REQUIRED, required),
-    validDate: helpers.withMessage(global.DATE, diary.validDate),
+    validDate: helpers.withMessage(global.DATE, date.validDate),
   },
   dueDate: {
     required: helpers.withMessage(global.REQUIRED, required),
-    validDate: helpers.withMessage(global.DATE, diary.validDate),
+    validDate: helpers.withMessage(global.DATE, date.validDate),
   },
   gender: {
     required: helpers.withMessage(global.REQUIRED, required),
