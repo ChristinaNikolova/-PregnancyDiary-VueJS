@@ -13,4 +13,5 @@ export const api = {
   users: `${baseUrl}/users`,
   diaries: `${baseUrl}/diaries`,
   weeks: `${baseUrl}/weeks`,
+  moments: `${baseUrl}/moments`,
 };
