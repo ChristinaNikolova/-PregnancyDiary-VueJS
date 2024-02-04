@@ -96,7 +96,7 @@ function onMouseLeave() {
         My Moments
       </h4>
       <div class="week-details-moments-btn-wrapper">
-        <AppButton name="Add moment" :is-primary="false" />
+        <AppButton name="Add moment" :link="`/diary/${week.id}/moment/create`" :is-primary="false" />
       </div>
       <div v-if="week?.moments?.length" class="week-details-moments" />
       <Empty v-else element="moments" />
