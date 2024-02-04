@@ -1,3 +1,20 @@
+<script setup>
+import { onMounted, ref } from 'vue';
+import homeService from '../services/home';
+
+const lastThreeArticles = ref([]);
+
+onMounted(() => {
+  homeService
+    .getLastThreeArticles()
+    .then((res) => {
+      console.log(res);
+      lastThreeArticles.value = res;
+    })
+    .catch(err => console.error(err));
+});
+</script>
+
 <template>
   <section class="home">
     <Jumbo image="/images/smiling-baby.jpg" text="smiling-baby" />
@@ -32,6 +49,7 @@
         </div>
       </div>
     </section>
+    <section class="home-blog" />
   </section>
 </template>
 

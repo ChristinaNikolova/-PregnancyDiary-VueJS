@@ -10,7 +10,7 @@ const adminArticlesController = require("../controllers/admin/articles");
 const adminCategoriesController = require("../controllers/admin/categories");
 
 module.exports = (app) => {
-  app.use(homeController);
+  app.use("/home", homeController);
   app.use("/auth", authController);
   app.use("/articles", articlesController);
   app.use("/categories", categoriesController);

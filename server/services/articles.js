@@ -109,6 +109,12 @@ async function getByTitle(title) {
   });
 }
 
+async function getLastThree() {
+  return (
+    await Article.find({}).sort({ createdAt: -1, title: 1 }).limit(3)
+  ).map(articleListByCategoryViewModel);
+}
+
 module.exports = {
   all,
   getTotalCount,
@@ -120,4 +126,5 @@ module.exports = {
   update,
   like,
   getByCategory,
+  getLastThree,
 };

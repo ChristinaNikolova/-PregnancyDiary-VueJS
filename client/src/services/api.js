@@ -6,6 +6,7 @@ export const api = {
   logout: `${baseUrl}/auth/logout`,
   adminArticle: `${baseUrl}/admin/articles`,
   adminCategory: `${baseUrl}/admin/categories`,
+  home: `${baseUrl}/home`,
   articles: `${baseUrl}/articles`,
   categories: `${baseUrl}/categories`,
   comments: `${baseUrl}/comments`,
