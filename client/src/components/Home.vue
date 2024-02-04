@@ -12,11 +12,7 @@ import LastThree from './blog/article/LastThree.vue';
       <p class="home-content-text">
         A Baby Fills a Place in Your Heart That You Never Knew Was Empty!
       </p>
-      <button type="button" class="btn btn-primary">
-        <router-link to="/diary/create">
-          Create new diary
-        </router-link>
-      </button>
+      <AppButton name="Create new diary" link="/diary/create" />
     </section>
     <section class="home-user">
       <div class="home-user-wrapper">
@@ -28,11 +24,7 @@ import LastThree from './blog/article/LastThree.vue';
           Ensure you document the wonderful moments before it's too late.
         </p>
         <div class="home-user-btns-wrapper">
-          <button type="button" class="btn btn-secondary">
-            <router-link to="/diary">
-              My Diaries
-            </router-link>
-          </button>
+          <AppButton name="My Diaries" link="/diary" :is-primary="false" />
         </div>
       </div>
     </section>
@@ -43,11 +35,7 @@ import LastThree from './blog/article/LastThree.vue';
       <h2 class="section-title home-blog-title">
         Check our blog
       </h2>
-      <button type="button" class="btn btn-primary">
-        <router-link to="/blog?page=1&query=no%20search">
-          Go to blog
-        </router-link>
-      </button>
+      <AppButton name="Go to blog" link="/blog?page=1&query=no%20search" />
     </section>
     <section class="home-articles">
       <h2 class="section-title home-articles-title">
@@ -97,10 +85,6 @@ import LastThree from './blog/article/LastThree.vue';
 
 .home-user-btns-wrapper a {
   color: var(--clr-brown);
-}
-
-.home .btn.btn-primary a {
-  color: var(--clr-white);
 }
 
 .home-blog {

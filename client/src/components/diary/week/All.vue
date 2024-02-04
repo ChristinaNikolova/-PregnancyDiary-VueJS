@@ -9,11 +9,7 @@
     <slot name="first" />
     <slot name="second" />
     <slot name="third" />
-    <button type="button" class="btn btn-primary">
-      <router-link to="/diary">
-        Go back to my diaries
-      </router-link>
-    </button>
+    <AppButton name=" Go back to my diaries" link="/diary" />
   </section>
 </template>
 
@@ -39,9 +35,5 @@
   margin-bottom: 80px;
   padding-left: 50px;
   padding-right: 50px;
-}
-
-.diary-details-weeks a {
-  color: var(--clr-white);
 }
 </style>

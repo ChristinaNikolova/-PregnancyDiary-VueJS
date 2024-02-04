@@ -44,11 +44,7 @@ const emit = defineEmits(['onDeleteHandler']);
           </template>
         </td>
         <td class="table-body-row-button">
-          <button type="button" class="btn btn-secondary">
-            <router-link :to="`${props.updateLink}/${c.id}`">
-              Update
-            </router-link>
-          </button>
+          <AppButton name="Update" :link="`${props.updateLink}/${c.id}`" :is-primary="false" />
         </td>
         <td class="table-body-row-button">
           <button type="button" class="btn btn-primary" @click="emit('onDeleteHandler', $event, c.id)">

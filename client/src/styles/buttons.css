@@ -16,6 +16,10 @@ button {
     color: var(--clr-white);
     background-color: var(--clr-brown);
 }
+
+.btn.btn-primary a {
+    color: var(--clr-white);
+  }
   
 .btn-secondary {
     color: var(--clr-brown);

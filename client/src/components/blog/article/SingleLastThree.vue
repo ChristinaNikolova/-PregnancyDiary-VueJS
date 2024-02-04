@@ -18,11 +18,7 @@ const props = defineProps({
     <p class="last-three-articles-li-content">
       {{ props.article.shortContent }}
     </p>
-    <button type="button" class="btn btn-primary">
-      <router-link :to="`/blog/${props.article.id}`">
-        Continue reading
-      </router-link>
-    </button>
+    <AppButton name="Continue reading" :link="`/blog/${props.article.id}`" />
   </li>
 </template>
 
@@ -60,9 +56,5 @@ const props = defineProps({
   margin-bottom: 60px;
   padding-left: 30px;
   padding-right: 30px;
-}
-
-.last-three-articles-li a {
-  color: var(--clr-white);
 }
 </style>

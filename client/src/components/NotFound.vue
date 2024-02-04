@@ -8,19 +8,11 @@ import AppTitle from './shared/AppTitle.vue';
     <p class="not-found-content">
       The page you are looking for doesn't exist
     </p>
-    <button type="button" class="btn btn-primary">
-      <router-link to="/">
-        Go back to Home
-      </router-link>
-    </button>
+    <AppButton name=" Go back to Home" link="/" />
   </section>
 </template>
 
 <style scoped>
-.not-found a {
-  color: var(--clr-white);
-}
-
 .not-found-content {
   font-size: 18px;
   margin-bottom: 100px;

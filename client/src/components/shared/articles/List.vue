@@ -15,11 +15,7 @@ const props = defineProps({
     <Single v-for="a in props.articles" :key="a.id" :article="a" />
   </ul>
   <Empty v-else element="articles" />
-  <button type="button" class="btn btn-secondary">
-    <router-link :to="queries.BLOG_DEFAULT">
-      Back to blog
-    </router-link>
-  </button>
+  <AppButton name="Back to blog" :link="queries.BLOG_DEFAULT" :is-primary="false" />
 </template>
 
 <style scoped>

@@ -15,6 +15,7 @@ const id = route.params.id;
 const article = ref({});
 const likeCount = ref(0);
 const isLiked = ref(false);
+const name = ref('');
 
 onMounted(() => {
   articlesService
@@ -23,6 +24,7 @@ onMounted(() => {
       article.value = res;
       likeCount.value = res.likes.length;
       isLiked.value = getLikes(res.likes);
+      name.value = `Back to ${article.value.category}`;
       forms.scrollToTop();
     })
     .catch(err => console.error(err));
@@ -70,18 +72,8 @@ function getLikes(result) {
         </p>
       </article>
       <div class="article-buttons-wrapper">
-        <button type="button" class="btn btn-secondary">
-          <router-link :to="queries.BLOG_DEFAULT">
-            Back to blog
-          </router-link>
-        </button>
-        <button type="button" class="btn btn-secondary">
-          <router-link
-            :to="`/blog/by-category/${article.category}/${article.categoryId}`"
-          >
-            Back to {{ article.category }}
-          </router-link>
-        </button>
+        <AppButton name="Back to blog" :link="queries.BLOG_DEFAULT" :is-primary="false" />
+        <AppButton :name="name" :link="`/blog/by-category/${article.category}/${article.categoryId}`" :is-primary="false" />
         <button
           v-if="isLiked"
           type="button"
@@ -142,9 +134,5 @@ function getLikes(result) {
 .article-buttons-wrapper .btn:first-of-type,
 .article-buttons-wrapper .btn:nth-child(2) {
   margin-right: 20px;
-}
-
-.article-buttons-wrapper .btn.btn-primary a {
-  color: var(--clr-white);
 }
 </style>
