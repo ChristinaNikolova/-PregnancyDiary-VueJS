@@ -49,7 +49,7 @@ async function deleteById(id) {
 
 async function getById(id, hasToMap = false) {
   if (hasToMap) {
-    return diaryDetailsViewModel(await Diary.findById(id).populate("weeks"));
+    return diaryDetailsViewModel(await Diary.findById(id).populate("weeks").populate('baby'));
   }
   return await Diary.findById(id);
 }

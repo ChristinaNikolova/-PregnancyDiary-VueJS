@@ -1,3 +1,4 @@
+const { babyViewModel } = require("./baby");
 const { weekListViewModel } = require("./week");
 
 function diaryListViewModel(diary) {
@@ -21,6 +22,7 @@ function diaryDetailsViewModel(diary) {
     gender: diary.gender,
     isBabyBorn: diary.isBabyBorn,
     weeks: diary.weeks.map(weekListViewModel).sort((a, b) => a.title - b.title),
+    baby: diary.baby && babyViewModel(diary.baby),
   };
 }
 
