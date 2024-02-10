@@ -1,3 +1,5 @@
+const { momentViewModel } = require("./moment");
+
 function weekListViewModel(week) {
   return {
     id: week._id,
@@ -19,6 +21,7 @@ function weekDetailsViewModel(week) {
     babyWeight: week.babyWeight,
     babyHeight: week.babyHeight,
     mood: week.mood,
+    moments: week.moments.map(momentViewModel),
   };
 }
 
