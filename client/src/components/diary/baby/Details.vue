@@ -1,5 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue';
+import { useRouter } from 'vue-router';
 import { genders } from '../../../utils/constants/global';
 
 const props = defineProps({
@@ -7,7 +8,11 @@ const props = defineProps({
     type: Object,
     default: () => {},
   },
+  diaryId: {
+    type: String,
+  },
 });
+const router = useRouter();
 const isHovering = ref(false);
 
 const getGenderColor = computed(() => {
@@ -23,7 +28,7 @@ const getGenderShadow = computed(() => {
 });
 
 function onUpdate() {
-  console.log('update');
+  router.push(`/diary/${props.diaryId}/baby/update/${props.baby.id}`);
 }
 
 function onMouseEnter() {

@@ -20,7 +20,7 @@ const props = defineProps({
   <div v-if="!props.isBabyBorn" class="diary-details-button-wrapper">
     <AppButton name="Baby is born" :link="`/diary/${props.diaryId}/baby/create`" :is-primary="false" />
   </div>
-  <Details v-else :baby="props.baby" />
+  <Details v-else :baby="props.baby" :diary-id="diaryId" />
 </template>
 
 <style scoped>

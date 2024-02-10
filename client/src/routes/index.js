@@ -8,6 +8,7 @@ import DetailsDiary from '../components/diary/Details.vue';
 import CreateDiary from '../components/diary/Create.vue';
 import UpdateDiary from '../components/diary/Update.vue';
 import CreateBaby from '../components/diary/baby/Create.vue';
+import UpdateBaby from '../components/diary/baby/Update.vue';
 import DetailsWeek from '../components/diary/week/Details.vue';
 import UpdateWeek from '../components/diary/week/Update.vue';
 import CreateMoment from '../components/diary/moment/Create.vue';
@@ -32,6 +33,7 @@ const routes = [
   { path: '/diary/create', component: CreateDiary, beforeEnter: isUser },
   { path: '/diary/update/:id', component: UpdateDiary, beforeEnter: isUser },
   { path: '/diary/:id/baby/create', component: CreateBaby, beforeEnter: isUser },
+  { path: '/diary/:diaryId/baby/update/:babyId', component: UpdateBaby, beforeEnter: isUser },
   { path: '/diary/week/:id', component: DetailsWeek, beforeEnter: isUser },
   { path: '/diary/week/update/:id', component: UpdateWeek, beforeEnter: isUser },
   { path: '/diary/:weekId/moment/create', component: CreateMoment, beforeEnter: isUser },
