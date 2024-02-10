@@ -12,10 +12,8 @@ const weekId = route.params.id;
 const week = ref({});
 const isHovering = ref(false);
 
-// todo update css + html moments
 // todo delete moment
 // todo update moment
-// todo order moments by date
 onMounted(() => {
   weeksService
     .getById(weekId)

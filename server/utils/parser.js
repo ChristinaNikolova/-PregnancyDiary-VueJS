@@ -66,4 +66,5 @@ module.exports = {
   formatCreatedAt,
   compareDate,
   getTrimesterName,
+  parseDate,
 };

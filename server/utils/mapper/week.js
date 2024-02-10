@@ -1,3 +1,4 @@
+const { parseDate } = require("../parser");
 const { momentViewModel } = require("./moment");
 
 function weekListViewModel(week) {
@@ -21,7 +22,9 @@ function weekDetailsViewModel(week) {
     babyWeight: week.babyWeight,
     babyHeight: week.babyHeight,
     mood: week.mood,
-    moments: week.moments.map(momentViewModel),
+    moments: week.moments
+      .map(momentViewModel)
+      .sort((a, b) => parseDate(b.date) - parseDate(a.date)),
   };
 }
 
