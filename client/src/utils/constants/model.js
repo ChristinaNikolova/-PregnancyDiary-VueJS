@@ -12,6 +12,13 @@ export const auth = {
   PASSWORD_MAX_LEN: 50,
 };
 
+export const baby = {
+  NAME_MIN_LEN: 1,
+  NAME_MAX_LEN: 100,
+  HEIGHT_MIN: 0,
+  WEIGHT_MIN: 0,
+};
+
 export const category = {
   NAME_MIN_LEN: 3,
   NAME_MAX_LEN: 30,

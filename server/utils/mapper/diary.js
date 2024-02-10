@@ -19,6 +19,7 @@ function diaryDetailsViewModel(diary) {
     positiveTestDate: diary.positiveTestDate,
     dueDate: diary.dueDate,
     gender: diary.gender,
+    isBabyBorn: diary.isBabyBorn,
     weeks: diary.weeks.map(weekListViewModel).sort((a, b) => a.title - b.title),
   };
 }

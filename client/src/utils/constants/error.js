@@ -24,3 +24,8 @@ export const auth = {
   },
   REPEAT_PASSWORD: 'Password und repeat password are not equal',
 };
+
+export const baby = {
+  WEIGHT: 'Weight should be a positive number',
+  HEIGHT: 'Height should be a positive number',
+};

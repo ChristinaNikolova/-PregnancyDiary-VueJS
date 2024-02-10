@@ -34,6 +34,9 @@ onMounted(() => {
     <p class="diary-details-description">
       {{ diary.description }}
     </p>
+    <div v-if="!diary.isBabyBorn" class="diary-details-button-wrapper">
+      <AppButton name="Baby is born" :link="`/diary/${diary.id}/baby/create`" :is-primary="false" />
+    </div>
     <section class="diary-details-info">
       <div class="diary-details-info-positive-test-date">
         Positive Test: {{ diary.positiveTestDate }}
@@ -75,11 +78,14 @@ onMounted(() => {
   text-transform: lowercase;
   line-height: 2;
   letter-spacing: 1.1px;
-  margin-bottom: 150px;
+  margin-bottom: 60px;
   padding-left: 50px;
   padding-right: 50px;
 }
 
+.diary-details-button-wrapper {
+  margin-bottom: 150px;
+}
 .diary-details-info {
   display: flex;
   justify-content: space-evenly;
