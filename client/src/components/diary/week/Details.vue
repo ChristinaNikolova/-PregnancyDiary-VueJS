@@ -12,7 +12,6 @@ const weekId = route.params.id;
 const week = ref({});
 const isHovering = ref(false);
 
-// todo test server error during update
 onMounted(() => {
   loadWeek();
 });

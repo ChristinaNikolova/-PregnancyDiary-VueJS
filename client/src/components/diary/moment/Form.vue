@@ -76,13 +76,12 @@ async function onSubmitFormHandler() {
 };
 </script>
 
-<!-- todo update jumbo -->
 <template>
   <section class="form-section">
     <AppTitle
       :title="title"
-      image="/images/Pregnancy-Project-birth-1024x702.jpg"
-      text="pregnant-woman-with-diary"
+      image="/images/20210430_122731_1024x1024_2x_8445cd3e-8153-497c-8dfc-128935d1fb53.webp"
+      text="diary-moment"
       class-name="form-title"
     />
     <ServerError v-if="props.serverError.length" :errors="props.serverError" />
