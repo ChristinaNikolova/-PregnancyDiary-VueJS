@@ -1,0 +1,55 @@
+/* Design */
+
+.heart-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  
+.heart {
+  display: inline-block;
+  width: 24px;
+  margin: 50px 2px 0px 2px;
+  aspect-ratio: 1;
+  border-image: radial-gradient(var(--clr-cream-bg) 69%, #0000 70%) 84.5%/50%;
+  clip-path: polygon(-41% 0, 50% 91%, 141% 0);
+}
+
+.cloud {
+  position: relative;
+  width: 300px;
+  height: 100px;
+  border-radius: 100px / 50px;
+  background-color: var(--clr-white);
+  line-height: 100px;
+  text-align: center;
+  margin-bottom: 80px;
+  -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.08);
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.08);
+  }
+  
+.cloud::before {
+  position: absolute;
+  content: "";
+  top: -60px;
+  left: 120px;
+  width: 120px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: var(--clr-white);
+  line-height: 75px;
+  text-align: center;
+  }
+  
+.cloud::after {
+  position: absolute;
+  content: "";
+  top: -20px;
+  left: 60px;
+  width: 100px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--clr-white);
+  line-height: 75px;
+  text-align: center;
+  }
