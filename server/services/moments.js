@@ -14,6 +14,11 @@ async function create(weekId, date, title, content) {
   return result;
 }
 
+async function deleteById(id) {
+  return Moment.findByIdAndDelete(id);
+}
+
 module.exports = {
   create,
+  deleteById,
 };

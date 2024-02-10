@@ -12,16 +12,9 @@ const weekId = route.params.id;
 const week = ref({});
 const isHovering = ref(false);
 
-// todo delete moment
 // todo update moment
 onMounted(() => {
-  weeksService
-    .getById(weekId)
-    .then((res) => {
-      week.value = res;
-      forms.scrollToTop();
-    })
-    .catch(err => console.error(err));
+  loadWeek();
 });
 
 function onUpdate() {
@@ -35,6 +28,16 @@ function onMouseEnter() {
 function onMouseLeave() {
   isHovering.value = false;
 };
+
+function loadWeek() {
+  weeksService
+    .getById(weekId)
+    .then((res) => {
+      week.value = res;
+      forms.scrollToTop();
+    })
+    .catch(err => console.error(err));
+}
 </script>
 
 <template>
@@ -101,7 +104,7 @@ function onMouseLeave() {
       <div class="week-details-moments-btn-wrapper">
         <AppButton name="Add moment" :link="`/diary/${week.id}/moment/create`" :is-primary="false" />
       </div>
-      <AllMoment v-if="week?.moments?.length" :moments="week.moments" />
+      <AllMoment v-if="week?.moments?.length" :moments="week.moments" @finish="loadWeek" />
       <Empty v-else element="moments" />
     </section>
   </section>

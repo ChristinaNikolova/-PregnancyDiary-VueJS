@@ -1,17 +1,52 @@
 <script setup>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import momentsService from '../../../services/moments';
+
 const props = defineProps({
   moment: {
     type: Object,
     default: () => {},
   },
 });
+const emit = defineEmits(['deleteHandler']);
+const router = useRouter();
+const isHovering = ref(false);
+
+function onDelete() {
+  momentsService
+    .deleteById(props.moment.id)
+    .then(() => emit('deleteHandler'))
+    .catch(err => console.error(err));
+}
+
+function onUpdate() {
+  router.push(``);
+}
+
+function onMouseEnter() {
+  isHovering.value = true;
+};
+
+function onMouseLeave() {
+  isHovering.value = false;
+};
 </script>
 
 <template>
-  <li class="week-details-moments-li">
-    <h5 class="week-details-moments-li-title">
-      {{ props.moment.title }}
-    </h5>
+  <li
+    class="week-details-moments-li"
+    @mouseenter="onMouseEnter"
+    @mouseleave="onMouseLeave"
+  >
+    <div class="week-details-moments-li-title-wrapper">
+      <h5 class="week-details-moments-li-title">
+        {{ props.moment.title }}
+      </h5>
+      <i v-if="isHovering" class="fa-solid fa-pen" @click="onUpdate()" />
+      <i v-if="isHovering" class="fa-solid fa-trash" @click="onDelete()" />
+    </div>
+
     <p class="week-details-moments-li-date">
       {{ props.moment.date }}
     </p>
@@ -37,9 +72,23 @@ const props = defineProps({
   margin-bottom: 40px;
 }
 
+.week-details-moments-li-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .week-details-moments-li-title {
   font-size: 22px;
   font-weight: 500;
+}
+
+.week-details-moments-li-title-wrapper i {
+  font-size: 14px;
+}
+
+.week-details-moments-li-title-wrapper i:hover {
+  cursor: pointer;
 }
 
 .week-details-moments-li-date {

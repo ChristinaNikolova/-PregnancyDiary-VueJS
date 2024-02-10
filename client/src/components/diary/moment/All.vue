@@ -7,10 +7,20 @@ const props = defineProps({
     default: () => [],
   },
 });
+const emit = defineEmits(['finish']);
+
+function deleteHandler() {
+  emit('finish');
+}
 </script>
 
 <template>
   <ul class="week-details-moments-ul">
-    <Single v-for="m in props.moments" :key="m.id" :moment="m" />
+    <Single
+      v-for="m in props.moments"
+      :key="m.id"
+      :moment="m"
+      @delete-handler="deleteHandler"
+    />
   </ul>
 </template>
