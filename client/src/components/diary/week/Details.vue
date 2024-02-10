@@ -11,6 +11,10 @@ const weekId = route.params.id;
 const week = ref({});
 const isHovering = ref(false);
 
+// todo update css + html moments
+// todo delete moment
+// todo update moment
+// todo order moments by date
 onMounted(() => {
   weeksService
     .getById(weekId)
@@ -98,7 +102,24 @@ function onMouseLeave() {
       <div class="week-details-moments-btn-wrapper">
         <AppButton name="Add moment" :link="`/diary/${week.id}/moment/create`" :is-primary="false" />
       </div>
-      <div v-if="week?.moments?.length" class="week-details-moments" />
+      <ul v-if="week?.moments?.length" class="week-details-moments-ul">
+        <li v-for="m in week.moments" :key="m.id" class="week-details-moments-li">
+          <h5 class="week-details-moments-li-title">
+            {{ m.title }}
+          </h5>
+          <p class="week-details-moments-li-date">
+            {{ m.date }}
+          </p>
+          <p class="week-details-moments-li-content">
+            {{ m.content }}
+          </p>
+          <div class="heart-wrapper">
+            <div class="heart" />
+            <div class="heart" />
+            <div class="heart" />
+          </div>
+        </li>
+      </ul>
       <Empty v-else element="moments" />
     </section>
   </section>
@@ -218,5 +239,47 @@ function onMouseLeave() {
 
 .week-details-moments-btn-wrapper {
   margin-bottom: 80px;
+}
+
+.week-details-moments-li {
+  position: relative;
+  text-align: start;
+  margin-bottom: 40px;
+}
+
+.week-details-moments-li:last-of-type {
+  margin-bottom: 40px;
+}
+
+.week-details-moments-li-title {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.week-details-moments-li-date {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.week-details-moments-li-content {
+  font-size: 18px;
+  line-height: 2;
+  text-transform: initial;
+}
+
+.heart-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heart {
+  display: inline-block;
+  width: 24px;
+  margin: 50px 2px 0px 2px;
+  aspect-ratio: 1;
+  border-image: radial-gradient(var(--clr-cream-bg) 69%, #0000 70%) 84.5%/50%;
+  clip-path: polygon(-41% 0, 50% 91%, 141% 0);
 }
 </style>
