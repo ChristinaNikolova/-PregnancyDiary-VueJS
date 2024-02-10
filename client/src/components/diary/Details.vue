@@ -3,9 +3,9 @@ import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import diariesService from '../../services/diaries';
 import forms from '../../utils/helpers/forms';
-
 import All from './week/All.vue';
 import List from './week/List.vue';
+import Details from './baby/Details.vue';
 
 const route = useRoute();
 const diaryId = route.params.id;
@@ -37,6 +37,7 @@ onMounted(() => {
     <div v-if="!diary.isBabyBorn" class="diary-details-button-wrapper">
       <AppButton name="Baby is born" :link="`/diary/${diary.id}/baby/create`" :is-primary="false" />
     </div>
+    <Details v-else :baby="diary.baby" />
     <section class="diary-details-info">
       <div class="diary-details-info-positive-test-date">
         Positive Test: {{ diary.positiveTestDate }}
@@ -86,6 +87,7 @@ onMounted(() => {
 .diary-details-button-wrapper {
   margin-bottom: 150px;
 }
+
 .diary-details-info {
   display: flex;
   justify-content: space-evenly;
