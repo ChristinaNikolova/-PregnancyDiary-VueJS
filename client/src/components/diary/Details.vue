@@ -3,9 +3,9 @@ import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import diariesService from '../../services/diaries';
 import forms from '../../utils/helpers/forms';
-import All from './week/All.vue';
-import List from './week/List.vue';
-import Details from './baby/Details.vue';
+import AllWeeks from './week/All.vue';
+import ListWeeks from './week/List.vue';
+import WrapperBaby from './baby/Wrapper.vue';
 
 const route = useRoute();
 const diaryId = route.params.id;
@@ -34,10 +34,7 @@ onMounted(() => {
     <p class="diary-details-description">
       {{ diary.description }}
     </p>
-    <div v-if="!diary.isBabyBorn" class="diary-details-button-wrapper">
-      <AppButton name="Baby is born" :link="`/diary/${diary.id}/baby/create`" :is-primary="false" />
-    </div>
-    <Details v-else :baby="diary.baby" />
+    <WrapperBaby :diary-id="diary.id" :is-baby-born="diary.isBabyBorn" :baby="diary.baby" />
     <section class="diary-details-info">
       <div class="diary-details-info-positive-test-date">
         Positive Test: {{ diary.positiveTestDate }}
@@ -49,17 +46,17 @@ onMounted(() => {
         Gender: <br>{{ diary.gender }}
       </div>
     </section>
-    <All :weeks="diary.weeks">
+    <AllWeeks :weeks="diary.weeks">
       <template #first>
-        <List title="First" :weeks="diary.weeks" />
+        <ListWeeks title="First" :weeks="diary.weeks" />
       </template>
       <template #second>
-        <List title="Second" :weeks="diary.weeks" />
+        <ListWeeks title="Second" :weeks="diary.weeks" />
       </template>
       <template #third>
-        <List title="Third" :weeks="diary.weeks" />
+        <ListWeeks title="Third" :weeks="diary.weeks" />
       </template>
-    </All>
+    </AllWeeks>
   </section>
 </template>
 
@@ -82,10 +79,6 @@ onMounted(() => {
   margin-bottom: 60px;
   padding-left: 50px;
   padding-right: 50px;
-}
-
-.diary-details-button-wrapper {
-  margin-bottom: 150px;
 }
 
 .diary-details-info {
