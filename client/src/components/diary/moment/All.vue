@@ -6,6 +6,9 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
+  weekId: {
+    type: String,
+  },
 });
 const emit = defineEmits(['finish']);
 
@@ -20,6 +23,7 @@ function deleteHandler() {
       v-for="m in props.moments"
       :key="m.id"
       :moment="m"
+      :week-id="props.weekId"
       @delete-handler="deleteHandler"
     />
   </ul>

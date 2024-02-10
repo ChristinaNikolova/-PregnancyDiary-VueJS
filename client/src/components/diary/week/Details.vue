@@ -12,7 +12,7 @@ const weekId = route.params.id;
 const week = ref({});
 const isHovering = ref(false);
 
-// todo update moment
+// todo test server error during update
 onMounted(() => {
   loadWeek();
 });
@@ -104,7 +104,12 @@ function loadWeek() {
       <div class="week-details-moments-btn-wrapper">
         <AppButton name="Add moment" :link="`/diary/${week.id}/moment/create`" :is-primary="false" />
       </div>
-      <AllMoment v-if="week?.moments?.length" :moments="week.moments" @finish="loadWeek" />
+      <AllMoment
+        v-if="week?.moments?.length"
+        :moments="week.moments"
+        :week-id="week.id"
+        @finish="loadWeek"
+      />
       <Empty v-else element="moments" />
     </section>
   </section>

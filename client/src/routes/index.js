@@ -10,6 +10,7 @@ import UpdateDiary from '../components/diary/Update.vue';
 import DetailsWeek from '../components/diary/week/Details.vue';
 import UpdateWeek from '../components/diary/week/Update.vue';
 import CreateMoment from '../components/diary/moment/Create.vue';
+import UpdateMoment from '../components/diary/moment/Update.vue';
 import FavouriteArticles from '../components/user/FavouriteArticles.vue';
 import Login from '../components/auth/Login.vue';
 import Register from '../components/auth/Register.vue';
@@ -32,6 +33,7 @@ const routes = [
   { path: '/diary/week/:id', component: DetailsWeek, beforeEnter: isUser },
   { path: '/diary/week/update/:id', component: UpdateWeek, beforeEnter: isUser },
   { path: '/diary/:weekId/moment/create', component: CreateMoment, beforeEnter: isUser },
+  { path: '/diary/:weekId/moment/update/:momentId', component: UpdateMoment, beforeEnter: isUser },
   { path: '/user/favourite-articles', component: FavouriteArticles, beforeEnter: isUser },
   { path: '/administration/category', component: () => import('../components/administration/category/All.vue'), beforeEnter: isAdmin },
   { path: '/administration/category/create', component: () => import('../components/administration/category/Create.vue'), beforeEnter: isAdmin },

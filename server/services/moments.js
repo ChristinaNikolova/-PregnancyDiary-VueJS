@@ -18,7 +18,22 @@ async function deleteById(id) {
   return Moment.findByIdAndDelete(id);
 }
 
+async function getById(id) {
+  return await Moment.findById(id);
+}
+
+async function update(id, date, title, content) {
+  const moment = await getById(id);
+  moment.date = date;
+  moment.title = title;
+  moment.content = content;
+  await moment.save();
+  return moment;
+}
+
 module.exports = {
   create,
   deleteById,
+  getById,
+  update,
 };

@@ -18,7 +18,21 @@ function deleteById(id) {
     .catch(err => console.error(err));
 };
 
+function getById(id) {
+  return requester(`${api.moments}/${id}`, httpMethods.GET)
+    .then(res => res.json())
+    .catch(err => console.error(err));
+};
+
+function update(id, date, title, content) {
+  return requester(`${api.moments}/${id}`, httpMethods.PUT, { date, title, content })
+    .then(res => res.json())
+    .catch(err => console.error(err));
+};
+
 export default {
   create,
   deleteById,
+  getById,
+  update,
 };

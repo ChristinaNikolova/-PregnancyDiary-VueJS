@@ -8,6 +8,9 @@ const props = defineProps({
     type: Object,
     default: () => {},
   },
+  weekId: {
+    type: String,
+  },
 });
 const emit = defineEmits(['deleteHandler']);
 const router = useRouter();
@@ -21,7 +24,7 @@ function onDelete() {
 }
 
 function onUpdate() {
-  router.push(``);
+  router.push(`/diary/${props.weekId}/moment/update/${props.moment.id}`);
 }
 
 function onMouseEnter() {
