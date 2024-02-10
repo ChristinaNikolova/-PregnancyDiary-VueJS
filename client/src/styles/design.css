@@ -67,11 +67,11 @@
 }
 
 .girl-shadow {
-  -webkit-box-shadow: 5px 5px 12px 10px rgba(244,193,196,0.45);
-  box-shadow: 5px 5px 12px 10px rgba(244,193,196,0.45);
+  -webkit-box-shadow: 5px 5px 12px 10px rgba(244,193,196,0.20);
+  box-shadow: 5px 5px 12px 10px rgba(244,193,196,0.20);
 }
 
 .boy-shadow {
-  -webkit-box-shadow: 5px 5px 12px 10px rgba(132,179,211,0.45); 
-  box-shadow: 5px 5px 12px 10px rgba(132,179,211,0.45);
+  -webkit-box-shadow: 5px 5px 12px 10px rgba(132,179,211,0.20); 
+  box-shadow: 5px 5px 12px 10px rgba(132,179,211,0.20);
 }
