@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { genders } from '../../../utils/constants/global';
 
 const props = defineProps({
@@ -8,6 +8,7 @@ const props = defineProps({
     default: () => {},
   },
 });
+const isHovering = ref(false);
 
 const getGenderColor = computed(() => {
   return props.baby.gender === genders.BOY
@@ -20,13 +21,32 @@ const getGenderShadow = computed(() => {
     ? 'diary-details-baby-picture-wrapper boy-shadow'
     : 'diary-details-baby-picture-wrapper girl-shadow';
 });
+
+function onUpdate() {
+  console.log('update');
+}
+
+function onMouseEnter() {
+  isHovering.value = true;
+};
+
+function onMouseLeave() {
+  isHovering.value = false;
+};
 </script>
 
 <template>
-  <section class="diary-details-baby">
-    <h3 class="section-title">
-      Hello, Baby {{ props.baby.gender }} {{ props.baby.name }}!
-    </h3>
+  <section
+    class="diary-details-baby"
+    @mouseenter="onMouseEnter"
+    @mouseleave="onMouseLeave"
+  >
+    <div class="diary-details-baby-title-wrapper">
+      <h3 class="section-title">
+        Hello, Baby {{ props.baby.gender }} {{ props.baby.name }}!
+      </h3>
+      <i v-if="isHovering" class="fa-solid fa-pen" @click="onUpdate()" />
+    </div>
     <div class="diary-details-baby-wrapper">
       <div class="diary-details-baby-info-wrapper">
         <p :class="getGenderColor">
@@ -56,6 +76,22 @@ const getGenderShadow = computed(() => {
   padding-top: 80px;
   padding-bottom: 120px;
   margin-bottom: 200px;
+}
+
+.diary-details-baby-title-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  color: var(--clr-black);
+}
+
+.diary-details-baby-title-wrapper .section-title {
+  margin-bottom: unset;
+}
+
+.diary-details-baby-title-wrapper i:hover {
+  cursor: pointer;
 }
 
 .diary-details-baby-wrapper {
