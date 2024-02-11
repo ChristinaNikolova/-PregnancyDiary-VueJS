@@ -9,6 +9,5 @@ module.exports = () => (req, res, next) => {
     "Access-Control-Allow-Headers",
     "Content-Type, X-Authorization"
   );
-
   next();
 };

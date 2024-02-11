@@ -3,8 +3,6 @@ const { hasUser } = require("../middlewares/guards");
 const { all, create, like, deleteById } = require("../services/comments");
 const { mapErrors } = require("../utils/parser");
 
-//todo check if all hasUser
-
 router.get("/:id", hasUser(), async (req, res) => {
   try {
     const articleId = req.params.id;
