@@ -6,16 +6,22 @@ PregnancyDiary can be used to present particular diary during your pregnancy.
 
 #### :white_check_mark: Users futures: 
 
-    - Register as regular user, login and logout. 
-    - Home page
-    - Blog with pagination.
-    - See all blog's articles, search by article's title, filter articles by category.
-    - See article's detail.
-    - Like/dislike article.
-    - Have page with his favourite articles.
-    - Write comments to article.
-    - Delete own comments.
-    - Like/dislike comments.
+    - Register Page.
+    - Login Page.
+    - Logout functionality.
+    - Home page with recent articles.
+    - Blog page with pagination.
+       * See all articles.
+       * Search by article's title.
+       * Filter articles by category.
+       * See/read article's detail.
+       * Like/dislike article.
+       * Write comments to article.
+       * Delete his own comments.
+       * Like/dislike comments.
+    - User page with favourite articles.
+
+    
     - Create diaries.
     - Update/delete his own diaries.
     - See all his own diaries.
