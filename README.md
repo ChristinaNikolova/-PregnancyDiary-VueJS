@@ -31,10 +31,10 @@ PregnancyDiary can be used to present particular diary during your pregnancy.
       
 #### :white_check_mark: Admin futures: 
 
-    - all user's futures.
-    - admin's dashboard:  
-      * create, update and delete categories.
-      * create, update and delete articles.
+    - All user's futures.
+    - Admin's dashboard:  
+      * Create, update and delete categories.
+      * Create, update and delete articles.
 
 ## :hammer_and_pick: Build with
 
