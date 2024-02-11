@@ -14,26 +14,28 @@ PregnancyDiary can be used to present particular diary during your pregnancy.
        * See all articles.
        * Search by article's title.
        * Filter articles by category.
-       * See/read article's detail.
+       * See article's detail.
        * Like/dislike article.
        * Write comments to article.
        * Delete his own comments.
        * Like/dislike comments.
     - User page with favourite articles.
-
-    
-    - Create diaries.
-    - Update/delete his own diaries.
-    - See all his own diaries.
-    - See diary's details.
-    - See all weeks.
-    - Add week's information
-    - See week's details.
-    - Add memory to each week.
-    - See all memories, delete and update them
-    - Has button "Baby is born"
-    - See baby's details
-    - Add/update baby's information
+    - Diary page.
+       * Create diary.
+       * Update his own diaries.
+       * Delete his own diaries.
+       * See all his own diaries.
+       * See diary's details.
+       * See all diary's weeks.
+       * Add/update week's information.
+       * See week's details.
+       * Add moments to each week.
+       * Update moment.
+       * Delete moment.
+       * See all moments for target week.
+       * Has button "Baby is born".
+       * Add/update baby's information.
+       * See baby's details.
       
 #### :white_check_mark: Admin futures: 
 
