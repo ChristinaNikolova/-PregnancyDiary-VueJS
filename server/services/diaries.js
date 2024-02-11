@@ -1,5 +1,6 @@
 const Diary = require("../models/Diary");
 const Week = require("../models/Week");
+const Baby = require("../models/Baby");
 const {
   Types: { ObjectId },
 } = require("mongoose");
@@ -48,6 +49,9 @@ async function deleteById(id) {
   diary.weeks.forEach(async (week) => {
     await Week.findByIdAndDelete(week);
   });
+  if (diary.isBabyBorn) {
+    await Baby.findByIdAndDelete(diary.baby);
+  }
   return Diary.findByIdAndDelete(id);
 }
 
