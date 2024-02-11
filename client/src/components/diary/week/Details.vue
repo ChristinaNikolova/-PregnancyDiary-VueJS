@@ -3,8 +3,9 @@ import { onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import weeksService from '../../../services/weeks';
 import forms from '../../../utils/helpers/forms';
-import AllMode from '../mood/All.vue';
+import WrapperMoment from '../moment/Wrapper.vue';
 import AllMoment from '../moment/All.vue';
+import AllMode from '../mood/All.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -96,21 +97,15 @@ function loadWeek() {
       </div>
     </div>
     <AllMode :moods="week.mood" />
-    <section class="week-details-moments-wrapper">
-      <h4 class="week-details-title section-title">
-        My Moments
-      </h4>
-      <div class="week-details-moments-btn-wrapper">
-        <AppButton name="Add moment" :link="`/diary/${week.id}/moment/create`" :is-primary="false" />
-      </div>
-      <AllMoment
-        v-if="week?.moments?.length"
-        :moments="week.moments"
-        :week-id="week.id"
-        @finish="loadWeek"
-      />
-      <Empty v-else element="moments" />
-    </section>
+    <WrapperMoment :week-id="weekId" :moments="week.moments" :is-lenght="!!week.moments?.length">
+      <template #allMoments>
+        <AllMoment
+          :moments="week.moments"
+          :week-id="weekId"
+          @finish="loadWeek"
+        />
+      </template>
+    </WrapperMoment>
   </section>
 </template>
 
@@ -207,26 +202,5 @@ function loadWeek() {
   font-size: 36px;
   text-transform: uppercase;
   margin-bottom: 150px;
-}
-
-.week-details-moments-wrapper {
-  background-color: var(--clr-light-brown);
-  font-size: 18px;
-  font-weight: 500;
-  text-transform: uppercase;
-  padding: 100px;
-}
-
-.week-details-moments-wrapper .week-details-title {
-  color: var(--clr-white);
-  margin-bottom: 90px;
-}
-
-.week-details-moments-wrapper :deep(.empty-title::after) {
-  border-color: var(--clr-white);
-}
-
-.week-details-moments-btn-wrapper {
-  margin-bottom: 80px;
 }
 </style>

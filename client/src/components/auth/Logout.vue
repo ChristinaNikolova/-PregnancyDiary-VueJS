@@ -16,7 +16,3 @@ onMounted(() => {
     .catch(err => console.error(err));
 });
 </script>
-
-<template>
-  <div />
-</template>
