@@ -44,12 +44,18 @@ async function all(userId) {
 }
 
 async function deleteById(id) {
+  const diary = await getById(id);
+  diary.weeks.forEach(async (week) => {
+    await Week.findByIdAndDelete(week);
+  });
   return Diary.findByIdAndDelete(id);
 }
 
 async function getById(id, hasToMap = false) {
   if (hasToMap) {
-    return diaryDetailsViewModel(await Diary.findById(id).populate("weeks").populate('baby'));
+    return diaryDetailsViewModel(
+      await Diary.findById(id).populate("weeks").populate("baby")
+    );
   }
   return await Diary.findById(id);
 }
