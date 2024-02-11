@@ -62,4 +62,4 @@ MongoDB needs to be installed.
 ## :star2: Inspirations
 
 - [https://sooevents.gr/](https://bellabeat.com/)
-- [https://planning.wedding/](https://www.dujourbaby.com/)https://www.dujourbaby.com/
+- [https://www.dujourbaby.com/](https://www.dujourbaby.com/)
