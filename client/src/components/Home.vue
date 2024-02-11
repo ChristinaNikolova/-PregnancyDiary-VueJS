@@ -1,5 +1,5 @@
 <script setup>
-import LastThree from './blog/article/LastThree.vue';
+import LastThreeArticles from './blog/article/LastThree.vue';
 </script>
 
 <template>
@@ -41,7 +41,7 @@ import LastThree from './blog/article/LastThree.vue';
       <h2 class="section-title home-articles-title">
         Recent Articles
       </h2>
-      <LastThree />
+      <LastThreeArticles />
     </section>
   </section>
 </template>
