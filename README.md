@@ -17,13 +17,13 @@ PregnancyDiary can be used to present particular diary during your pregnancy.
        * See article's detail.
        * Like/dislike article.
        * Write comments to article.
-       * Delete his own comments.
+       * Delete comments.
        * Like/dislike comments.
     - User page with favourite articles.
     - Diary page.
        * Create diary.
-       * Update his own diaries.
-       * Delete his own diaries.
+       * Update diary.
+       * Delete diary.
        * See all his own diaries.
        * See diary's details.
        * See all diary's weeks.
