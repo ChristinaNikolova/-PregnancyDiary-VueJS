@@ -4,9 +4,37 @@ PregnancyDiary is a SPA created with Express.js with VueJS template.
 ## :memo: Description
 PregnancyDiary can be used to present particular diary during your pregnancy.
 
-#### Users futures: 
+#### :white_check_mark: Users futures: 
+
+    - Register as regular user, login and logout. 
+    - Home page
+    - Blog with pagination.
+    - See all blog's articles, search by article's title, filter articles by category.
+    - See article's detail.
+    - Like/dislike article.
+    - Have page with his favourite articles.
+    - Write comments to article.
+    - Delete own comments.
+    - Like/dislike comments.
+    - Create diaries.
+    - Update/delete his own diaries.
+    - See all his own diaries.
+    - See diary's details.
+    - See all weeks.
+    - Add week's information
+    - See week's details.
+    - Add memory to each week.
+    - See all memories, delete and update them
+    - Has button "Baby is born"
+    - See baby's details
+    - Add/update baby's information
       
-#### Admin futures: 
+#### :white_check_mark: Admin futures: 
+
+    - all user's futures.
+    - admin's dashboard:  
+      * create, update and delete categories.
+      * create, update and delete articles.
 
 ## :hammer_and_pick: Build with
 
