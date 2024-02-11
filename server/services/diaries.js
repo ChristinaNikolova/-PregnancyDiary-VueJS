@@ -1,6 +1,7 @@
 const Diary = require("../models/Diary");
 const Week = require("../models/Week");
 const Baby = require("../models/Baby");
+const Moment = require("../models/Moment");
 const {
   Types: { ObjectId },
 } = require("mongoose");
@@ -11,6 +12,7 @@ const {
 } = require("../utils/mapper/diary");
 const { errors } = require("../utils/constants/global");
 const { subTitle, text } = require("../utils/constants/week");
+const { getById: getWeekById } = require("./weeks");
 
 async function create(
   title,
@@ -46,8 +48,12 @@ async function all(userId) {
 
 async function deleteById(id) {
   const diary = await getById(id);
-  diary.weeks.forEach(async (week) => {
-    await Week.findByIdAndDelete(week);
+  diary.weeks.forEach(async (weekId) => {
+    const week = await getWeekById(weekId);
+    week.moments.forEach(async (momentId) => {
+      await Moment.findByIdAndDelete(momentId);
+    });
+    await Week.findByIdAndDelete(weekId);
   });
   if (diary.isBabyBorn) {
     await Baby.findByIdAndDelete(diary.baby);
