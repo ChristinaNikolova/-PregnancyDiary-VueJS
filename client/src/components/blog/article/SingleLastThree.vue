@@ -57,4 +57,10 @@ const props = defineProps({
   padding-left: 30px;
   padding-right: 30px;
 }
+
+@media screen and (max-width: 1000px) {
+  .last-three-articles-li {
+    width: 90%;
+  }
+}
 </style>

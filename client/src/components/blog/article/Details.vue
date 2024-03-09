@@ -135,4 +135,53 @@ function getLikes(result) {
 .article-buttons-wrapper .btn:nth-child(2) {
   margin-right: 20px;
 }
+
+@media screen and (max-width: 950px) {
+  .article-content {
+    margin-right: 100px;
+    margin-left: 100px;
+  }
+
+  .article:deep(h2) {
+    margin-left: 100px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .article-buttons-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    width: 90%;
+    margin: 0 auto 100px auto;
+  }
+
+  .article-buttons-wrapper .btn:first-of-type,
+  .article-buttons-wrapper .btn:nth-child(2) {
+    margin-right: unset;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .article-content {
+    margin-right: 50px;
+    margin-left: 50px;
+  }
+
+  .article:deep(h2) {
+    margin-left: 50px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .article-content {
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+
+  .article:deep(h2) {
+    margin-left: 20px;
+  }
+}
 </style>

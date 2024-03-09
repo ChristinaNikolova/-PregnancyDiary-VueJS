@@ -101,4 +101,27 @@ const store = useAuthStore();
 .footer-text a:hover {
   text-decoration: underline;
 }
+
+@media screen and (max-width: 850px) {
+  .footer-nav-wrapper {
+   display: unset;
+   text-align: center;
+  }
+
+  .footer-text {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .footer-text {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .footer-nav-li {
+    font-size: 16px;
+  }
+}
 </style>

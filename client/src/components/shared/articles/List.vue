@@ -28,4 +28,10 @@ const props = defineProps({
   margin-top: 80px;
   margin-bottom: 80px;
 }
+
+@media screen and (max-width: 850px) {
+  .article-ul {
+    flex-direction: column;
+  }
+}
 </style>

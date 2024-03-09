@@ -26,4 +26,10 @@ onMounted(() => {
   align-items: center;
   gap: 50px;
 }
+
+@media screen and (max-width: 1000px) {
+.last-three-articles-ul {
+  flex-direction: column;
+  }
+}
 </style>

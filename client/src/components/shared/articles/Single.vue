@@ -60,4 +60,10 @@ const props = defineProps({
 .article-li-created {
   padding-left: 30px;
 }
+
+@media screen and (max-width: 850px) {
+  .article-li {
+    width: 90%;
+  }
+}
 </style>

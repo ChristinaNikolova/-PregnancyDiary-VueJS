@@ -28,4 +28,12 @@ const emit = defineEmits(['onCancelFormHandler']);
   display: flex;
   gap: 18px;
 }
+
+@media screen and (max-width: 400px) {
+  .form-buttons-wrapper {
+    flex-direction: column;
+    gap: unset;
+    width: 100%;
+  }
+}
 </style>

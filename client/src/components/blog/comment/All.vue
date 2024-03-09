@@ -60,4 +60,16 @@ function loadComments() {
   flex-direction: column;
   align-items: center;
 }
+
+@media screen and (max-width: 850px) {
+  .comments:deep(button){
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .comments {
+    width: 100%;
+  }
+}
 </style>
